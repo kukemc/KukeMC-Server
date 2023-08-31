@@ -1,27 +1,26 @@
 <local:MyHint Text="主页作者: 0ctber | KukeMC官方启动器" Margin="0,-13,0,0" Padding="0,5,0,5" IsWarn="False" />
+
 <local:MyCard Title="快速启动KukeMC系列服务器" Margin="0,10,0,15" CanSwap="False" IsSwaped="False">
     <StackPanel Margin="25,40,23,15">
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
                     Text="在这里快速启动KukeMC系列服务器吧！" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
                     Text="如果启动器左下角显示无法找到版本XX，请到本页面版本下载栏进行对应版本的下载" />
-        格瑞格&格;
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <local:MyButton Grid.Column="0" Margin="0,0,10,0" Height="35" ColorType="Red"
+            <local:MyButton Grid.Column="0" Margin="0,0,10,0" Height="35" ColorType="Red" 
                     Text="进入粘液服" EventType="弹出窗口" EventData="告示|服务器目前暂时关闭中，请移步官方Q群了解信息" ToolTip="科技狂魔们的狂欢排队！" />
             <local:MyButton Grid.Column="1" Margin="0,0,10,0" Height="35"
                     Text="进入生电服" EventType="启动游戏" EventData="生电服版本|sipc.f3322.net:25566" ToolTip="摩擦生电！利用红石完成宏伟的工程吧" />
-            <local:MyButton Grid.Column="2" Margin="0,0,10,0" Height="35"
+            <local:MyButton Grid.Column="2" Margin="0,0,10,0" Height="35" 
                     Text="进入起床服" EventType="启动游戏" EventData="起床战争版本|sipc.f3322.net:20000" ToolTip="积累财富，消灭敌人" />
-
         </Grid>
     </StackPanel>
-&l;/本地:我的卡&t;
-
+</local:MyCard>
 
 <local:MyCard Title="服务器公告" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
     <StackPanel Margin="25,40,23,15">
@@ -29,37 +28,11 @@
             Logo="pack://application:,,,/images/Blocks/CommandBlock.png"
                     EventType="弹出窗口" Title="服务器公告"  EventData="这是标题|标题与内容以竖线间隔。\n你也可以直接在其中换行。" />
     </StackPanel>
-&l;/本地:我的卡&t;
+</local:MyCard>
 
-
-<local:MyCard Title="服务器联系方式" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-    <StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="根据自己的需求添加对应的联系方式" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="官网网站和QQ频道建设中，内容尚未完善，也请各位玩家们为建设提出自己的建议哦(*^▽^*)" />
-        格瑞格&格;
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方网站" Info="我们有官网了耶"
-		            EventType="打开网页" EventData="https://mc.kuke.ink" ToolTip="我们有官网了耶" />
-            <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方Q群" Info="与群里的伙伴们友好交流吧"
-		            EventType="打开网页" EventData="https://qq.kuke.ink" ToolTip="与群里的伙伴们友好交流吧！" />
-            <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方频道" Info="参加各种有趣的活动~"
-		            EventType="打开网页" EventData="https://https://pd.qq.com/s/9gybt2q47/" ToolTip="参加各种有趣的活动~" />
-        </Grid>
-    </StackPanel>
-&l;/本地:我的卡&t;
-
-<local:MyCard Margin="0,0,0,12" Title="启动器工具" CanSwap="True" IsSwaped="False">
+<local:MyCard Margin="0,0,0,12" Title="启动器工具" CanSwap="True" IsSwaped="True">
      <StackPanel Margin="24,40,24,15">
-          格瑞格&格;
+          <Grid>
               <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
@@ -72,10 +45,35 @@
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
               </Grid.ColumnDefinitions>
-                    <local:MyButton Grid.Column="0" Margin="0,10,10,0" Height="35" Text="内存优化" EventType="内存优化" ToolTip="将物理内存占用降低约1/3，不仅限于MC！
-如果使用机械硬盘，这可能会导致一小段时间的严重卡顿。"/>
+                    <local:MyButton Grid.Column="0" Margin="0,10,10,0" Height="35" Text="内存优化" EventType="内存优化" ToolTip="将物理内存占用降低约1/3，不仅限于MC！&#xA;如果使用机械硬盘，这可能会导致一小段时间的严重卡顿。"/>
                     <local:MyButton Grid.Column="1" Margin="0,10,0,0" Height="35" Text="定位游戏启动脚本" EventType="打开文件" EventData="explorer.exe|/select,LatestLaunch.bat" ToolTip="打开PCL上一次启动 MC 的脚本(LatestLaunch.bat)。" />
           </Grid>
      </StackPanel>
-&l;/本地:我的卡&t;
+</local:MyCard>
+
+<local:MyCard Title="服务器联系方式" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+    <StackPanel Margin="25,40,23,15">
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
+                    Text="根据自己的需求添加对应的联系方式" />
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
+                    Text="官网网站和QQ频道建设中，内容尚未完善，也请各位玩家们为建设提出自己的建议哦(*^▽^*)" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方网站" Info="我们有官网了耶" 
+		            EventType="打开网页" EventData="https://mc.kuke.ink" ToolTip="我们有官网了耶" />
+            <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方Q群" Info="与群里的伙伴们友好交流吧" 
+		            EventType="打开网页" EventData="https://qq.kuke.ink" ToolTip="与群里的伙伴们友好交流吧！" />
+            <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方频道" Info="参加各种有趣的活动~" 
+		            EventType="打开网页" EventData="https://https://pd.qq.com/s/9gybt2q47/" ToolTip="参加各种有趣的活动~" />
+        </Grid>
+    </StackPanel>
+</local:MyCard>
+
 
