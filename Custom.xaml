@@ -26,7 +26,7 @@
     <StackPanel Margin="25,40,23,15">
         <local:MyListItem Margin="-5,0,-5,8"
             Logo="pack://application:,,,/images/Blocks/CommandBlock.png"
-                    EventType="弹出窗口" Title="服务器公告"  EventData="这是标题|标题与内容以竖线间隔。\n你也可以直接在其中换行。" />
+                    EventType="弹出窗口" Title="服务器公告" />
     </StackPanel>
 </local:MyCard>
 
