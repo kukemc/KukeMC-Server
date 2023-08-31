@@ -22,7 +22,7 @@
     </StackPanel>
 </local:MyCard>
 
-<local:MyCard Title="服务器公告" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+<local:MyCard Title="服务器公告" Margin="0,0,0,15" CanSwap="False" IsSwaped="False">
     <StackPanel Margin="25,40,23,15">
         <local:MyListItem Margin="-5,0,-5,8"
             Logo="pack://application:,,,/images/Blocks/CommandBlock.png"
