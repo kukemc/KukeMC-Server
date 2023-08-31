@@ -68,10 +68,10 @@
 		            EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方Q群" Info="与群里的伙伴们友好交流吧" 
-		            EventType="打开网页" EventData="https://qq.kuke.ink" ToolTip="与群里的伙伴们友好交流吧！" />
+		            EventType="打开网页" EventData="https://qq.kuke.ink/" Type="Clickable" />
             <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方频道" Info="参加各种有趣的活动~" 
-		            EventType="打开网页" EventData="https://https://pd.qq.com/s/9gybt2q47/" ToolTip="参加各种有趣的活动~" />
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="官方网站" Info="参加各种有趣的活动~" 
+		            EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
         </Grid>
     </StackPanel>
 </local:MyCard>
