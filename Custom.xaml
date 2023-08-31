@@ -26,7 +26,7 @@
     <StackPanel Margin="25,40,23,15">
         <local:MyListItem Margin="-5,0,-5,8"
             Logo="pack://application:,,,/images/Blocks/Fabric.png"
-                    EventType="弹出窗口" Title="服务器公告"  EventData="告示|测试" />
+                    EventType="打开网页" Title="服务器公告"  EventData="mc.kuke.ink" />
     </StackPanel>
 </local:MyCard>
 
