@@ -14,13 +14,13 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <local:MyButton Grid.Column="0" Margin="0,0,10,0" Height="35" ColorType="Red" 
-                    Text="进入粘液服" EventType="弹出窗口" EventData="告示|服务器目前暂时关闭中，请移步官方Q群了解信息" ToolTip="科技狂魔们的狂欢排队！" />
+                    Text="进入粘液服" EventType="弹出窗口" EventData="告示|服务器关闭中，请移步官方Q群了解信息" ToolTip="科技狂魔们的狂欢派对！" />
             <local:MyButton Grid.Column="1" Margin="0,0,10,0" Height="35" ColorType="Highlight" 
                     Text="进入生电服" EventType="启动游戏" EventData="生电服版本|sipc.f3322.net:25566" ToolTip="摩擦生电！利用红石完成宏伟的工程吧" />
             <local:MyButton Grid.Column="2" Margin="0,0,10,0" Height="35" ColorType="Highlight" 
-                    Text="进入起床服" EventType="启动游戏" EventData="pvp版本|sipc.f3322.net:20000" ToolTip="积累财富，消灭敌人" />
+                    Text="进入起床服" EventType="启动游戏" EventData="pvp版本|sipc.f3322.net:20000" ToolTip="积累财富，消灭敌人！" />
             <local:MyButton Grid.Column="3" Margin="0,0,10,0" Height="35" ColorType="Red" 
-                    Text="进入战桥服" EventType="弹出窗口" EventData="告示|服务器目前暂时关闭中，请移步官方Q群了解信息" ToolTip="暂无介绍" />
+                    Text="进入战桥服" EventType="弹出窗口" EventData="告示|服务器关闭中，请移步官方Q群了解信息" ToolTip="暂无介绍" />
         </Grid>
     </StackPanel>
 </local:MyCard>
