@@ -11,13 +11,16 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <local:MyButton Grid.Column="0" Margin="0,0,10,0" Height="35" ColorType="Red" 
                     Text="进入粘液服" EventType="弹出窗口" EventData="告示|服务器目前暂时关闭中，请移步官方Q群了解信息" ToolTip="科技狂魔们的狂欢排队！" />
-            <local:MyButton Grid.Column="1" Margin="0,0,10,0" Height="35"
+            <local:MyButton Grid.Column="1" Margin="0,0,10,0" Height="35" ColorType="Highlight" 
                     Text="进入生电服" EventType="启动游戏" EventData="生电服版本|sipc.f3322.net:25566" ToolTip="摩擦生电！利用红石完成宏伟的工程吧" />
-            <local:MyButton Grid.Column="2" Margin="0,0,10,0" Height="35" 
-                    Text="进入起床服" EventType="启动游戏" EventData="起床战争版本|sipc.f3322.net:20000" ToolTip="积累财富，消灭敌人" />
+            <local:MyButton Grid.Column="2" Margin="0,0,10,0" Height="35" ColorType="Highlight" 
+                    Text="进入起床服" EventType="启动游戏" EventData="pvp版本|sipc.f3322.net:20000" ToolTip="积累财富，消灭敌人" />
+            <local:MyButton Grid.Column="3" Margin="0,0,10,0" Height="35" ColorType="Highlight" 
+                    Text="进入战桥服" EventType="启动游戏" EventData="pvp版本|sipc.f3322.net:10000" ToolTip="" />
         </Grid>
     </StackPanel>
 </local:MyCard>
@@ -26,7 +29,7 @@
     <StackPanel Margin="25,40,23,15">
             <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
                     Logo="pack://application:,,,/images/Blocks/Fabric.png" Title="服务器公告" Info="了解最新服务器动态" ToolTip="8月31日发"
-                    EventType="弹出窗口" EventData="欢迎各位来到KukeMC!|这里拥有三大子服：粘液生存，原版生电和起床战争\n各位玩家们从右侧找到自己喜欢的游戏版本下载安装后就可顺利游玩了(*^▽^*)，遇到任何问题请及时向op和腐竹报告！" Type="Clickable" />
+                    EventType="弹出窗口" EventData="欢迎各位来到KukeMC!|这里拥有三大子服：粘液生存，原版生电和起床战争\n各位玩家们从右侧找到自己喜欢的游戏版本下载安装后就可顺利游玩了(*^▽^*)，遇到任何问题请及时向op和腐竹报告！\n快速游戏一栏中，红色按钮表示服务器关闭，蓝色按钮表示服务器正常开启，黑色按钮表示服务器维护中" Type="Clickable" />
     </StackPanel>
 </local:MyCard>
 
