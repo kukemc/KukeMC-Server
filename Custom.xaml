@@ -1,10 +1,10 @@
-<local:MyHint Text="Ö÷Ò³×÷Õß: 0ctber | KukeMC¹Ù·½Æô¶¯Æ÷" Margin="0,-13,0,0" Padding="0,5,0,5" IsWarn="False" />
-<local:MyCard Title="¿ìËÙÆô¶¯KukeMCÏµÁÐ·þÎñÆ÷" Margin="0,10,0,15" CanSwap="False" IsSwaped="False">
+<local:MyHint Text="ä¸»é¡µä½œè€…: 0ctber | KukeMCå®˜æ–¹å¯åŠ¨å™¨" Margin="0,-13,0,0" Padding="0,5,0,5" IsWarn="False" />
+<local:MyCard Title="å¿«é€Ÿå¯åŠ¨KukeMCç³»åˆ—æœåŠ¡å™¨" Margin="0,10,0,15" CanSwap="False" IsSwaped="False">
     <StackPanel Margin="25,40,23,15">
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="ÔÚÕâÀï¿ìËÙÆô¶¯KukeMCÏµÁÐ·þÎñÆ÷°É£¡" />
+                    Text="åœ¨è¿™é‡Œå¿«é€Ÿå¯åŠ¨KukeMCç³»åˆ—æœåŠ¡å™¨å§ï¼" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="Èç¹ûÆô¶¯Æ÷×óÏÂ½ÇÏÔÊ¾ÎÞ·¨ÕÒµ½°æ±¾XX£¬Çëµ½±¾Ò³Ãæ°æ±¾ÏÂÔØÀ¸½øÐÐ¶ÔÓ¦°æ±¾µÄÏÂÔØ" />
+                    Text="å¦‚æžœå¯åŠ¨å™¨å·¦ä¸‹è§’æ˜¾ç¤ºæ— æ³•æ‰¾åˆ°ç‰ˆæœ¬XXï¼Œè¯·åˆ°æœ¬é¡µé¢ç‰ˆæœ¬ä¸‹è½½æ è¿›è¡Œå¯¹åº”ç‰ˆæœ¬çš„ä¸‹è½½" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -12,22 +12,22 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <local:MyButton Grid.Column="0" Margin="0,0,10,0" Height="35" ColorType="Red" 
-                    Text="½øÈëÕ³Òº·þ" EventType="µ¯³ö´°¿Ú" EventData="¸æÊ¾|·þÎñÆ÷Ä¿Ç°ÔÝÊ±¹Ø±ÕÖÐ£¬ÇëÒÆ²½¹Ù·½QÈºÁË½âÐÅÏ¢" ToolTip="¿Æ¼¼¿ñÄ§ÃÇµÄ¿ñ»¶ÅÅ¶Ó£¡" />
+                    Text="è¿›å…¥ç²˜æ¶²æœ" EventType="å¼¹å‡ºçª—å£" EventData="å‘Šç¤º|æœåŠ¡å™¨ç›®å‰æš‚æ—¶å…³é—­ä¸­ï¼Œè¯·ç§»æ­¥å®˜æ–¹Qç¾¤äº†è§£ä¿¡æ¯" ToolTip="ç§‘æŠ€ç‹‚é­”ä»¬çš„ç‹‚æ¬¢æŽ’é˜Ÿï¼" />
             <local:MyButton Grid.Column="1" Margin="0,0,10,0" Height="35"
-                    Text="½øÈëÉúµç·þ" EventType="Æô¶¯ÓÎÏ·" EventData="Éúµç·þ°æ±¾|sipc.f3322.net:25566" ToolTip="Ä¦²ÁÉúµç£¡ÀûÓÃºìÊ¯Íê³ÉºêÎ°µÄ¹¤³Ì°É" />
+                    Text="è¿›å…¥ç”Ÿç”µæœ" EventType="å¯åŠ¨æ¸¸æˆ" EventData="ç”Ÿç”µæœç‰ˆæœ¬|sipc.f3322.net:25566" ToolTip="æ‘©æ“¦ç”Ÿç”µï¼åˆ©ç”¨çº¢çŸ³å®Œæˆå®ä¼Ÿçš„å·¥ç¨‹å§" />
             <local:MyButton Grid.Column="2" Margin="0,0,10,0" Height="35" 
-                    Text="½øÈëÆð´²·þ" EventType="Æô¶¯ÓÎÏ·" EventData="Æð´²Õ½Õù°æ±¾|sipc.f3322.net:20000" ToolTip="»ýÀÛ²Æ¸»£¬ÏûÃðµÐÈË" />
+                    Text="è¿›å…¥èµ·åºŠæœ" EventType="å¯åŠ¨æ¸¸æˆ" EventData="èµ·åºŠæˆ˜äº‰ç‰ˆæœ¬|sipc.f3322.net:20000" ToolTip="ç§¯ç´¯è´¢å¯Œï¼Œæ¶ˆç­æ•Œäºº" />
 
         </Grid>
     </StackPanel>
 </local:MyCard>
 
-<local:MyCard Title="·þÎñÆ÷ÁªÏµ·½Ê½" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+<local:MyCard Title="æœåŠ¡å™¨è”ç³»æ–¹å¼" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
     <StackPanel Margin="25,40,23,15">
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="¸ù¾Ý×Ô¼ºµÄÐèÇóÌí¼Ó¶ÔÓ¦µÄÁªÏµ·½Ê½" />
+                    Text="æ ¹æ®è‡ªå·±çš„éœ€æ±‚æ·»åŠ å¯¹åº”çš„è”ç³»æ–¹å¼" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="¹ÙÍøÍøÕ¾ºÍQQÆµµÀ½¨ÉèÖÐ£¬ÄÚÈÝÉÐÎ´ÍêÉÆ£¬Ò²Çë¸÷Î»Íæ¼ÒÃÇÎª½¨ÉèÌá³ö×Ô¼ºµÄ½¨ÒéÅ¶(*^¨Œ^*)" />
+                    Text="å®˜ç½‘ç½‘ç«™å’ŒQQé¢‘é“å»ºè®¾ä¸­ï¼Œå†…å®¹å°šæœªå®Œå–„ï¼Œä¹Ÿè¯·å„ä½çŽ©å®¶ä»¬ä¸ºå»ºè®¾æå‡ºè‡ªå·±çš„å»ºè®®å“¦(*^â–½^*)" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -35,35 +35,35 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="¹Ù·½ÍøÕ¾" Info="ÎÒÃÇÓÐ¹ÙÍøÁËÒ®" 
-		            EventType="´ò¿ªÍøÒ³" EventData="https://mc.kuke.ink" ToolTip="ÎÒÃÇÓÐ¹ÙÍøÁËÒ®" />
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="å®˜æ–¹ç½‘ç«™" Info="æˆ‘ä»¬æœ‰å®˜ç½‘äº†è€¶" 
+		            EventType="æ‰“å¼€ç½‘é¡µ" EventData="https://mc.kuke.ink" ToolTip="æˆ‘ä»¬æœ‰å®˜ç½‘äº†è€¶" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="¹Ù·½QÈº" Info="ÓëÈºÀïµÄ»ï°éÃÇÓÑºÃ½»Á÷°É" 
-		            EventType="´ò¿ªÍøÒ³" EventData="https://qq.kuke.ink" ToolTip="ÓëÈºÀïµÄ»ï°éÃÇÓÑºÃ½»Á÷°É£¡" />
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="å®˜æ–¹Qç¾¤" Info="ä¸Žç¾¤é‡Œçš„ä¼™ä¼´ä»¬å‹å¥½äº¤æµå§" 
+		            EventType="æ‰“å¼€ç½‘é¡µ" EventData="https://qq.kuke.ink" ToolTip="ä¸Žç¾¤é‡Œçš„ä¼™ä¼´ä»¬å‹å¥½äº¤æµå§ï¼" />
             <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="¹Ù·½ÆµµÀ" Info="²Î¼Ó¸÷ÖÖÓÐÈ¤µÄ»î¶¯~" 
-		            EventType="´ò¿ªÍøÒ³" EventData="https://https://pd.qq.com/s/9gybt2q47/" ToolTip="²Î¼Ó¸÷ÖÖÓÐÈ¤µÄ»î¶¯~" />
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="å®˜æ–¹é¢‘é“" Info="å‚åŠ å„ç§æœ‰è¶£çš„æ´»åŠ¨~" 
+		            EventType="æ‰“å¼€ç½‘é¡µ" EventData="https://https://pd.qq.com/s/9gybt2q47/" ToolTip="å‚åŠ å„ç§æœ‰è¶£çš„æ´»åŠ¨~" />
         </Grid>
     </StackPanel>
 </local:MyCard>
 
-<local:MyCard Margin="0,0,0,12" Title="Æô¶¯Æ÷¹¤¾ß" CanSwap="True" IsSwaped="False">
+<local:MyCard Margin="0,0,0,12" Title="å¯åŠ¨å™¨å·¥å…·" CanSwap="True" IsSwaped="False">
      <StackPanel Margin="24,40,24,15">
           <Grid>
               <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
               </Grid.ColumnDefinitions>
-                    <local:MyButton Grid.Column="0" Margin="0,0,10,0" Height="35" Text="´ò¿ª PCL ÈÕÖ¾" EventType="´ò¿ªÎÄ¼þ" EventData="Log1.txt" ToolTip="²é¿´µ±Ç°PCLÆô¶¯Æ÷µÄÈÕÖ¾ÎÄ¼þ¡£"/>
-                    <local:MyButton Grid.Column="1" Margin="0,0,0,0" Height="35" Text="ÇåÀíÀ¬»ø" EventType="ÇåÀíÀ¬»ø" ToolTip="ÇåÀíÀ¬»øÎÄ¼þ¡£"/>
+                    <local:MyButton Grid.Column="0" Margin="0,0,10,0" Height="35" Text="æ‰“å¼€ PCL æ—¥å¿—" EventType="æ‰“å¼€æ–‡ä»¶" EventData="Log1.txt" ToolTip="æŸ¥çœ‹å½“å‰PCLå¯åŠ¨å™¨çš„æ—¥å¿—æ–‡ä»¶ã€‚"/>
+                    <local:MyButton Grid.Column="1" Margin="0,0,0,0" Height="35" Text="æ¸…ç†åžƒåœ¾" EventType="æ¸…ç†åžƒåœ¾" ToolTip="æ¸…ç†åžƒåœ¾æ–‡ä»¶ã€‚"/>
           </Grid>
           <Grid>
               <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
               </Grid.ColumnDefinitions>
-                    <local:MyButton Grid.Column="0" Margin="0,10,10,0" Height="35" Text="ÄÚ´æÓÅ»¯" EventType="ÄÚ´æÓÅ»¯" ToolTip="½«ÎïÀíÄÚ´æÕ¼ÓÃ½µµÍÔ¼1/3£¬²»½öÏÞÓÚMC£¡&#xA;Èç¹ûÊ¹ÓÃ»úÐµÓ²ÅÌ£¬Õâ¿ÉÄÜ»áµ¼ÖÂÒ»Ð¡¶ÎÊ±¼äµÄÑÏÖØ¿¨¶Ù¡£"/>
-                    <local:MyButton Grid.Column="1" Margin="0,10,0,0" Height="35" Text="¶¨Î»ÓÎÏ·Æô¶¯½Å±¾" EventType="´ò¿ªÎÄ¼þ" EventData="explorer.exe|/select,LatestLaunch.bat" ToolTip="´ò¿ªPCLÉÏÒ»´ÎÆô¶¯ MC µÄ½Å±¾(LatestLaunch.bat)¡£" />
+                    <local:MyButton Grid.Column="0" Margin="0,10,10,0" Height="35" Text="å†…å­˜ä¼˜åŒ–" EventType="å†…å­˜ä¼˜åŒ–" ToolTip="å°†ç‰©ç†å†…å­˜å ç”¨é™ä½Žçº¦1/3ï¼Œä¸ä»…é™äºŽMCï¼&#xA;å¦‚æžœä½¿ç”¨æœºæ¢°ç¡¬ç›˜ï¼Œè¿™å¯èƒ½ä¼šå¯¼è‡´ä¸€å°æ®µæ—¶é—´çš„ä¸¥é‡å¡é¡¿ã€‚"/>
+                    <local:MyButton Grid.Column="1" Margin="0,10,0,0" Height="35" Text="å®šä½æ¸¸æˆå¯åŠ¨è„šæœ¬" EventType="æ‰“å¼€æ–‡ä»¶" EventData="explorer.exe|/select,LatestLaunch.bat" ToolTip="æ‰“å¼€PCLä¸Šä¸€æ¬¡å¯åŠ¨ MC çš„è„šæœ¬(LatestLaunch.bat)ã€‚" />
           </Grid>
      </StackPanel>
 </local:MyCard>
