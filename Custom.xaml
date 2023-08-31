@@ -25,8 +25,8 @@
 <local:MyCard Title="服务器公告" Margin="0,0,0,15" CanSwap="False" IsSwaped="False">
     <StackPanel Margin="25,40,23,15">
         <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
-            Logo="pack://application:,,,/images/Blocks/Fabric.png" Title="官方网站" Info="我们有官网了耶" 
-                    EventType="打开网页" EventData="https://mc.kuke.ink" ToolTip="我们有官网了耶" />
+            Logo="pack://application:,,,/images/Blocks/Fabric.png" Title="服务器公告" Info="了解最新服务器动态" 
+                    EventType="弹出窗口" EventData="标题|测试" ToolTip="8月31日发" />
     </StackPanel>
 </local:MyCard>
 
