@@ -67,7 +67,7 @@
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
                     Text="官网网站和QQ频道建设中，内容尚未完善，也请各位玩家们为建设提出自己的建议哦(*^▽^*)" />
     	<local:MyListItem Margin="0,0,10,0" Height="35"
-                    Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方网站" Info="我们头官网了耶" ToolTip="我们头官网了耶"
+                    Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="给服务器建设提供建议或问题反馈" Info="点击进入问卷，我们需要你宝贵的反馈和建议！" ToolTip="点击进入问卷，我们需要你宝贵的反馈和建议！"
                     EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
 	<Grid>
             <Grid.ColumnDefinitions>
@@ -76,7 +76,7 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方网站" Info="我们头官网了耶" ToolTip="我们头官网了耶"
+		            Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方网站" Info="我们有官网了耶" ToolTip="我们有官网了耶"
 		            EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方Q群" Info="与群里的伙伴们友好交流吧" ToolTip="与群里的伙伴们友好交流吧"
