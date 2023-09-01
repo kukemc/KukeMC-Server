@@ -81,8 +81,8 @@
             <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方网站" Info="参加各种有趣的活动~" ToolTip="参加各种有趣的活动~"
 		            EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
-            <local:MyButton Margin="0,0,10,0" Height="35" HorizontalAlignment="Center" Margin="0,10,0,0"
-                            Text="打开 B 站" EventType="打开网页" EventData="https://www.bilibili.com/" />
+            <local:MyButton Margin="0,4,0,10" Height="35" HorizontalAlignment="Left" Padding="25,0,25,0"
+                            Text="这是一个按钮！一个按钮！" />
 
         </Grid>
     </StackPanel>
