@@ -66,7 +66,7 @@
                     Text="根据自己的需求添加对应的联系方式" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
                     Text="官网网站和QQ频道建设中，内容尚未完善，也请各位玩家们为建设提出自己的建议哦(*^▽^*)" />
-    <local:MyButton Width="140" Height="35" HorizontalAlignment="Left" Padding="0,0,0,0"
+    <local:MyButton Width="140" Height="35" HorizontalAlignment="Left" Padding="0,0,0,-10"
                     Text="打开 MCBBS" EventType="打开网页" EventData="https://www.mcbbs.net/" />
 	<Grid>
             <Grid.ColumnDefinitions>
