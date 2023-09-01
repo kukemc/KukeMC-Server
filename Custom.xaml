@@ -82,9 +82,9 @@
 		            Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方网站" Info="参加各种有趣的活动~" ToolTip="参加各种有趣的活动~"
 		            EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
         </Grid>
-        <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
-		    ogo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="给服务器建设提出建议或问题反馈" Info="点击进入问卷，我们需要你的好点子！" ToolTip="点击进入问卷，我们需要你的好点子！"
-		    EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
+    <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
+        ogo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="给服务器建设提出建议或问题反馈" Info="点击进入问卷，我们需要你的好点子！" ToolTip="点击进入问卷，我们需要你的好点子！"
+        EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
     </StackPanel>
 </local:MyCard>
 
