@@ -51,7 +51,7 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="生电服版本文件下载" Info=""生电服版本文件快速安装" ToolTip="生电服版本文件快速安装"
+		            Logo="pack://application:,,,/images/Blocks/RedstoneLampOn.png" Title="生电服版本文件下载" Info="生电服版本文件快速安装" ToolTip="生电服版本文件快速安装"
 		            EventType="打开网页" EventData="https://kukemc.lanzouq.com/ioYdD174ywaj" Type="Clickable" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="pvp版本文件下载" Info="pvp服版本文件快速安装" ToolTip="pvp服版本文件快速安装"
