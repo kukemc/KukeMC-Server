@@ -41,7 +41,7 @@
     </StackPanel>
 </local:MyCard>
 
-<local:MyCard Title="服务器版本文件快速下载（已修改）" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+<local:MyCard Title="服务器版本文件快速下载" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
     <StackPanel Margin="25,40,23,15">
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
                     Text="下载完版本文件后请及时放入.minecraft文件夹内的versions文件夹" />
@@ -52,10 +52,10 @@
             </Grid.ColumnDefinitions>
             <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneBlock.png" Title="生电服版本文件下载" Info="生电服版本文件快速安装" ToolTip="生电服版本文件快速安装"
-		            EventType="打开网页" EventData="https://kukemc.lanzouq.com/ioYdD174ywaj" Type="Clickable" />
+		            EventType="打开网页" EventData="https://kukemc.lanzouq.com/iQdP21755u1a" Type="Clickable" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="pvp版本文件下载" Info="pvp服版本文件快速安装" ToolTip="pvp服版本文件快速安装"
-		            EventType="打开网页" EventData="https://qq.kuke.ink/" Type="Clickable" />
+		            EventType="打开网页" EventData="https://kukemc.lanzouq.com/is25a1755twf" Type="Clickable" />
         </Grid>
     </StackPanel>
 </local:MyCard>
