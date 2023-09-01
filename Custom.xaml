@@ -52,7 +52,7 @@
             </Grid.ColumnDefinitions>
             <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneBlock.png" Title="生电服版本文件下载" Info="生电服版本文件快速安装" ToolTip="生电服版本文件快速安装"
-		            EventType="打开网页" EventData="https://i-92.lanzouk.com:446/09011800134649119bb/2023/09/01/2eec2065e92b3d2e74aae64c012fd3c9.zip?st=rGXKdn5QNvNEHA5eaKpIfQ&e=1693565564&b=B7IPm1LNVbdYmVW2VuBVzQHZDLcHjwaIBrNdzFP4Un4IIFw1UyM_c&fi=134649119&pid=101-87-14-16&up=2&mp=0&co=0" Type="Clickable" />
+		            EventType="打开网页" EventData="https://kukemc.lanzouq.com/ioYdD174ywaj" Type="Clickable" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="pvp版本文件下载" Info="pvp服版本文件快速安装" ToolTip="pvp服版本文件快速安装"
 		            EventType="打开网页" EventData="https://qq.kuke.ink/" Type="Clickable" />
