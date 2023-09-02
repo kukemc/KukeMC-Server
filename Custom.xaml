@@ -65,7 +65,7 @@
     <StackPanel Margin="25,40,23,15">
         <local:MyListItem Margin="-5,2,-5,8"
                     Logo="pack://application:,,,/images/Blocks/Grass.png"
-		            EventType="打开帮助" EventData="帮助/KukeMC生电服指南.json" Type="Clickable" />
+		            EventType="打开帮助" EventData="Help/KukeMC生电服指南.json" Type="Clickable" />
     </StackPanel>
 </local:MyCard>
 
