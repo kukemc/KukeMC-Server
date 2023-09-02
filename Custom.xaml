@@ -60,6 +60,16 @@
     </StackPanel>
 </local:MyCard>
 
+
+<local:MyCard Title="KukeMC系列服务器帮助指南" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+    <StackPanel Margin="25,40,23,15">
+        <local:MyListItem Margin="-5,2,-5,8"
+                    Logo="pack://application:,,,/images/Blocks/Grass.png"
+		            EventType="打开帮助" EventData="帮助/KukeMC生电服指南.json" Type="Clickable" />
+    </StackPanel>
+</local:MyCard>
+
+
 <local:MyCard Title="服务器联系方式" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
     <StackPanel Margin="25,40,23,15">
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
