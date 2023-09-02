@@ -55,7 +55,7 @@
 		            EventType="打开网页" EventData="https://kukemc.lanzouq.com/iQdP21755u1a" Type="Clickable" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="pvp版本文件下载" Info="pvp服版本文件快速安装" ToolTip="pvp服版本文件快速安装"
-		            EventType="打开网页" EventData="https://kukemc.lanzouq.com/is25a1755twf" Type="Clickable" />
+		            EventType="下载文件" EventData="https://kukemc.lanzouq.com/is25a1755twf" Type="Clickable" />
         </Grid>
     </StackPanel>
 </local:MyCard>
