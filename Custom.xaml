@@ -28,16 +28,17 @@
 <local:MyCard Title="服务器公告" Margin="0,0,0,15" CanSwap="False" IsSwaped="False">
     <StackPanel Margin="25,40,23,15">
             <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
-                    Logo="pack://application:,,,/images/Blocks/Fabric.png" Title="服务器公告" Info="了解最新服务器动态" ToolTip="8月31日发"
+                    Logo="pack://application:,,,/images/Blocks/Fabric.png" Title="服务器公告" Info="了解最新服务器动态" ToolTip="9月7日发"
                     EventType="弹出窗口" EventData="
 欢迎各位来到KukeMC!|这里拥有四大子服：粘液生存，战桥，原版生电和起床战争。
 \n各位玩家们从右侧找到自己喜欢的游戏版本下载安装后就可顺利游玩了(*^▽^*)，遇到任何问题请及时向op和腐竹报告！
 \n快速游戏一栏中，红色按钮表示服务器关闭，蓝色按钮表示服务器正常开启，黑色按钮表示服务器维护中。
 \n生电服的玩家入服前请添加版本下载栏中的两个模组文件，否则会导致离线账号皮肤无法显示和无法进入服务器的情况。
 \n---------------------------------------------------------------------------------------------------------------
-\n8月31日日志
-\nKukeMC服务器启动器主页上线
-\n启用联网更新模式" Type="Clickable" />
+\n9月7日日志
+\n更改按钮布局
+\n优化主页代码
+\n新增pcl帮助页面服务器内容" Type="Clickable" />
     </StackPanel>
 </local:MyCard>
 
@@ -76,9 +77,6 @@
                     Text="根据自己的需求添加对应的联系方式" />
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
                     Text="官网网站和QQ频道建设中，内容尚未完善，也请各位玩家们为建设提出自己的建议哦(*^▽^*)" />
-    	<local:MyListItem Margin="0,0,10,0" Height="35"
-                    Logo="pack://application:,,,/images/Blocks/Anvil.png" Title="给服务器建设提供建议或问题反馈" Info="点击进入问卷，我们需要你宝贵的反馈和建议！" ToolTip="点击进入问卷，我们需要你宝贵的反馈和建议！"
-                    EventType="打开网页" EventData="https://vabp2wl5rtt.feishu.cn/share/base/form/shrcnpANBdJsynuyJV9wy7Wu96d" Type="Clickable" />
 	<Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -95,6 +93,9 @@
 		            Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方网站" Info="参加各种有趣的活动~" ToolTip="参加各种有趣的活动~"
 		            EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
         </Grid>
+    	<local:MyListItem Margin="0,0,10,0" Height="35"
+                    Logo="pack://application:,,,/images/Blocks/Anvil.png" Title="给服务器建设提供建议或问题反馈" Info="点击进入问卷，我们需要你宝贵的反馈和建议！" ToolTip="点击进入问卷，我们需要你宝贵的反馈和建议！"
+                    EventType="打开网页" EventData="https://vabp2wl5rtt.feishu.cn/share/base/form/shrcnpANBdJsynuyJV9wy7Wu96d" Type="Clickable" />
     </StackPanel>
 </local:MyCard>
 
