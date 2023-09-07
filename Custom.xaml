@@ -27,7 +27,7 @@
 
 <local:MyCard Title="服务器公告" Margin="0,0,0,15" CanSwap="False" IsSwaped="False">
     <StackPanel Margin="25,40,23,15">
-            <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
+            <local:MyListItem Margin="-5,2,-5,8"
                     Logo="pack://application:,,,/images/Blocks/Fabric.png" Title="服务器公告" Info="了解最新服务器动态" ToolTip="9月7日发"
                     EventType="弹出窗口" EventData="
 欢迎各位来到KukeMC!|这里拥有四大子服：粘液生存，战桥，原版生电和起床战争。
