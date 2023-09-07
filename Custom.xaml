@@ -38,7 +38,7 @@
 \n9月7日 日志-0ctber发
 \n更改按钮布局
 \n优化主页代码
-\n新增pcl帮助页面服务器内容" Type="Clickable" />
+\n新增pcl帮助页面服务器内容（需下载对应文件）" Type="Clickable" />
     </StackPanel>
 </local:MyCard>
 
