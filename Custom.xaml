@@ -74,13 +74,13 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
-		            Logo="https://img.sipc.ink/api/img/xQiejz" Title="官方网站" Info="我们有官网了耶" ToolTip="我们有官网了耶"
+		            Logo="https://img.sipc.ink/api/img/mENjWA" Title="官方网站" Info="我们有官网了耶" ToolTip="我们有官网了耶"
 		            EventType="打开网页" EventData="https://mc.kuke.ink/" Type="Clickable" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方Q群" Info="与群里的伙伴们友好交流吧" ToolTip="与群里的伙伴们友好交流吧"
+		            Logo="https://img.sipc.ink/api/img/mENjWA" Title="官方Q群" Info="与群里的伙伴们友好交流吧" ToolTip="与群里的伙伴们友好交流吧"
 		            EventType="打开网页" EventData="https://qq.kuke.ink/" Type="Clickable" />
             <local:MyListItem Grid.Column="2" Margin="0,0,10,0" Height="35"
-		            Logo="pack://application:,,,/images/Blocks/CommandBlock.png" Title="官方频道" Info="参加各种有趣的活动~" ToolTip="参加各种有趣的活动~"
+		            Logo="https://img.sipc.ink/api/img/mENjWA" Title="官方频道" Info="参加各种有趣的活动~" ToolTip="参加各种有趣的活动~"
 		            EventType="打开网页" EventData="https://pd.qq.com/s/7nw573h3n" Type="Clickable" />
         </Grid>
     	<local:MyListItem Margin="0,0,10,0" Height="35"
