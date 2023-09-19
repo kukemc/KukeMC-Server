@@ -1,4 +1,85 @@
-<local:MyHint Text="主页作者: 0ctber | KukeMC官方启动器" Margin="0,-13,0,0" Padding="0,5,0,5" IsWarn="False" />
+<StackPanel.Resources>
+	<Style TargetType="local:MyButton" x:Key="RunButton">
+		<Setter Property="Margin" Value="5,0,0,5"/>
+		<Setter Property="Padding" Value="7,0,7,0"/>
+		<Setter Property="Height" Value="33"/>
+		<Setter Property="EventType" Value="启动游戏"/>
+	</Style>
+	<Style TargetType="local:MyButton" x:Key="WebSites">
+		<Setter Property="Margin" Value="5,0,0,5"/>
+		<Setter Property="Padding" Value="7,0,7,0"/>
+		<Setter Property="Height" Value="35"/>
+		<Setter Property="Width" Value="90"/>
+		<Setter Property="EventType" Value="打开网页"/>
+	</Style>
+	<Style TargetType="TextBlock" x:Key="Text">
+		<Setter Property="FontWeight" Value="ExtraBold"/>
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="Margin" Value="65,12,0,0"/>
+	</Style>
+</StackPanel.Resources>
+<StackPanel.Triggers>
+	<EventTrigger RoutedEvent="StackPanel.Loaded" >
+		<BeginStoryboard>
+			<Storyboard x:Name="animation" RepeatBehavior="Forever" >
+				<ColorAnimation BeginTime="0:0:5"
+					Storyboard.TargetName="Text1"
+					Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+					From="#FF000000" To="#00000000" Duration="0:0:1"/>
+				<ColorAnimation BeginTime="0:0:16"
+					Storyboard.TargetName="Text1"
+					Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+					From="#00000000" To="#FF000000" Duration="0:0:1"/>
+				<ColorAnimation BeginTime="0:0:6"
+					Storyboard.TargetName="Text2"
+					Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+					From="#00000000" To="#FF000000" Duration="0:0:1"/>
+				<ColorAnimation BeginTime="0:0:10"
+					Storyboard.TargetName="Text2"
+					Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+					From="#FF000000" To="#00000000" Duration="0:0:1"/>
+				<ColorAnimation BeginTime="0:0:11"
+					Storyboard.TargetName="Text3"
+					Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+					From="#00000000" To="#FF000000" Duration="0:0:1"/>
+				<ColorAnimation BeginTime="0:0:15"
+					Storyboard.TargetName="Text3"
+					Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+					From="#FF000000" To="#00000000" Duration="0:0:1"/>
+			</Storyboard>
+		</BeginStoryboard>
+	</EventTrigger>
+</StackPanel.Triggers>
+<local:MyCard Title="信息栏:" Margin="0,-10,0,7" Height="38">
+	<TextBlock x:Name="Text1" Style="{StaticResource Text}" >
+		KukeMC服务器启动器
+	</TextBlock>
+	<TextBlock x:Name="Text2" Style="{StaticResource Text}" Foreground="#00000000">
+		主页作者:0ctber
+	</TextBlock>
+	<TextBlock x:Name="Text3" Style="{StaticResource Text}" Foreground="#00000000">
+		服务器QQ:719281301
+	</TextBlock>
+	<Border Background="{DynamicResource ColorBrush6}" BorderBrush="{DynamicResource ColorBrush5}"
+		BorderThickness="2" HorizontalAlignment="Right" CornerRadius="3" Margin="5,5" Width="45" Height="25"/>
+	<TextBlock Margin="0,13,55,0" Foreground="{DynamicResource ColorBrush5}" HorizontalAlignment="Right"
+		Text="导航栏小工具" FontWeight="bold"/>
+	<local:MyButton Margin="0,10,30,10" Width="15" Height="15" HorizontalAlignment="Right" ToolTip="QQ" EventType="打开网页" EventData="http://wpa.qq.com/msgrd?v=3&amp;uin=1737352930&amp;site=qq&amp;menu=yes">
+		<Path Fill="{DynamicResource ColorBrush5}" Stretch="Fill" Width="13" Height="15">
+			<Path.Data>
+				<PathGeometry FillRule="Nonzero" Figures="M3.18,13.54C3.76,12.16 4.57,11.14 5.17,10.92C5.16,10.12 5.31,9.62 5.56,9.22C5.56,9.19 5.5,8.86 5.72,8.45C5.87,4.85 8.21,2 12,2C15.79,2 18.13,4.85 18.28,8.45C18.5,8.86 18.44,9.19 18.44,9.22C18.69,9.62 18.84,10.12 18.83,10.92C19.43,11.14 20.24,12.16 20.82,13.55C21.57,15.31 21.69,17 21.09,17.3C20.68,17.5 20.03,17 19.42,16.12C19.18,17.1 18.58,18 17.73,18.71C18.63,19.04 19.21,19.58 19.21,20.19C19.21,21.19 17.63,22 15.69,22C13.93,22 12.5,21.34 12.21,20.5H11.79C11.5,21.34 10.07,22 8.31,22C6.37,22 4.79,21.19 4.79,20.19C4.79,19.58 5.37,19.04 6.27,18.71C5.42,18 4.82,17.1 4.58,16.12C3.97,17 3.32,17.5 2.91,17.3C2.31,17 2.43,15.31 3.18,13.54Z"/>
+			</Path.Data>
+		</Path>
+	</local:MyButton>
+	<local:MyButton Margin="0,10,10,10" Width="15" Height="15" HorizontalAlignment="Right" ToolTip="刷新" EventType="刷新主页">
+		<Path Fill="{DynamicResource ColorBrush5}" Stretch="Fill" Width="13" Height="15">
+			<Path.Data>
+				<PathGeometry FillRule="Nonzero" Figures="M256.455,8C322.724,8.119,382.892,34.233,427.314,76.685L463.029,40.97C478.149,25.851,504,36.559,504,57.941L504,192C504,205.255,493.255,216,480,216L345.941,216C324.559,216,313.851,190.149,328.97,175.029L370.72,133.279C339.856,104.38 299.919,88.372 257.49,88.006 165.092,87.208 87.207,161.983 88.0059999999999,257.448 88.764,348.009 162.184,424 256,424 297.127,424 335.997,409.322 366.629,382.444 371.372,378.283 378.535,378.536 382.997,382.997L422.659,422.659C427.531,427.531 427.29,435.474 422.177,440.092 378.202,479.813 319.926,504 256,504 119.034,504 8.001,392.967 8,256.002 7.999,119.193 119.646,7.755 256.455,8z"/>
+			</Path.Data>
+		</Path>
+	</local:MyButton>
+</local:MyCard>
 
 <local:MyCard Title="快速启动KukeMC系列服务器" Margin="0,0,0,10" CanSwap="False" IsSwaped="False">
     <StackPanel Margin="25,40,23,15">
@@ -108,4 +189,5 @@
                     <local:MyButton Grid.Column="1" Margin="0,10,0,0" Height="35" Text="定位游戏启动脚本" EventType="打开文件" EventData="explorer.exe|/select,LatestLaunch.bat" ToolTip="打开PCL上一次启动 MC 的脚本(LatestLaunch.bat)。" />
           </Grid>
      </StackPanel>
+</local:MyCard>
 </local:MyCard>
