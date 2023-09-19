@@ -128,10 +128,10 @@
             </Grid.ColumnDefinitions>
             <local:MyListItem Grid.Column="0" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/RedstoneBlock.png" Title="生电服版本文件下载" Info="生电服版本文件快速安装" ToolTip="生电服版本文件快速安装"
-		            EventType="打开网页" EventData="https://kukemc.lanzouq.com/iQdP21755u1a" Type="Clickable" />
+		            EventType="打开网页" EventData="https://pan.sipc.ink/api/v3/file/archive/QASt65QcU1ei86uc/archive.zip?sign=LvAlOASNQTadI_P6RSoraj7nyE-oN2VMJRs7SWlEz-U%3D%3A1695112802" Type="Clickable" />
             <local:MyListItem Grid.Column="1" Margin="0,0,10,0" Height="35"
 		            Logo="pack://application:,,,/images/Blocks/Egg.png" Title="pvp版本文件下载" Info="pvp服版本文件快速安装" ToolTip="pvp服版本文件快速安装"
-		            EventType="下载文件" EventData="https://kukemc.lanzouq.com/is25a1755twf" Type="Clickable" />
+		            EventType="下载文件" EventData="https://pan.sipc.ink/api/v3/file/archive/XlDydGeVlychQjfS/archive.zip?sign=HdLGarpNvbU64FKi8ol_qypj-yX8yg_HNqjAML0SYb4%3D%3A1695112787" Type="Clickable" />
         </Grid>
     </StackPanel>
 </local:MyCard>
