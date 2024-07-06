@@ -14,13 +14,6 @@
         '     |                              /                     ');
 
     // 获取古诗
-    $.get("https://pdev.top/api/word.php?type=json",function(data, status) {
-        var result = JSON.parse(data);
-        var word = result.word;
-        var author = result.author;
-        $('#poem-text').text('“' + word + '”');
-        $('#poem-author').text(' - ' + author);
-    });
 
 	/* Preloader */
 	$(window).on('load', function() {
