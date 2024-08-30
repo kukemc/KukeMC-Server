@@ -38,7 +38,12 @@
             margin: 15px;
             border-radius: 15px;
             backdrop-filter: blur(5px);
+            min-height: 300px;
+            max-height: 300px;
+            overflow: hidden; /* 隐藏溢出的内容 */
+            transition: max-height 0.5s ease; /* 使用max-height的动画 */
         }
+
         /* 玩家列表布局 */
         .player-list {
             display: flex;
@@ -200,7 +205,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     
-                    <div class="text-container-2">
+                    <div class="text-container-2" id="textContainer">
                         <h1 style="font-size: 3em;
                         margin-bottom: 20px;
                         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -216,7 +221,7 @@
                         0 0 80px rgba(81, 203, 238, 1),
                         0 0 90px rgba(81, 203, 238, 1),
                         0 0 100px rgba(81, 203, 238, 1);
-                      text-align: center;" id="playerCount">在线玩家数量：0</h4>
+                      text-align: center;" id="playerCount">正在加载...</h4>
                         <div class="player-list" id="playerList"></div>
 
                         <script>
@@ -227,6 +232,7 @@
 
                                     const playerCountDiv = document.getElementById('playerCount');
                                     const playerListDiv = document.getElementById('playerList');
+                                    const textContainer = document.getElementById('textContainer');
 
                                     if (data.players && data.players.length > 0) {
                                         playerCountDiv.textContent = `在线玩家数量：${data.players.length}`;
@@ -252,6 +258,7 @@
                                             playerDiv.appendChild(playerName);
                                             playerListDiv.appendChild(playerDiv);
                                         });
+                                        textContainer.style.maxHeight = textContainer.scrollHeight + 'px';
                                     } else {
                                         playerCountDiv.textContent = '在线玩家数量：0';
                                         playerListDiv.textContent = 'No players online.';
