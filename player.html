@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Aria is a business focused HTML landing page template built with Bootstrap to help you create lead generation websites for companies and their services.">
+    <meta name="author" content="Inovatik">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content=""> <!-- website name -->
+	<meta property="og:site" content=""> <!-- website link -->
+	<meta property="og:title" content=""> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content=""> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content=""> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content=""> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article">
+
+    <!-- Website Title -->
+    <title>游戏公告-KukeMC-我的世界服务器(Minecraft)</title>
+    
+    <!-- Styles -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/styles.css" rel="stylesheet">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="static/picture/logo.png">
+    <style>
+        body {
+            background-image: url('static/image/lobby.jpg');
+        }
+
+        .text-container-2 {
+            background: rgba(255, 255, 255, 0.322);
+            padding: 30px;
+            margin: 15px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+        /* 玩家列表布局 */
+        .player-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+        }
+
+        /* 玩家卡片样式 */
+        .player {
+            background: rgba(54, 185, 202, 0.363); /* 半透明白色背景 */
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin: 15px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        /* 鼠标悬停效果 */
+        .player:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 玩家头像样式 */
+        .player img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            padding: 5px; /* 增加padding以扩大border的视觉效果 */
+            background-color: transparent; /* 确保padding区域透明 */
+            transition: border-color 0.3s;
+        }
+
+        /* 鼠标悬停头像效果 */
+        .player:hover img {
+            border-color: #39ad66;
+        }
+
+        /* 玩家名称样式 */
+        .player-name {
+            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+<script async="" src='static/js/invisible.js'></script></head>
+<body data-spy="scroll" data-target=".fixed-top"">
+    
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
+               
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="index.html"><img src="static/picture/logo.png" alt="alternative"></a>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="index.html#header">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="index.html#info">服务器介绍</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle page-scroll" href="index.html#list" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">服务器列表</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="longterm.html"><span class="item-text">长期玩法</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="javascript:;"><span class="item-text">中期玩法</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="javascript:;"><span class="item-text">短期玩法</span></a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="index.html#picture">风景欣赏</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#new">游戏公告</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="player.html">玩家列表</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" onclick="window.open('banlist.html')">封禁列表</a>
+               </li>
+               <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">友情外链</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="https://sipc.ink/"><span class="item-text">sipc.ink</span></a>
+                    	<div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="https://www.ccw.site/"><span class="item-text">CCW</span></a>
+						<div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="https://www.minecraft.net/"><span class="item-text">Minecraft</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="https://lyrify.sipc.ink/"><span class="item-text">Lyrify</span></a>
+                    </div>
+               </li>
+            </ul>
+        </div>
+    </nav> <!-- end of navbar -->
+    <!-- end of navbar -->
+
+
+    <!-- Header -->
+    <header id="header" class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>当前服务器在线玩家</h1>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+
+
+    <!-- Breadcrumbs -->
+    <div class="ex-basic-1" style="background-color: #ffffff81; backdrop-filter: blur(5px);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs">
+                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;当前服务器在线玩家</span>
+                    </div> <!-- end of breadcrumbs -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of breadcrumbs -->
+
+
+    <!-- Terms Content -->
+    <div class="ex-basic-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <div class="text-container-2">
+                        <h1 style="font-size: 3em;
+                        margin-bottom: 20px;
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                        text-align: center; /* 标题居中 */">在线玩家</h1>
+                        <h4 style="color:white;margin-bottom:3rem;text-shadow: 
+                        0 0 10px #fff,
+                        0 0 20px rgba(81, 203, 238, 1),
+                        0 0 30px rgba(81, 203, 238, 1),
+                        0 0 40px rgba(81, 203, 238, 1),
+                        0 0 50px rgba(81, 203, 238, 1),
+                        0 0 60px rgba(81, 203, 238, 1),
+                        0 0 70px rgba(81, 203, 238, 1),
+                        0 0 80px rgba(81, 203, 238, 1),
+                        0 0 90px rgba(81, 203, 238, 1),
+                        0 0 100px rgba(81, 203, 238, 1);
+                      text-align: center;" id="playerCount">在线玩家数量：0</h4>
+                        <div class="player-list" id="playerList"></div>
+
+                        <script>
+                            async function fetchPlayerList() {
+                                try {
+                                    const response = await fetch('https://api.kuke.ink/api/playerlist');
+                                    const data = await response.json();
+
+                                    const playerCountDiv = document.getElementById('playerCount');
+                                    const playerListDiv = document.getElementById('playerList');
+
+                                    if (data.players && data.players.length > 0) {
+                                        playerCountDiv.textContent = `在线玩家数量：${data.players.length}`;
+                                        playerListDiv.innerHTML = '';
+
+                                        data.players.forEach(player => {
+                                            const playerDiv = document.createElement('div');
+                                            playerDiv.className = 'player';
+
+                                            const playerAvatar = document.createElement('div');
+                                            playerAvatar.className = 'player-avatar';
+
+                                            const playerImage = document.createElement('img');
+                                            playerImage.src = `https://crafthead.net/cube/${player.name}`;
+                                            playerImage.alt = `${player.name}'s avatar`;
+
+                                            const playerName = document.createElement('div');
+                                            playerName.className = 'player-name';
+                                            playerName.textContent = player.name;
+
+                                            playerAvatar.appendChild(playerImage);
+                                            playerDiv.appendChild(playerAvatar);
+                                            playerDiv.appendChild(playerName);
+                                            playerListDiv.appendChild(playerDiv);
+                                        });
+                                    } else {
+                                        playerCountDiv.textContent = '在线玩家数量：0';
+                                        playerListDiv.textContent = 'No players online.';
+                                    }
+                                } catch (error) {
+                                    console.error('Error fetching player list:', error);
+                                    document.getElementById('playerList').textContent = 'Failed to load player list.';
+                                }
+                            }
+
+                            // Fetch player list when the page loads
+                            window.onload = fetchPlayerList;
+                        </script>
+                    </div> <!-- end of text-container -->
+                    
+                </div>
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic -->
+    <!-- end of terms content -->
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-container about">
+                        <h4>关于更多</h4>
+                        <p style="color:#dfe5ec;margin-bottom:0rem">腐竹： <a target="_blank" href="https://space.bilibili.com/94782782">酷可mc</a></p>
+                        <p style="color:#dfe5ec;margin-bottom:0rem">服务器运营商： <a href="https://sipc.ink/">SIPC</a></p>
+                        <p style="color:#dfe5ec;margin-bottom:0rem">职业战争运营： <a href="https://space.bilibili.com/445995181">幽酱</a></p>
+                        <p style="color:#dfe5ec;margin-bottom:0rem">起床战争&1.21生存腐竹： <a href="https://space.bilibili.com/1830657724">TidalDreams</a></p>
+                        <p style="color:#dfe5ec;margin-bottom:0rem">粘液科技客服： <a href="https://space.bilibili.com/450585595/">Bad_Nuts</a></p>
+                        <p style="color:#dfe5ec;margin-bottom:0rem">避暑山庄腐竹&职业战争运营： <a href="https://space.bilibili.com/196608328">htewe</a></p>
+                        <p style="color:#dfe5ec;margin-bottom:0rem">无尽贪婪腐竹： <a href="https://space.bilibili.com/1720483557">高小孩</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p style="color:#dfe5ec;margin-bottom:0rem"> 友情外链:&nbsp;&nbsp;<a target="_blank" href="https://sipc.ink/">sipc.ink</a>&nbsp;&nbsp;<a target="_blank" href="https://www.ccw.site/">CCW</a>&nbsp;&nbsp;<a target="_blank" href="https://www.minecraft.net/">Minecraft</a>&nbsp;&nbsp;<a target="_blank" href="https://lyrify.sipc.ink/">Lyrify</a></p>
+                    <p class="p-small">Copyright &copy; 2023-2024 <a target="_blank" href="">KukeMC Server</a>丨版权所有</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright --> 
+    <!-- end of copyright -->
+    <!-- Scripts -->
+    <script src="static/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="static/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="static/js/jquery.magnific-popup.min.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="static/js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="static/js/scripts.js"></script> <!-- Custom scripts -->
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'722dfdb48d457d71',m:'4pVIll3X98HhBRG2q6G.5moW4is5xNvLU401meW.6fw-1656498670-0-ASH4l1RPo9DglLwNNsRs0NERsFJYSVAuPnD7akTQ8TBnNKBxW2ja72FWMp1Fs63tDFv6qyw+tf4qXigdk5Dui1jgidlcaTXghiGf92MvedkP2pY2Oeoqq03EVdbnVcZXN/XpFDoXSL2Fz7dV76xkYUw=',s:[0x87d8acc8bb,0xecb9b068c4],u:'/cdn-cgi/challenge-platform/h/b'}})();</script><script defer="" src="static/js/v652eace1692a40cfa3763df669d7439c1639079717194.js" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"722dfdb48d457d71","version":"2022.6.0","r":1,"token":"776870bd5e914f9693a2a32d28cef7a8","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>
