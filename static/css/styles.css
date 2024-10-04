@@ -770,7 +770,7 @@ input[type='checkbox'] {
 /*    04. Header     */
 /*********************/
 .header {
-	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('../image/lobby.jpg') center center no-repeat;
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://www.helloimg.com/i/2024/10/04/66ffc01e3dbd4.jpg') center center no-repeat; /* lobby 背景图片 */
 	background-size: cover;
 }
 
@@ -872,7 +872,6 @@ input[type='checkbox'] {
 	position: absolute;
 	width: 6rem;
 	height: 6rem;
-	background: url('http://www.ranmc.cn/images/hexagon-green.svg') center center no-repeat;
 	background-size: 6rem 6rem;
 }
 
@@ -973,7 +972,7 @@ input[type='checkbox'] {
 /*************************/
 .accordion .area-1 {
 	height: 27rem;
-	background: url('../image/npcs.jpg') center center no-repeat;
+	background: url('https://www.helloimg.com/i/2024/10/04/66ffc53d7af17.jpg') center center no-repeat; /* npc 背景图片 */
 	background-size: cover;
 }
 
@@ -1163,7 +1162,7 @@ input[type='checkbox'] {
 
 .tabs .area-2 {
 	height: 27rem;
-	background: url('../image/backend.jpg') center center no-repeat;
+	background: url('https://www.helloimg.com/i/2024/10/04/66ffc4486bd17.jpg') center center no-repeat; /* backend image */
 	background-size: cover;
 }
 
@@ -1548,21 +1547,6 @@ input[type='checkbox'] {
 	margin-left: 0.125rem;
 }
 
-.basic-2 .fa-stack .hexagon {
-	position: absolute;
-	left: 0;
-	width: 1.75rem;
-	height: 1.75rem;
-	background: url('http://www.ranmc.cn/images/hexagon-green.svg') center center no-repeat;
-	background-size: 1.75rem 1.75rem;
-	transition: all 0.2s ease;
-}
-
-.basic-2 .fa-stack:hover .hexagon {
-	background: url('http://www.ranmc.cn/images/hexagon-white.svg') center center no-repeat;
-	background-size: 1.75rem 1.75rem;
-}
-
 .basic-2 .fa-stack-1x {
 	font-size: 0.6875rem;
 	line-height: 1.75rem;
@@ -1754,24 +1738,6 @@ input[type='checkbox'] {
 .copyright a {
 	color: #dfe5ec;
 	text-decoration: none;
-}
-
-
-/**********************************/
-/*     19. Back To Top Button     */
-/**********************************/
-a.back-to-top {
-	position: fixed;
-	z-index: 999;
-	right: 0.75rem;
-	bottom: 0.75rem;
-	display: none;
-	width: 2.625rem;
-	height: 2.625rem;
-	border-radius: 1.875rem;
-	background: #ff80ab url("https://img01.sogoucdn.com/app/a/100520146/0B586A7D085D120376A66E886388F822") no-repeat center 47%;
-	background-size: 1.125rem 1.125rem;
-	text-indent: -9999px;
 }
 
 a:hover.back-to-top {
