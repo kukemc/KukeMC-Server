@@ -139,36 +139,33 @@
     <div class="ex-basic-2">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    
-                    <div class="text-container">
-                        <h3>更新内容</h3>
-                        <p>2024.07.08 服务器更换全新封号插件，封号名单显示为了适配新插件数据库格式，腐竹整整研究了一个通宵（</p>
-                        <p>2024.07.07 添加论坛板块</p>
-                        <p>2024.07.06 KuKeMC新官网正式启动</p>
-                    </div> <!-- end of text-container -->
-                
-                    <div class="text-container">
-                        <h3>服务器守则</h3>
-                        <p> 1. 严禁利用游戏漏洞和作弊等恶劣手段谋利<br> 2. 对于偷窃和破坏他人财产的熊孩子零容忍<br> 3. 严禁恶意PVP恶意锁箱子圈地或强制拆迁<br> 4. 请善待服务器，禁止无意义高频红石机器<br> 5. 不要尝试触动别人底线，和谐相处很重要<br> 一经查证违规和相关肇事玩家将被永久封禁<br> 服务器遇到任何问题都可截图私聊群主解决</p>
-                        
-                    </div> <!-- end of text-container -->
-                    
-                    <div class="text-container">
-                        <h3>服务器历史(2023-至今)</h3>
-                        <p>待补充..</p>
-                    </div> <!-- end of text-container -->
-                    
-                    <div class="text-container last">
-                        <h3>服务器群规</h3>
-                        <p> 1.禁止群内广告内容或恶意刷屏<br> 2.群内尽量避免谈论其他服务器<br> 3.文明聊天,友善待人,杜绝人身攻击<br> 4.严禁出现任何引战言论或民族歧视<br> 5.严禁出现有关政治相关的图片表情<br> 6.遵守国家法律法规,文明上网,遵守群规</p>
-                    </div> <!-- end of text-container -->
-                    
+                <div class="col-lg-12" id="markdown-output">
+                    <p>加载中...</p>
                 </div>
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of ex-basic -->
     <!-- end of terms content -->
+
+    <!-- 正确加载 marked.js -->
+    <script src="static/js/marked.min.js"></script>
+
+    <script>
+        // 确保 marked 加载后再执行 fetch
+        document.addEventListener("DOMContentLoaded", function() {
+            // 加载 markdown 文件
+            fetch('/static/markdown/news.md')
+                .then(response => response.text()) // 将响应转换为文本
+                .then(markdown => {
+                    // 使用 marked.parse 而不是 marked()
+                    const markdownOutput = document.getElementById('markdown-output');
+                    markdownOutput.innerHTML = marked.parse(markdown);
+                })
+                .catch(error => {
+                    console.error('Error loading markdown file:', error);
+                });
+        });
+    </script>
 
     
     <!-- Breadcrumbs -->
@@ -177,6 +174,36 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumbs">
+                        <!-- 编辑此页 -->
+                        <style>
+                            .terms {
+                                text-align: left;
+                                margin: 20px 0;
+                            }
+                            .terms a {
+                                color: green; /* 绿色文字 */
+                                text-decoration: none; /* 去掉下划线 */
+                                font-size: 15px;
+                                display: inline-flex; /* 使 SVG 和文字水平居中 */
+                                align-items: center; /* 垂直居中 */
+                                padding: 10px 20px;
+                                border: 1px solid green; /* 绿色边框 */
+                                border-radius: 5px;
+                                transition: background-color 0.3s, color 0.3s;
+                            }
+                            .terms a:hover {
+                                background-color: green;
+                                color: white;
+                            }
+                            .terms svg {
+                                width: 15px; /* 调整 SVG 大小 */
+                                height: 15px;
+                                margin-right: 5px; /* 右侧间距 */
+                            }
+                        </style>
+                        <div class="terms">
+                            <a href="https://github.com/kukemc/KukeMC-Server/blob/main/markdown/news.md" target="_blank" ><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_wkQN" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a>
+                        </div>
                         <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;游戏公告</span>
                     </div> <!-- end of breadcrumbs -->
                 </div> <!-- end of col -->
