@@ -15,6 +15,50 @@
 
     // 获取古诗
 
+    // 动态加载 navbar.html 内容并插入到 id 为 'navbar' 的 div 中
+    fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+        // 将导航栏内容插入到指定的 div 中
+        document.getElementById('navbar').innerHTML = data;
+
+        // 获取当前页面的 URL 和文件名
+        const currentUrl = window.location.href;
+        const currentPage = currentUrl.split('/').pop().split('#')[0] || 'index.html'; // 默认主页为 index.html
+
+        // 获取所有导航链接
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            // 获取链接的 href 属性
+            let href = link.getAttribute('href');
+
+            if (href.includes('#')) {
+                // 获取 href 中的页面路径部分
+                let hrefPage = href.split('#')[0];
+
+                // 如果当前页面路径与 href 中的路径相同，则删除 href 中的页面路径，只保留 #
+                if (currentPage === hrefPage || (currentPage === '' && hrefPage === 'index.html')) {
+                    link.setAttribute('href', '#' + href.split('#')[1]);
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error loading navbar:', error);
+    });
+
+
+    // 动态加载 footer.html 内容并插入到 id 为 'footer' 的 div 中
+    fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error loading footer:', error);
+    });
+
 	/* Preloader */
 	$(window).on('load', function() {
 		var preloaderFadeOutTime = 500;
