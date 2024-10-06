@@ -64,34 +64,72 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-container">
-                        <h1>封禁名单</h1>
-                        <p>以下为 KukeMC 服务器封禁名单，如有任何疑问请联系管理员。</p>
                         <style>
                             table {
                                 width: 100%;
-                                border-collapse: collapse;
+                                border-collapse: separate;
+                                border-spacing: 0 0px;  /* 将行间距减小 */
+                                font-family: Arial, sans-serif;
                             }
+
                             th, td {
-                                border: 1px solid #ddd;
-                                padding: 8px;
+                                padding: 12px;
                                 text-align: left;
                             }
+
                             th {
-                                background-color: #f2f2f2;
-                                white-space: nowrap; /* 添加这一行 */
-                                overflow: hidden; /* 可选，配合white-space: nowrap; 使用，隐藏超出的内容 */
-                                text-overflow: ellipsis; /* 可选，当内容超出时显示省略号 */
+                                background-color: #fff;
+                                font-weight: bold;
+                                text-align: center;
+                                font-size: 16px;
+                                border-bottom: 2px solid #ddd;  /* 为表头添加底部边框 */
                             }
+
+                            td {
+                                text-align: center;
+                                padding: 18px;
+                            }
+
+                            .ban-type {
+                                color: white;
+                                background-color: red;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                font-weight: bold;
+                            }
+
+                            .avatar {
+                                width: 30px;
+                                height: 30px;
+                            }
+
+                            .highlight {
+                                color: red;
+                                font-weight: bold;
+                            }
+
+                            tbody tr + tr {
+                                margin-top: 0;  /* 去掉 tr 之间的 margin 使其更紧凑 */
+                            }
+
+                            tbody td {
+                                border-bottom: 1px solid #ddd;
+                            }
+
                         </style>
+
+                        <h1>封禁名单</h1>
+                        <p>以下为 KukeMC 服务器封禁名单，如有任何疑问请联系管理员。</p>
+
                         <table id="banListTable">
                             <thead>
                                 <tr>
-                                    <th>头像</th>
-                                    <th>用户名</th>
-                                    <th>封禁时间</th>
-                                    <th>处理人</th>
-                                    <th>解封时间</th>
+                                    <th>类型</th>
+                                    <th>玩家</th>
+                                    <th>处理者</th>
                                     <th>原因</th>
+                                    <th>处理日期</th>
+                                    <th>过期时间</th>
                                 </tr>
                             </thead>
                             <tbody id="banListBody">
@@ -99,46 +137,53 @@
                         </table>
 
                         <script>
-
+                            // 格式化日期的函数
                             function formatDate(dateString) {
-                                // 移除时区部分
                                 const cleanedString = dateString.replace(" +0800", "");
-
-                                // 将字符串转换为 Date 对象
                                 const date = new Date(cleanedString);
 
                                 if (isNaN(date)) {
                                     return "Invalid Date";
                                 }
 
-                                // 获取年份、月份、日期、小时、分钟和秒
                                 const year = date.getFullYear();
-                                const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从 0 开始
+                                const month = String(date.getMonth() + 1).padStart(2, '0');
                                 const day = String(date.getDate()).padStart(2, '0');
                                 const hours = String(date.getHours()).padStart(2, '0');
                                 const minutes = String(date.getMinutes()).padStart(2, '0');
                                 const seconds = String(date.getSeconds()).padStart(2, '0');
 
-                                // 返回格式化的日期字符串，格式为：YYYY-MM-DD HH:MM:SS
-                                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                                return `${year}-${month}-${day}<br>${hours}:${minutes}:${seconds}`;
                             }
-                    
-                            // Fetch API from server and populate the table
+
+                            // 页面加载完成后调用API
                             document.addEventListener('DOMContentLoaded', function() {
                                 fetch('https://api-save.kuke.ink/api/banlist')
                                     .then(response => response.json())
                                     .then(data => {
                                         const banListBody = document.getElementById('banListBody');
+                                        
                                         data.forEach(ban => {
                                             let row = document.createElement('tr');
+
+                                            // 根据数据生成表格行
                                             row.innerHTML = `
-                                                <td style="text-align: center;"><img src="https://crafthead.net/avatar/${ban.name}" alt="${ban.name}'s avatar" width="40" height="40"></td>
-                                                <td>${ban.name}</td>
+                                                <td><span class="ban-type">封禁</span></td>
+                                                <td><img src="https://crafthead.net/avatar/${ban.name}" alt="${ban.name}'s avatar" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"><br>${ban.name}</td>
+                                                <td><img src="https://crafthead.net/avatar/${ban.source}" alt="${ban.source}" class="avatar" style="margin-top: 3px;margin-bottom: 1px;"><br>${ban.source}</td>
+                                                <td>KukeMC | ${ban.reason}</td>
                                                 <td>${formatDate(ban.created)}</td>
-                                                <td>${ban.source}</td>
-                                                <td>${formatDate(ban.expires)}</td>
-                                                <td>${ban.reason}</td>
+                                                <td>
+                                                    ${ban.expires === "forever"
+                                                        ? '<span class="highlight">永久封禁</span>'
+                                                        : ban.active === 0
+                                                            ? formatDate(ban.created) + '(已解封)'
+                                                            : formatDate(ban.expires)
+                                                    }
+                                                </td>
                                             `;
+
+                                            // 将新行添加到表格
                                             banListBody.appendChild(row);
                                         });
                                     })
