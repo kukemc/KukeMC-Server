@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumbs">
-                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;</span><span>&nbsp;&nbsp;>&nbsp;&nbsp;封禁列表</span>
+                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;封禁名单</span>
                     </div> <!-- end of breadcrumbs -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -86,11 +86,11 @@
                         <table id="banListTable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>头像</th>
                                     <th>用户名</th>
-                                    <th>创建时间</th>
-                                    <th>来源</th>
-                                    <th>过期时间</th>
+                                    <th>封禁时间</th>
+                                    <th>处理人</th>
+                                    <th>解封时间</th>
                                     <th>原因</th>
                                 </tr>
                             </thead>
@@ -99,26 +99,53 @@
                         </table>
 
                         <script>
+
+                            function formatDate(dateString) {
+                                // 移除时区部分
+                                const cleanedString = dateString.replace(" +0800", "");
+
+                                // 将字符串转换为 Date 对象
+                                const date = new Date(cleanedString);
+
+                                if (isNaN(date)) {
+                                    return "Invalid Date";
+                                }
+
+                                // 获取年份、月份、日期、小时、分钟和秒
+                                const year = date.getFullYear();
+                                const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从 0 开始
+                                const day = String(date.getDate()).padStart(2, '0');
+                                const hours = String(date.getHours()).padStart(2, '0');
+                                const minutes = String(date.getMinutes()).padStart(2, '0');
+                                const seconds = String(date.getSeconds()).padStart(2, '0');
+
+                                // 返回格式化的日期字符串，格式为：YYYY-MM-DD HH:MM:SS
+                                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                            }
+                    
                             // Fetch API from server and populate the table
-                            fetch('https://api-save.kuke.ink/api/banlist')
-                                .then(response => response.json())
-                                .then(data => {
-                                    const banListBody = document.getElementById('banListBody');
-                                    data.forEach(ban => {
-                                        let row = document.createElement('tr');
-                                        row.innerHTML = `
-                                            <td>${ban.uuid}</td>
-                                            <td>${ban.name}</td>
-                                            <td>${ban.created}</td>
-                                            <td>${ban.source}</td>
-                                            <td>${ban.expires}</td>
-                                            <td>${ban.reason}</td>
-                                        `;
-                                        banListBody.appendChild(row);
-                                    });
-                                })
-                                .catch(error => console.error('Error:', error));
+                            document.addEventListener('DOMContentLoaded', function() {
+                                fetch('https://api-save.kuke.ink/api/banlist')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const banListBody = document.getElementById('banListBody');
+                                        data.forEach(ban => {
+                                            let row = document.createElement('tr');
+                                            row.innerHTML = `
+                                                <td style="text-align: center;"><img src="https://crafthead.net/avatar/${ban.name}" alt="${ban.name}'s avatar" width="40" height="40"></td>
+                                                <td>${ban.name}</td>
+                                                <td>${formatDate(ban.created)}</td>
+                                                <td>${ban.source}</td>
+                                                <td>${formatDate(ban.expires)}</td>
+                                                <td>${ban.reason}</td>
+                                            `;
+                                            banListBody.appendChild(row);
+                                        });
+                                    })
+                                    .catch(error => console.error('Error:', error));
+                            });
                         </script>
+
                         <br><br><br><br><br><br>
                     </div> <!-- end of text-container -->
                     <a class="btn-outline-reg" href="index.html">返回</a>
