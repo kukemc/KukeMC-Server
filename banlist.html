@@ -170,15 +170,22 @@
                                             row.innerHTML = `
                                                 <td><span class="ban-type">封禁</span></td>
                                                 <td><img src="https://crafthead.net/avatar/${ban.name}" alt="${ban.name}'s avatar" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"><br>${ban.name}</td>
-                                                <td><img src="https://crafthead.net/avatar/${ban.source}" alt="${ban.source}" class="avatar" style="margin-top: 3px;margin-bottom: 1px;"><br>${ban.source}</td>
-                                                <td>KukeMC | ${ban.reason}</td>
+                                                <td>
+                                                    ${ban.source === '控制台'
+                                                        ? `<img src="https://www.helloimg.com/i/2024/10/06/6702815ba571e.png" alt="${ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"></img><br>${ban.source}`
+                                                        : `<img src="https://crafthead.net/avatar/${ban.source}" alt="${ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"><br>${ban.source}`
+                                                    }
+                                                </td>
+                                                <td style="max-width: 400px;">KukeMC | ${ban.reason}</td>
                                                 <td>${formatDate(ban.created)}</td>
                                                 <td>
                                                     ${ban.expires === "forever"
-                                                        ? '<span class="highlight">永久封禁</span>'
-                                                        : ban.active === 0
-                                                            ? formatDate(ban.created) + '(已解封)'
-                                                            : formatDate(ban.expires)
+                                                        ? (ban.active === 0
+                                                            ? '<span class="highlight">永久封禁 (已解封 | 处理者: ' + ban.removed_by_name + ')</span>'
+                                                            : '<span class="highlight">永久封禁</span>')
+                                                        : (ban.active === 0
+                                                            ? formatDate(ban.created) + ' (已解封 | 处理者: ' + ban.removed_by_name + ')'
+                                                            : formatDate(ban.expires))
                                                     }
                                                 </td>
                                             `;
