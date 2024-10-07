@@ -4,21 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="referrer" content="no-referrer">
-
-    <!-- Website Title -->
     <title>封禁名单-KukeMC-我的世界服务器(Minecraft)</title>
-    
-    <!-- Styles -->
     <link href="static/css/bootstrap.css" rel="stylesheet">
     <link href="static/css/styles.css" rel="stylesheet">
-	
-	<!-- Favicon  -->
     <link rel="icon" href="https://www.helloimg.com/i/2024/10/04/66ffcfc629280.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
-    
     <!-- Preloader -->
-	<div class="spinner-wrapper">
+    <div class="spinner-wrapper">
         <div class="spinner">
             <div class="bounce1"></div>
             <div class="bounce2"></div>
@@ -26,24 +19,19 @@
         </div>
     </div>
     <!-- end of preloader -->
-    
-
     <!-- Navbar -->
     <div id="navbar"></div>
-
     <!-- Header -->
     <header id="header" class="ex-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h1>KukeMC - 封禁列表</h1>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </header> <!-- end of ex-header -->
+                </div>
+            </div>
+        </div>
+    </header>
     <!-- end of header -->
-
-
     <!-- Breadcrumbs -->
     <div class="ex-basic-1">
         <div class="container">
@@ -51,13 +39,12 @@
                 <div class="col-lg-12">
                     <div class="breadcrumbs">
                         <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;封禁名单</span>
-                    </div> <!-- end of breadcrumbs -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of ex-basic-1 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- end of breadcrumbs -->
-
     <!-- Terms Content -->
     <div class="ex-basic-2">
         <div class="container">
@@ -68,28 +55,24 @@
                             table {
                                 width: 100%;
                                 border-collapse: separate;
-                                border-spacing: 0 0px;  /* 将行间距减小 */
+                                border-spacing: 0 0px;
                                 font-family: Arial, sans-serif;
                             }
-
                             th, td {
                                 padding: 12px;
                                 text-align: left;
                             }
-
                             th {
                                 background-color: #fff;
                                 font-weight: bold;
                                 text-align: center;
                                 font-size: 16px;
-                                border-bottom: 2px solid #ddd;  /* 为表头添加底部边框 */
+                                border-bottom: 2px solid #ddd;
                             }
-
                             td {
                                 text-align: center;
                                 padding: 18px;
                             }
-
                             .ban-type {
                                 color: white;
                                 background-color: red;
@@ -97,30 +80,60 @@
                                 border-radius: 5px;
                                 font-weight: bold;
                             }
-
                             .avatar {
                                 width: 30px;
                                 height: 30px;
                             }
-
                             .highlight {
                                 color: red;
                                 font-weight: bold;
                             }
-
                             tbody tr + tr {
-                                margin-top: 0;  /* 去掉 tr 之间的 margin 使其更紧凑 */
+                                margin-top: 0;
                             }
-
                             tbody td {
                                 border-bottom: 1px solid #ddd;
                             }
-
+                            .pagination-container {
+                                margin-top: 20px;
+                                text-align: center;
+                                position: absolute; /* 使用绝对定位 */
+                                bottom: 140px; /* 定位到底部 */
+                                width: 100%; /* 占满整个容器宽度 */
+                            }
+                            .pagination-container button {
+                                padding: 10px 20px;
+                                margin: 0 15px; /* 调整按钮之间的间距 */
+                                color: #fff;
+                                background-color: #007bff;
+                                border: 1px solid #007bff;
+                                border-radius: 5px;
+                                font-weight: bold;
+                                cursor: pointer;
+                                transition: all 0.3s ease-in-out;
+                            }
+                            .pagination-container button:disabled {
+                                background-color: #cccccc;
+                                border-color: #cccccc;
+                                cursor: not-allowed;
+                            }
+                            .pagination-container button:hover {
+                                background-color: #0056b3;
+                                border-color: #0056b3;
+                            }
+                            .pagination-container button:disabled:hover {
+                                background-color: #cccccc;
+                                border-color: #cccccc;
+                            }
+                            .ex-basic-2 {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+                                min-height: 0vh;
+                            }
                         </style>
-
                         <h1>封禁名单</h1>
                         <p>以下为 KukeMC 服务器封禁名单，如有任何疑问请联系管理员。</p>
-
                         <table id="banListTable">
                             <thead>
                                 <tr>
@@ -135,24 +148,30 @@
                             <tbody id="banListBody">
                             </tbody>
                         </table>
-
+                        <div class="pagination-container">
+                            <button id="prevPage" onclick="changePage(-1)" disabled>上一页</button>
+                                <span id="pageInfo">1/1</span>
+                                <button id="nextPage" onclick="changePage(1)">下一页</button>
+                        </div>
                         <script>
+                            let currentPage = 1;
+                            const itemsPerPage = 10;
+                            let totalItems = 0;
+                            let data = []; // 存储从API获取的数据
+
                             // 格式化日期的函数
                             function formatDate(dateString) {
                                 const cleanedString = dateString.replace(" +0800", "");
                                 const date = new Date(cleanedString);
-
                                 if (isNaN(date)) {
                                     return "Invalid Date";
                                 }
-
                                 const year = date.getFullYear();
                                 const month = String(date.getMonth() + 1).padStart(2, '0');
                                 const day = String(date.getDate()).padStart(2, '0');
                                 const hours = String(date.getHours()).padStart(2, '0');
                                 const minutes = String(date.getMinutes()).padStart(2, '0');
                                 const seconds = String(date.getSeconds()).padStart(2, '0');
-
                                 return `${year}-${month}-${day}<br>${hours}:${minutes}:${seconds}`;
                             }
 
@@ -160,77 +179,93 @@
                             document.addEventListener('DOMContentLoaded', function() {
                                 fetch('https://api-save.kuke.ink/api/banlist')
                                     .then(response => response.json())
-                                    .then(data => {
-                                        const banListBody = document.getElementById('banListBody');
-                                        
-                                        data.forEach(ban => {
-                                            let row = document.createElement('tr');
-
-                                            // 根据数据生成表格行
-                                            row.innerHTML = `
-                                                <td><span class="ban-type">封禁</span></td>
-                                                <td><img src="https://crafthead.net/avatar/${ban.name}" alt="${ban.name}'s avatar" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"><br>${ban.name}</td>
-                                                <td>
-                                                    ${ban.source === '控制台'
-                                                        ? `<img src="https://www.helloimg.com/i/2024/10/06/6702815ba571e.png" alt="${ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"></img><br>${ban.source}`
-                                                        : `<img src="https://crafthead.net/avatar/${ban.source}" alt="${ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"><br>${ban.source}`
-                                                    }
-                                                </td>
-                                                <td style="max-width: 400px;">KukeMC | ${ban.reason}</td>
-                                                <td>${formatDate(ban.created)}</td>
-                                                <td>
-                                                    ${ban.expires === "forever"
-                                                        ? (ban.active === 0
-                                                            ? '<span class="highlight">永久封禁 (已解封 | 处理者: ' + ban.removed_by_name + ')</span>'
-                                                            : '<span class="highlight">永久封禁</span>')
-                                                        : (ban.active === 0
-                                                            ? formatDate(ban.created) + ' (已解封 | 处理者: ' + ban.removed_by_name + ')'
-                                                            : formatDate(ban.expires))
-                                                    }
-                                                </td>
-                                            `;
-
-                                            // 将新行添加到表格
-                                            banListBody.appendChild(row);
-                                        });
+                                    .then(jsonData => {
+                                        data = jsonData;
+                                        totalItems = data.length;
+                                        displayPage(currentPage);
                                     })
                                     .catch(error => console.error('Error:', error));
                             });
+
+                            function displayPage(page) {
+                                const banListBody = document.getElementById('banListBody');
+                                banListBody.innerHTML = ''; // 清空现有列表
+
+                                const startIndex = (page - 1) * itemsPerPage;
+                                const endIndex = startIndex + itemsPerPage;
+                                const displayedItems = data.slice(startIndex, endIndex);
+
+                                displayedItems.forEach(ban => {
+                                    let row = document.createElement('tr');
+                                    row.innerHTML = `
+                                        <td><span class="ban-type">封禁</span></td>
+                                        <td><img src="https://crafthead.net/avatar/${ban.name}" alt="${ban.name}'s avatar" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"><br>${ban.name}</td>
+                                        <td>
+                                            ${ban.source === '控制台'
+                                                ? `<img src="https://www.helloimg.com/i/2024/10/06/6702815ba571e.png" alt="${ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"></img><br>${ban.source}`
+                                                : `<img src="https://crafthead.net/avatar/${ban.source}" alt="${ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"></img><br>${ban.source}`
+                                            }
+                                        </td>
+                                        <td style="max-width: 400px;">KukeMC | ${ban.reason}</td>
+                                        <td>${formatDate(ban.created)}</td>
+                                        <td>
+                                            ${ban.expires === "forever"
+                                                ? (ban.active === 0
+                                                    ? '<span class="highlight">永久封禁 (已解封 | 处理者: ' + ban.removed_by_name + ')</span>'
+                                                    : '<span class="highlight">永久封禁</span>')
+                                                : (ban.active === 0
+                                                    ? formatDate(ban.created) + ' (已解封 | 处理者: ' + ban.removed_by_name + ')'
+                                                    : formatDate(ban.expires))
+                                            }
+                                        </td>
+                                    `;
+                                    banListBody.appendChild(row);
+                                });
+
+                                updatePagination(page);
+                            }
+
+                            function updatePagination(page) {
+                                const prevButton = document.getElementById('prevPage');
+                                const nextButton = document.getElementById('nextPage');
+                                const pageInfo = document.getElementById('pageInfo');
+
+                                const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+                                pageInfo.textContent = `${page}/${totalPages}`;
+
+                                if (page === 1) {
+                                    prevButton.disabled = true;
+                                } else {
+                                    prevButton.disabled = false;
+                                }
+
+                                if (page === totalPages) {
+                                    nextButton.disabled = true;
+                                } else {
+                                    nextButton.disabled = false;
+                                }
+                            }
+
+                            function changePage(direction) {
+                                const newPage = currentPage + direction;
+                                if (newPage >= 1 && newPage <= Math.ceil(totalItems / itemsPerPage)) {
+                                    currentPage = newPage;
+                                    displayPage(currentPage);
+                                }
+                            }
                         </script>
-
                         <br><br><br><br><br><br>
-                    </div> <!-- end of text-container -->
-                    <a class="btn-outline-reg" href="index.html">返回</a>
+                    </div>
                 </div>
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of ex-basic -->
+            </div>
+        </div>
+    </div>
     <!-- end of terms content -->
-
-    <!-- Breadcrumbs -->
-    <div class="ex-basic-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumbs">
-                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;封禁名单</span>
-                    </div> <!-- end of breadcrumbs -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of ex-basic-1 -->
-    <!-- end of breadcrumbs -->
-
-
     <!-- Footer -->
     <div id="footer"></div>
     <!-- end of copyright -->
     <!-- Scripts -->
-    <!--<script>
-        var server = 'thy.xyfcm.top';
-        var port = 30030;
-        var showServerName = false;
-    </script>-->
     <script src="static/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
