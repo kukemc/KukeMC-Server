@@ -140,7 +140,12 @@
                         </style>
                         <h1>封禁名单</h1>
                         <p>以下为 KukeMC 服务器封禁名单，如有任何疑问请联系管理员。</p>
-                        <table id="banListTable">
+                        
+                        <div id="loadingIndicator" style="text-align: center; margin: 20px;">
+                            <p>正在加载封禁列表，请稍候...</p>
+                        </div>
+
+                        <table id="banListTable" style="display: none;">
                             <thead>
                                 <tr>
                                     <th>类型</th>
@@ -190,8 +195,15 @@
                                         data = jsonData;
                                         totalItems = data.length;
                                         displayPage(currentPage);
+
+                                        // 隐藏加载提示，显示封禁列表
+                                        document.getElementById('loadingIndicator').style.display = 'none';
+                                        document.getElementById('banListTable').style.display = 'table';
                                     })
-                                    .catch(error => console.error('Error:', error));
+                                    .catch(error => {
+                                        console.error('Error:', error);
+                                        document.getElementById('loadingIndicator').textContent = '加载失败，请重试。';
+                                    });
                             });
 
                             function displayPage(page) {
