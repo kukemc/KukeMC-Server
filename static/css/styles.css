@@ -1705,7 +1705,7 @@ input[type='checkbox'] {
 /**********************/
 .footer {
 	padding-top: 5rem;
-	background-color: #00bcd4;
+	background-color: #1f2829;
 }
 
 .footer .text-container {
@@ -1720,7 +1720,7 @@ input[type='checkbox'] {
 .footer p,
 .footer ul {
 	font-size: 0.875rem;
-	line-height: 1.375rem;
+	line-height: 0.9rem;
 }
 
 
