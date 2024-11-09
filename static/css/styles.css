@@ -770,7 +770,7 @@ input[type='checkbox'] {
 /*    04. Header     */
 /*********************/
 .header {
-	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://www.helloimg.com/i/2024/10/04/66ffc01e3dbd4.jpg') center center no-repeat; /* lobby 背景图片 */
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://m.ccw.site/gandi_application/user_assets/2ed217bfa1522ba181980e9ffb331ad6.jpg') center center no-repeat; /* lobby 背景图片 */
 	background-size: cover;
 }
 
@@ -972,7 +972,7 @@ input[type='checkbox'] {
 /*************************/
 .accordion .area-1 {
 	height: 27rem;
-	background: url('https://www.helloimg.com/i/2024/10/04/66ffc53d7af17.jpg') center center no-repeat; /* npc 背景图片 */
+	background: url('https://m.ccw.site/gandi_application/user_assets/bef229473b6955b392bd809092fcb71f.jpg') center center no-repeat; /* npc 背景图片 */
 	background-size: cover;
 }
 
@@ -1162,7 +1162,7 @@ input[type='checkbox'] {
 
 .tabs .area-2 {
 	height: 27rem;
-	background: url('https://www.helloimg.com/i/2024/10/04/66ffc4486bd17.jpg') center center no-repeat; /* backend image */
+	background: url('https://m.ccw.site/gandi_application/user_assets/c4b620abbe418db0c58cded246dfc054.jpg') center center no-repeat; /* backend image */
 	background-size: cover;
 }
 
