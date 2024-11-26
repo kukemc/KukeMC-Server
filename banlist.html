@@ -191,7 +191,7 @@
 
                             // 页面加载完成后调用API
                             document.addEventListener('DOMContentLoaded', function() {
-                                fetch('https://api-save.kuke.ink/api/banlist')
+                                fetch('https://api.kuke.ink/api/banlist')
                                     .then(response => response.json())
                                     .then(jsonData => {
                                         data = jsonData;
