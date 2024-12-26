@@ -107,3 +107,35 @@ pre {
     border-top: 1px solid #eaeaea;
     margin: 20px 0;
 }
+
+.heimu, .heimu a, a .heimu, .heimu a.new {
+    background-color: #252525;
+    color: #252525;
+    text-shadow: none;
+    border-radius: 4px; /* 圆角 */
+    padding: 3px; /* 内边距，根据需要调整 */
+    font-size: 13px; /* 调整这里以改变文字大小 */
+}
+
+/* 当鼠标悬停或激活时改变颜色 */
+.heimu:hover, .heimu:active,
+.heimu:hover .heimu, .heimu:active .heimu {
+    color: white !important;
+}
+
+/* 链接在悬停或激活时的颜色 */
+.heimu:hover a, a:hover .heimu,
+.heimu:active a, a:active .heimu {
+    color: lightblue !important;
+}
+
+/* 新链接样式 */
+.heimu:hover .new, .heimu .new:hover, .new:hover .heimu,
+.heimu:active .new, .heimu .new:active, .new:active .heimu {
+    color: #BA0000 !important;
+}
+
+/* 确保链接也有圆角 */
+.heimu a, a .heimu, .heimu a.new {
+    border-radius: 8px; /* 和父元素保持一致的圆角 */
+}
