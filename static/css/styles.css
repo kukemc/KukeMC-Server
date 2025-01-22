@@ -1703,10 +1703,6 @@ input[type='checkbox'] {
 /**********************/
 /*     17. Footer     */
 /**********************/
-.footer {
-	padding-top: 5rem;
-	background-color: #1f2829;
-}
 
 .footer .text-container {
 	margin-bottom: 2.25rem;
