@@ -45,7 +45,7 @@
         });
     })
     .catch(error => {
-        console.error('Error loading navbar:', error);
+        console.log('Error loading navbar:', error);
     });
 
 
@@ -56,7 +56,7 @@
         document.getElementById('footer').innerHTML = data;
     })
     .catch(error => {
-        console.error('Error loading footer:', error);
+        console.log('Error loading footer:', error);
     });
 
 	/* Preloader */
@@ -72,14 +72,16 @@
 	});
 
 	
-	/* Navbar Scripts */
-	// jQuery to collapse the navbar on scroll
-    $(window).on('scroll load', function() {
-		if ($(".navbar").offset().top > 20) {
-			$(".fixed-top").addClass("top-nav-collapse");
-		} else {
-			$(".fixed-top").removeClass("top-nav-collapse");
-		}
+	$(window).on("scroll load", function () {
+        var $navbar = $(".navbar");
+        // 如果元素不存在，直接退出
+        if ($navbar.length === 0) return; 
+      
+        if ($navbar.offset().top > 20) {
+          $(".fixed-top").addClass("top-nav-collapse");
+        } else {
+          $(".fixed-top").removeClass("top-nav-collapse");
+        }
     });
 
 	// jQuery for page scrolling feature - requires jQuery Easing plugin
@@ -153,14 +155,6 @@
 		mainClass: 'my-mfp-slide-bottom'
     });
     
-
-    /* Filter - Isotope */
-    var $grid = $('.grid').isotope({
-        // options
-        itemSelector: '.element-item',
-        layoutMode: 'fitRows'
-    });
-    
     // filter items on button click
     $('.filters-button-group').on( 'click', 'a', function() {
         var filterValue = $(this).attr('data-filter');
@@ -219,20 +213,6 @@
 		}
     });
 
-
-    /* Call Me Form */
-    $("#callMeForm").validator().on("submit", function(event) {
-    	if (event.isDefaultPrevented()) {
-            // handle the invalid form...
-            lformError();
-            lsubmitMSG(false, "Please fill all fields!");
-        } else {
-            // everything looks good!
-            event.preventDefault();
-            lsubmitForm();
-        }
-    });
-
     function lsubmitForm() {
         // initiate variables with form content
 		var name = $("#lname").val();
@@ -277,20 +257,6 @@
         $("#lmsgSubmit").removeClass().addClass(msgClasses).text(msg);
     }
 
-
-    /* Contact Form */
-    $("#contactForm").validator().on("submit", function(event) {
-    	if (event.isDefaultPrevented()) {
-            // handle the invalid form...
-            cformError();
-            csubmitMSG(false, "Please fill all fields!");
-        } else {
-            // everything looks good!
-            event.preventDefault();
-            csubmitForm();
-        }
-    });
-
     function csubmitForm() {
         // initiate variables with form content
 		var name = $("#cname").val();
@@ -333,20 +299,6 @@
         }
         $("#cmsgSubmit").removeClass().addClass(msgClasses).text(msg);
     }
-
-
-    /* Privacy Form */
-    $("#privacyForm").validator().on("submit", function(event) {
-    	if (event.isDefaultPrevented()) {
-            // handle the invalid form...
-            pformError();
-            psubmitMSG(false, "Please fill all fields!");
-        } else {
-            // everything looks good!
-            event.preventDefault();
-            psubmitForm();
-        }
-    });
 
     function psubmitForm() {
         // initiate variables with form content
