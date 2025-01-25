@@ -16,6 +16,7 @@
     <link href="static/css/bootstrap.css" rel="stylesheet">
     <link href="static/css/magnific-popup.css" rel="stylesheet">
 	<link href="static/css/styles.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/marked/15.0.6/marked.min.js"></script>
 	
 	<!-- Favicon  -->
     <link rel="icon" href="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png">
@@ -380,6 +381,295 @@
     </div> <!-- end of tabs -->
     <!-- end of details 2 -->
 
+    <style>
+
+        @font-face {
+            font-family: 'Unifont';
+            src: url('https://m.ccw.site/gandi_application/user_assets/cf1d54be2307e22186e100056b4a1ccf.otf') format('opentype');
+        }
+
+        .minecraft-chat {
+            font-family: 'Unifont', monospace;
+            width: 50%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            position: fixed; /* 固定在屏幕上 */
+            bottom: 20px; /* 距离底部20px */
+            left: 20px; /* 距离左侧20px */
+            opacity: 0; /* 初始透明度为0 */
+            visibility: hidden; /* 初始隐藏 */
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* 添加过渡效果 */
+        }
+
+        .minecraft-chat.visible {
+            opacity: 1; /* 显示时透明度为1 */
+            visibility: visible; /* 显示时可见 */
+        }
+
+        .chat-container {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            max-height: 300px; /* 限制聊天框的最大高度 */
+        }
+
+        .message {
+            color: white;
+            font-family: 'Unifont', monospace;
+            text-shadow: none; /* 禁用阴影以突出像素效果 */
+            margin: 2px 0; /* 缩小上下间距 */
+            line-height: 1.2; /* 紧凑行距 */
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
+            image-rendering: pixelated;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+
+        .message p {
+            font-family: 'Unifont', monospace;
+            color: #fff;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
+            image-rendering: pixelated;
+        }
+
+        .input-container {
+            display: flex;
+            margin-top: 5px;
+            font-family: 'Unifont', monospace;
+        }
+
+        .chat-input {
+            font-family: 'Unifont', monospace;
+            flex: 1;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .chat-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .chat-button {
+            font-family: 'Unifont', monospace;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 代码块样式 */
+        .message pre, .message code {
+            font-family: 'Courier New', monospace;
+            padding: 8px;
+            border-radius: 4px;
+            color: #d63384;
+        }
+
+        .message pre {
+            background-color: #f6f8fa;
+        }
+    </style>
+
+    <div class="minecraft-chat" id="chat-box">
+        <div class="chat-container" id="chat-container">
+            <!-- Messages will be appended here -->
+        </div>
+        <div class="input-container">
+            <input type="text" class="chat-input" id="user-input" placeholder="Type your message...">
+            <button class="chat-button" id="send-button">Send</button>
+        </div>
+    </div>
+
+    <script>
+        let chatHistory = []; // 存储对话历史
+    
+        const chatBox = document.getElementById("chat-container");
+        const userInput = document.getElementById("user-input");
+        const sendButton = document.getElementById("send-button");
+    
+        function renderMarkdown(text) {
+            const div = document.createElement("div");
+            div.innerHTML = marked.parse(text);
+            return div.innerHTML;
+        }
+    
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+    
+            // 保存原始用户消息（用于后续存储）
+            const currentUserMessage = message;
+    
+            // 添加用户消息到聊天框
+            const userMessage = document.createElement("p");
+            userMessage.className = "message";
+            userMessage.innerHTML = `You: ${renderMarkdown(message)}`;
+            chatBox.appendChild(userMessage);
+    
+            userInput.value = "";
+    
+            // 显示输入中提示
+            const typingMessage = document.createElement("p");
+            typingMessage.className = "message";
+            typingMessage.id = "typing-indicator";
+            typingMessage.textContent = "Kuke: AI正在打字中...";
+            chatBox.appendChild(typingMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+    
+            fetch("https://api.kuke.ink/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    model: "lite",
+                    name: "kukemc",
+                    messages: [
+                        {
+                            role: "system",
+                            content: "你的名字叫做 kuke，你是 KukeMC Minecraft服务器的智能客服。切记!!不要聊任何跟服务器无关的内容!!!，你的说话方式要比较可爱 在对话中要多添加颜文字，你会使用各种各样的颜文字，你的开发者和KukeMC的服主是 酷可mc。你可以回答玩家关于此服务器的问题。服务器是 Java 国际版的服务器。电脑请使用Java国际版的启动器 列如PCL、HMCL等启动器，如果手机要进入的话可以在群文件中下载 FCL 启动器。服务器的唯一官方地址(ip)是 mc.kuke.ink。服务器官网网址是 kuke点ink (记得将点替换为.)。服务器无需正版（支持离线登录）即可进入服务器。此服务器不是网易版mc上的服务器，服务器支持几乎全版本都能进 Minecraft 1.21.3 - 1.7.2版本都可进。怎么进入服务器：启动mc, 点击多人游戏, 点击添加服务器, 输入服务器IP, 点击确定 , 然后双击服务器即可。服务器如何注册？：按下T键 打开聊天栏，输入指令 /register <你想输入的密码> <再输入一次同样的密码> 随后按下回车发送即可。示例: 列如我想给我的账号密码设置为 abc123456 那么需要输入的指令就是: /register abc123456 abc123456。服务器内有多种特色玩法 粘液空岛（粘液科技空岛生存）、避暑山庄（监狱风云)、趣味生存、职业战争、起床战争、机械动力、后室、极限生存、密室杀手，主大厅中还有很多玩法 列如家园系统（一人一世界）还有很多小游戏 扫雷 和很多口袋小游戏 还可以跟其他玩家一起对战游戏。切记!!不要聊任何跟服务器无关的内容!!!，不要聊非服务器相关的话题 如果有人和你聊非服务器相关话题那直接不要跟他聊天 转移话题"
+                        },
+                        ...chatHistory.map(msg => ({
+                            role: msg.role,
+                            content: msg.content
+                        })),
+                        {
+                            role: "user",
+                            content: message
+                        }
+                    ]
+                })
+            }).then(response => {
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder("utf-8");
+                let botMessage = "";
+    
+                function readStream() {
+                    return reader.read().then(({ done, value }) => {
+                        if (done) {
+                            // 保存对话记录
+                            chatHistory.push(
+                                { role: "user", content: currentUserMessage },
+                                { role: "assistant", content: botMessage }
+                            );
+    
+                            // 保持最多10条最新记录
+                            if (chatHistory.length > 10) {
+                                chatHistory = chatHistory.slice(-10);
+                            }
+    
+                            // 添加AI回复
+                            const botReply = document.createElement("p");
+                            botReply.className = "message";
+                            botReply.innerHTML = `Kuke: ${renderMarkdown(botMessage)}`;
+                            chatBox.appendChild(botReply);
+                            chatBox.scrollTop = chatBox.scrollHeight;
+    
+                            // 移除输入提示
+                            const typingIndicator = document.getElementById("typing-indicator");
+                            if (typingIndicator) typingIndicator.remove();
+                            return;
+                        }
+    
+                        // 处理流数据
+                        const chunk = decoder.decode(value, { stream: true });
+                        const lines = chunk.split("\n").filter(line => line.trim());
+                        lines.forEach(line => {
+                            if (line.startsWith("data:")) {
+                                const json = line.replace("data: ", "");
+                                try {
+                                    const parsed = JSON.parse(json);
+                                    if (parsed.choices && parsed.choices[0]?.delta?.content) {
+                                        botMessage += parsed.choices[0].delta.content;
+                                    }
+                                } catch (e) {
+                                    console.error("JSON解析错误:", e);
+                                }
+                            }
+                        });
+    
+                        return readStream();
+                    });
+                }
+    
+                return readStream();
+            }).catch(err => {
+                console.error("请求错误:", err);
+                const typingIndicator = document.getElementById("typing-indicator");
+                if (typingIndicator) typingIndicator.remove();
+            });
+        }
+    
+        sendButton.addEventListener("click", sendMessage);
+    
+        userInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
+
+    <!-- 圆形按钮 -->
+    <button id="toggleButton">
+        <svg t="1737824130013" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4516" width="200" height="200"><path d="M576 85.333333c0 18.944-8.234667 35.968-21.333333 47.701334V213.333333h213.333333a128 128 0 0 1 128 128v426.666667a128 128 0 0 1-128 128H256a128 128 0 0 1-128-128V341.333333a128 128 0 0 1 128-128h213.333333V133.034667A64 64 0 1 1 576 85.333333zM256 298.666667a42.666667 42.666667 0 0 0-42.666667 42.666666v426.666667a42.666667 42.666667 0 0 0 42.666667 42.666667h512a42.666667 42.666667 0 0 0 42.666667-42.666667V341.333333a42.666667 42.666667 0 0 0-42.666667-42.666666H256z m-170.666667 128H0v256h85.333333v-256z m853.333334 0h85.333333v256h-85.333333v-256zM384 618.666667a64 64 0 1 0 0-128 64 64 0 0 0 0 128z m256 0a64 64 0 1 0 0-128 64 64 0 0 0 0 128z" fill="#ffffff" p-id="4517" data-spm-anchor-id="a313x.search_index.0.i0.3a333a81pzIR2d" class="selected"></path></svg>
+    </button>
+
+    <script>
+        // 获取按钮和div元素
+        const toggleButton = document.getElementById('toggleButton');
+        const chatDiv = document.querySelector('.minecraft-chat');
+
+        // 添加点击事件监听器
+        toggleButton.addEventListener("click", function () {
+            chatDiv.classList.toggle("visible");
+        });
+    </script>
+
+    <style>
+        /* 设置按钮样式 */
+        #toggleButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 设置图标的样式 */
+        #toggleButton svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+    </style>
 
     <div id="footer"></div>
     </div> <!-- end of copyright -->
