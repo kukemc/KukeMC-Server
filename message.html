@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3KHLjg97pxmoUlOB",ck:"3KHLjg97pxmoUlOB"})</script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer">
+    <title>玩家留言-KukeMC-我的世界服务器(Minecraft)</title>
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/styles.css" rel="stylesheet">
+    <link rel="icon" href="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .message-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .message-item {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 16px;
+            transition: transform 0.2s;
+        }
+
+        .message-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #e4e6eb;
+            flex-shrink: 0;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-content {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .user-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .username {
+            font-weight: 600;
+            color: #1d2129;
+            font-size: 16px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .message-id {
+            color: #8a8f99;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .message-text {
+            color: #4e5969;
+            line-height: 1.6;
+            margin: 8px 0;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .message-time {
+            color: #8a8f99;
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #8a8f99;
+            font-size: 14px;
+        }
+
+        .error {
+            color: #f56c6c;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .admin-bar {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 1.75rem;
+        }
+        
+        /* 管理员登录按钮 */
+        .admin-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white !important;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(76, 175, 80, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        .admin-btn:active {
+            transform: translateY(0);
+            filter: brightness(0.9);
+        }
+
+        /* 删除按钮样式 */
+        .delete-btn {
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+            color: white !important;
+            border: none;
+            padding: 0px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(255, 68, 68, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .delete-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .delete-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);
+        }
+
+        .delete-btn:hover::before {
+            left: 100%;
+        }
+
+        .delete-btn:active {
+            transform: translateY(0);
+            filter: brightness(0.9);
+        }
+
+        /* 加载状态提示 */
+        .admin-loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.9; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.9; }
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    <!-- Preloader -->
+    <div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- Header -->
+    <header id="header" class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>KukeMC - 玩家留言</h1>
+                    <h5 style="color: #fff;">在游戏内使用 “/lmsg <内容>” 留言</h5>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end of header -->
+    <!-- Breadcrumbs -->
+    <div class="ex-basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs">
+                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;玩家留言</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of breadcrumbs -->
+    <!-- Terms Content -->
+    <div class="ex-basic-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-container">
+
+                        <div class="message-list" id="messageContainer">
+                            <div class="loading">正在加载留言...</div>
+                        </div>
+
+                        <div class="admin-bar">
+                            <button class="admin-btn" id="adminLogin">admin</button>
+                        </div>
+                    
+                        <script>
+                            // 安全转义函数
+                            const escapeHtml = (unsafe) => {
+                                return unsafe.toString()
+                                    .replace(/&/g, "&amp;")
+                                    .replace(/</g, "&lt;")
+                                    .replace(/>/g, "&gt;")
+                                    .replace(/"/g, "&quot;")
+                                    .replace(/'/g, "&#x27;")
+                                    .replace(/\//g, "&#x2F;");
+                            };
+
+                            // 安全内容格式化（保留换行）
+                            const safeContentFormat = (text) => {
+                                return escapeHtml(text).replace(/\n/g, '<br>');
+                            };
+
+                            // 管理员相关功能
+                            const ADMIN_KEY_STORAGE = 'admin_key';
+                            let isAdmin = false;
+
+                            // 管理员登录处理
+                            async function handleAdminLogin() {
+                                const key = prompt('请输入管理员密钥：');
+                                if (!key) return;
+
+                                try {
+                                    const response = await fetch('https://api.kuke.ink/api/message/admin/verify', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({ key })
+                                    });
+
+                                    if (response.ok) {
+                                        localStorage.setItem(ADMIN_KEY_STORAGE, key);
+                                        alert('管理员验证成功！');
+                                        loadMessages(); // 重新加载消息
+                                    } else {
+                                        alert('验证失败，请检查密钥');
+                                    }
+                                } catch (error) {
+                                    console.error('验证请求失败:', error);
+                                    alert('验证服务不可用');
+                                }
+                            }
+
+                            // 删除留言功能
+                            async function deleteMessage(messageId) {
+                                if (!confirm('确定要删除这条留言吗？')) return;
+
+                                const adminKey = localStorage.getItem(ADMIN_KEY_STORAGE);
+                                if (!adminKey) {
+                                    alert('请先登录管理员账号');
+                                    return;
+                                }
+
+                                try {
+                                    const response = await fetch(`https://api.kuke.ink/api/message/${messageId}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'Authorization': `Bearer ${adminKey}`
+                                        }
+                                    });
+
+                                    if (response.ok) {
+                                        alert('删除成功！');
+                                        loadMessages(); // 刷新列表
+                                    } else {
+                                        alert(`删除失败: ${await response.text()}`);
+                                    }
+                                } catch (error) {
+                                    console.error('删除请求失败:', error);
+                                    alert('删除操作失败，请检查网络');
+                                }
+                            }
+
+                            // 时间戳转日期格式
+                            function formatTimestamp(timestamp) {
+                                const date = new Date(timestamp * 1000);
+                                return date.toLocaleString('zh-CN', {
+                                    year: 'numeric',
+                                    month: '2-digit',
+                                    day: '2-digit',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    second: '2-digit'
+                                }).replace(/\//g, '-');
+                            }
+                    
+                            // 处理头像加载失败
+                            function handleAvatarError(img) {
+                                img.onerror = null;
+                                img.src = `https://crafthead.net/cube/MHF_Steve`;
+                            }
+                    
+                            // 创建留言元素
+                            function createMessageElement(message) {
+                                const element = document.createElement('div');
+                                element.className = 'message-item';
+                                
+                                const adminKey = localStorage.getItem(ADMIN_KEY_STORAGE);
+                                const showDelete = adminKey !== null;
+                                
+                                const encodedName = encodeURIComponent(message.player);
+                                const avatarUrl = `https://crafthead.net/cube/${encodedName}`;
+                    
+                                element.innerHTML = `
+                                    <img class="avatar" 
+                                         src="${avatarUrl}" 
+                                         alt="${message.player}的头像"
+                                         onerror="handleAvatarError(this)">
+                                    <div class="message-content">
+                                        <div class="user-header">
+                                            <div>
+                                                <span class="username">${message.player}</span>
+                                                <span class="message-id">#${message.id}</span>
+                                                ${showDelete ? 
+                                                    `<button class="delete-btn" 
+                                                        onclick="deleteMessage(${message.id})">
+                                                        删除
+                                                    </button>` : ''}
+                                            </div>
+                                            <span class="message-time">${formatTimestamp(message.timestamp)}</span>
+                                        </div>
+                                        <p class="message-text">${safeContentFormat(message.content)}</p>
+                                    </div>
+                                `;
+                    
+                                return element;
+                            }
+                            
+                            // 初始化事件监听
+                            document.getElementById('adminLogin').addEventListener('click', handleAdminLogin);
+
+                            // 页面加载时检查本地存储
+                            window.addEventListener('DOMContentLoaded', () => {
+                                if (localStorage.getItem(ADMIN_KEY_STORAGE)) {
+                                    loadMessages();
+                                }
+                            });
+    
+                            // 加载留言数据
+                            async function loadMessages() {
+                                try {
+                                    const response = await fetch('https://api.kuke.ink/api/message/read');
+                                    
+                                    if (!response.ok) {
+                                        throw new Error(`HTTP错误! 状态码: ${response.status}`);
+                                    }
+                    
+                                    const messages = await response.json();
+                                    const container = document.getElementById('messageContainer');
+                                    container.innerHTML = '';
+                    
+                                    // 按时间倒序排列
+                                    messages.sort((a, b) => b.timestamp - a.timestamp)
+                                           .forEach(msg => {
+                                        container.appendChild(createMessageElement(msg));
+                                    });
+                    
+                                } catch (error) {
+                                    console.error('加载留言失败:', error);
+                                    const container = document.getElementById('messageContainer');
+                                    container.innerHTML = `
+                                        <div class="error">
+                                            😢 留言加载失败，请稍后刷新重试<br>
+                                            <small>${error.message}</small>
+                                        </div>
+                                    `;
+                                }
+                            }
+                    
+                            // 页面加载完成后启动
+                            window.addEventListener('DOMContentLoaded', loadMessages);
+                    
+                            // 每60秒自动刷新
+                            setInterval(loadMessages, 60000);
+                        </script>
+                        <br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of terms content -->
+    <!-- Footer -->
+    <div id="footer"></div>
+    <!-- end of copyright -->
+    <!-- Scripts -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery-easing/1.4.1/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Morphext/2.4.4/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script crossorigin="anonymous" integrity="sha384-8CYhPwYlLELodlcQV713V9ZikA3DlCVaXFDpjHfP8Z36gpddf/Vrt47XmKDsCttu" src="static/js/clipboard.min.js"></script>
+    <script src="static/js/js.js"></script>
+    <script src="static/js/scripts.js"></script> <!-- Custom scripts -->
+</body>
+</html>
