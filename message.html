@@ -202,6 +202,13 @@
             50% { opacity: 0.6; }
             100% { opacity: 0.9; }
         }
+
+        .reply-to {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
     </style>
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
@@ -356,14 +363,19 @@
                             // 创建留言元素
                             function createMessageElement(message) {
                                 const element = document.createElement('div');
-                                element.className = 'message-item';
+                                element.className = 'message-item' + (message.parent_id ? ' reply-item' : '');
                                 
                                 const adminKey = localStorage.getItem(ADMIN_KEY_STORAGE);
                                 const showDelete = adminKey !== null;
                                 
                                 const encodedName = encodeURIComponent(message.player);
                                 const avatarUrl = `https://crafthead.net/cube/${encodedName}`;
-                    
+
+                                // 添加回复标识
+                                const replyIndicator = message.parent_id ? 
+                                    `<span class="reply-to">> 回复 <a href="#msg-${message.parent_id}">#${message.parent_id}</a></span>` : 
+                                    '';
+
                                 element.innerHTML = `
                                     <img class="avatar" 
                                          src="${avatarUrl}" 
@@ -374,6 +386,7 @@
                                             <div>
                                                 <span class="username">${message.player}</span>
                                                 <span class="message-id">#${message.id}</span>
+                                                ${replyIndicator}
                                                 ${showDelete ? 
                                                     `<button class="delete-btn" 
                                                         onclick="deleteMessage(${message.id})">
@@ -385,10 +398,9 @@
                                         <p class="message-text">${safeContentFormat(message.content)}</p>
                                     </div>
                                 `;
-                    
+
                                 return element;
                             }
-                            
                             // 初始化事件监听
                             document.getElementById('adminLogin').addEventListener('click', handleAdminLogin);
 
@@ -403,21 +415,38 @@
                             async function loadMessages() {
                                 try {
                                     const response = await fetch('https://api.kuke.ink/api/message/read');
-                                    
-                                    if (!response.ok) {
-                                        throw new Error(`HTTP错误! 状态码: ${response.status}`);
-                                    }
-                    
                                     const messages = await response.json();
                                     const container = document.getElementById('messageContainer');
                                     container.innerHTML = '';
-                    
-                                    // 按时间倒序排列
-                                    messages.sort((a, b) => b.timestamp - a.timestamp)
-                                           .forEach(msg => {
-                                        container.appendChild(createMessageElement(msg));
+
+                                    // 创建留言映射表和根留言数组
+                                    const messageMap = new Map();
+                                    const rootMessages = [];
+
+                                    // 第一次遍历：建立映射
+                                    messages.forEach(msg => {
+                                        messageMap.set(msg.id, msg);
+                                        msg.replies = [];
                                     });
-                    
+
+                                    // 第二次遍历：建立层级关系
+                                    messages.forEach(msg => {
+                                        if (msg.parent_id) {
+                                            const parent = messageMap.get(msg.parent_id);
+                                            if (parent) {
+                                                parent.replies.push(msg);
+                                            }
+                                        } else {
+                                            rootMessages.push(msg);
+                                        }
+                                    });
+
+                                    // 按时间倒序排序并渲染
+                                    rootMessages.sort((a, b) => b.timestamp - a.timestamp)
+                                        .forEach(msg => {
+                                            container.appendChild(renderMessageWithReplies(msg));
+                                        });
+
                                 } catch (error) {
                                     console.error('加载留言失败:', error);
                                     const container = document.getElementById('messageContainer');
@@ -428,6 +457,31 @@
                                         </div>
                                     `;
                                 }
+                            }
+
+                            function renderMessageWithReplies(message, level = 0) {
+                                const wrapper = document.createElement('div');
+                                wrapper.className = 'message-wrapper';
+                                wrapper.style.marginLeft = level * 30 + 'px';
+                                
+                                // 添加层级指示线
+                                if (level > 0) {
+                                    const indicator = document.createElement('div');
+                                    indicator.className = 'level-indicator';
+                                    wrapper.appendChild(indicator);
+                                }
+
+                                wrapper.appendChild(createMessageElement(message));
+                                
+                                // 递归渲染回复
+                                if (message.replies && message.replies.length > 0) {
+                                    message.replies.sort((a, b) => a.timestamp - b.timestamp)
+                                        .forEach(reply => {
+                                            wrapper.appendChild(renderMessageWithReplies(reply, level + 1));
+                                        });
+                                }
+
+                                return wrapper;
                             }
                     
                             loadMessages();
