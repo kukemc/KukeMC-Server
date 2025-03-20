@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({ id: "3KHLjg97pxmoUlOB", ck: "3KHLjg97pxmoUlOB" })</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer">
+
+    <!-- Website Title -->
+    <title>玩家时间统计-KukeMC-我的世界服务器(Minecraft)</title>
+
+    <!-- Styles -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/styles.css" rel="stylesheet">
+
+    <!-- Favicon  -->
+    <link rel="icon" href="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png">
+    <style>
+        .stats-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stats-card h3 {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .stats-card .number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .player-table {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 100%;
+            min-height: 0px;
+            table-layout: fixed;
+        }
+
+        .player-table th {
+            background-color: #333;
+            color: white;
+            font-weight: 500;
+            padding: 15px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .player-table td {
+            padding: 8px 15px;
+            font-size: 14px;
+            vertical-align: middle;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .player-table tr:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .table-title {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .table-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 200px;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .time-filter {
+            position: relative;
+        }
+
+        .time-filter select {
+            padding: 8px 12px;
+            padding-right: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .time-filter::after {
+            content: "";
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #666;
+            pointer-events: none;
+        }
+        cursor: pointer;
+        }
+
+        .pagination {
+            justify-content: center;
+            margin-top: 30px;
+            gap: 5px;
+
+        .pagination .page-link {
+            text-decoration: none;
+        }
+        }
+
+        .pagination .page-item .page-link {
+            color: #555;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .pagination .page-item .page-link:hover {
+            background-color: #f8f9fa;
+            color: #1e266d;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #1e266d;
+            border-color: #1e266d;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            background-color: #f8f9fa;
+            border-color: #e0e0e0;
+            color: #adb5bd;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #1e266d;
+            border-color: #1e266d;
+        }
+
+        .pagination .page-link {
+            color: #1e266d;
+            text-decoration: none !important;
+        }
+
+        .pagination .page-link:hover,
+        .pagination .page-link:focus,
+        .pagination .page-link:active {
+            text-decoration: none !important;
+        }
+
+        .loading {
+            text-align: left;
+            padding: 20px;
+        }
+
+        #rankingTable {
+            max-height: 600px;
+            width: 100%;
+            overflow-y: auto;
+        }
+
+        #rankingTable table {
+            margin-bottom: 0;
+        }
+
+        #rankingTable tbody tr {
+            padding: 8px 0;
+            height: 70px;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".fixed-top">
+
+    <!-- Preloader -->
+    <div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+
+
+    <!-- Header -->
+    <header id="header" class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>KukeMC - 玩家时间统计</h1>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+
+
+    <!-- Breadcrumbs -->
+    <div class="ex-basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs">
+                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;</span><span>玩家时间统计</span>
+                    </div> <!-- end of breadcrumbs -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of breadcrumbs -->
+
+    <!-- Stats Overview -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-container">
+                    <div class="row" id="statsOverview">
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <h3>总玩家数</h3>
+                                <div class="number" id="totalPlayers">加载中...</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <h3>今日在线</h3>
+                                <div class="number" id="todayOnline">加载中...</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <h3>活跃玩家</h3>
+                                <div class="number" id="activePlayers">加载中...</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stats-card">
+                                <h3>总在线时长</h3>
+                                <div class="number" id="totalPlaytime">加载中...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Rankings -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-container">
+                    <div class="table-header">
+                        <h2 class="mb-4">玩家排行榜</h2>
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" id="searchInput" placeholder="搜索玩家名称...">
+                            </div>
+                            <div class="time-filter">
+                                <select id="timeFilter">
+                                    <option value="0">总时长排行</option>
+                                    <option value="7">近7天</option>
+                                    <option value="30">近30天</option>
+                                    <option value="90">近90天</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player Table -->
+                <div class="player-table">
+                    <table class="table table-hover" id="rankingTable">
+                        <thead>
+                            <tr>
+                                <th width="10%">排名</th>
+                                <th width="20%">玩家名称</th>
+                                <th width="20%">在线时长</th>
+                                <th width="15%" id="loginCountHeader">登录次数</th>
+                                <th width="15%">最近登录</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rankingBody">
+                            <tr>
+                                <td colspan="5" class="loading">加载中...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <nav style="padding: 12px;">
+                    <ul class="pagination" id="pagination">
+                        <!-- Pagination will be generated by JavaScript -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="static/js/swiper.min.js"></script>
+    <script src="static/js/jquery.magnific-popup.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Morphext/2.4.4/morphext.min.js"></script>
+    <script src="static/js/scripts.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 加载导航栏和页脚
+            $("#navbar").load("navbar.html");
+            $("#footer").load("footer.html");
+
+            // 初始变量
+            let currentPage = 1;
+            let currentDays = 0; // 0表示不限时间
+            let searchQuery = "";
+            let totalItems = 0;
+
+            // 加载概览数据
+            loadOverview();
+
+            // 加载排行榜数据
+            loadRankingData();
+
+            // 时间筛选下拉菜单变化事件
+            $("#timeFilter").change(function () {
+                currentDays = parseInt($(this).val());
+                currentPage = 1;
+                loadRankingData();
+            });
+
+            // 搜索框输入事件
+            let searchTimeout;
+            $("#searchInput").on("input", function () {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    searchQuery = $(this).val().trim();
+                    currentPage = 1;
+                    loadRankingData();
+                }, 500);
+            });
+
+            // 加载概览数据函数
+            function loadOverview() {
+                $.ajax({
+                    url: "https://api.kuke.ink/api/playtime/overview",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $("#totalPlayers").text(data.total_players);
+                        $("#todayOnline").text(data.today_online);
+                        $("#activePlayers").text(data.active_players);
+                        $("#totalPlaytime").text(data.total_playtime);
+                    },
+                    error: function () {
+                        $("#totalPlayers").text("加载失败");
+                        $("#todayOnline").text("加载失败");
+                        $("#activePlayers").text("加载失败");
+                        $("#totalPlaytime").text("加载失败");
+                    }
+                });
+            }
+
+            // 加载排行榜数据函数
+            function loadRankingData() {
+                // 更新表头显示
+                $('#loginCountHeader').text(currentDays === 0 ? '登录次数' : '游玩天数');
+                // 显示加载中，不影响滚动位置
+                $("#rankingBody").html('<tr><td colspan="5" class="loading">加载中...</td></tr>');
+                // 保持当前滚动位置
+                let scrollPos = $(window).scrollTop();
+
+                // 确定API端点
+                let apiUrl = currentDays === 0 ?
+                    "https://api.kuke.ink/api/playtime/total_ranking" :
+                    "https://api.kuke.ink/api/playtime/recent_ranking";
+
+                // 准备参数
+                let params = {
+                    page: currentPage,
+                    per_page: 30
+                };
+
+                // 如果是近期排行榜，添加天数参数
+                if (currentDays > 0) {
+                    params.days = currentDays;
+                }
+
+                // 如果有搜索查询，添加搜索参数
+                if (searchQuery) {
+                    params.search = searchQuery;
+                }
+
+                $.ajax({
+                    url: apiUrl,
+                    type: "GET",
+                    data: params,
+                    dataType: "json",
+                    success: function (response) {
+                        // 清空表格
+                        $("#rankingBody").empty();
+                        // 恢复滚动位置
+                        $(window).scrollTop(scrollPos);
+
+                        // 检查是否有数据
+                        if (response.data && response.data.length > 0) {
+                            // 计算起始排名
+                            let startRank = (currentPage - 1) * 10 + 1;
+
+                            // 遍历数据并添加到表格
+                            response.data.forEach((player, index) => {
+                                let rank = startRank + index;
+                                let row = $('<tr>');
+
+                                // 格式化在线时长
+                                let playtime = currentDays === 0 ? player.total_playtime : player.recent_playtime;
+                                let totalSeconds = Math.floor(Number(playtime) / 1000);
+                                let hours = Math.floor(totalSeconds / 3600);
+                                let minutes = Math.floor((totalSeconds % 3600) / 60);
+                                let playtimeStr = hours === 0 ? minutes + '分钟' : hours + '小时' + minutes + '分钟';
+
+                                // 格式化最近登录时间
+                                let lastLoginDate = new Date(currentDays === 0 ? player.last_login : player.last_play_date);
+                                let lastLoginStr = lastLoginDate.getFullYear() + '-' +
+                                    String(lastLoginDate.getMonth() + 1).padStart(2, '0') + '-' +
+                                    String(lastLoginDate.getDate()).padStart(2, '0') + ' ' +
+                                    String(lastLoginDate.getHours()).padStart(2, '0') + ':' +
+                                    String(lastLoginDate.getMinutes()).padStart(2, '0') + ':' +
+                                    String(lastLoginDate.getSeconds()).padStart(2, '0');
+
+                                row.append($('<td>').text('#' + rank));
+                                row.append($('<td>').text(player.username));
+                                row.append($('<td>').text(playtimeStr));
+                                row.append($('<td>').text((currentDays === 0 ? player.login_count : player.play_days) + ' 次'));
+                                row.append($('<td>').text(lastLoginStr));
+
+                                $("#rankingBody").append(row);
+                            });
+
+                            // 更新分页
+                            updatePagination(response.pagination.total_pages);
+                        } else {
+                            // 无数据显示
+                            $("#rankingBody").html('<tr><td colspan="5" class="text-center">暂无数据</td></tr>');
+                            $("#pagination").empty();
+                        }
+                    },
+                    error: function () {
+                        $("#rankingBody").html('<tr><td colspan="5" class="text-center text-danger">加载失败</td></tr>');
+                        $("#pagination").empty();
+                    }
+                });
+            }
+
+            // 更新分页导航
+            function updatePagination(totalPages) {
+                if (!totalPages || totalPages <= 0) {
+                    $("#pagination").empty();
+                    return;
+                }
+
+                totalItems = totalPages * 10; // 更新总条目数
+                let pagination = $("#pagination");
+                pagination.empty();
+
+                // 添加上一页按钮
+                let prevBtn = $('<li class="page-item' + (currentPage === 1 ? ' disabled' : '') + '">')
+                    .append($('<a class="page-link" href="#">').text('上一页'));
+                prevBtn.click(function (e) {
+                    e.preventDefault();
+                    if (currentPage > 1) {
+                        currentPage--;
+                        loadRankingData();
+                    }
+                });
+                pagination.append(prevBtn);
+
+                // 添加页码按钮
+                for (let i = 1; i <= totalPages; i++) {
+                    if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                        let pageBtn = $('<li class="page-item' + (i === currentPage ? ' active' : '') + '">')
+                            .append($('<a class="page-link" href="#">').text(i));
+                        pageBtn.click(function (e) {
+                            e.preventDefault();
+                            currentPage = i;
+                            loadRankingData();
+                        });
+                        pagination.append(pageBtn);
+                    } else if (i === currentPage - 3 || i === currentPage + 3) {
+                        pagination.append($('<li class="page-item disabled">').append($('<a class="page-link" href="#">').text('...')));
+                    }
+                }
+
+                // 添加下一页按钮
+                let nextBtn = $('<li class="page-item' + (currentPage === totalPages ? ' disabled' : '') + '">')
+                    .append($('<a class="page-link" href="#">').text('下一页'));
+                nextBtn.click(function (e) {
+                    e.preventDefault();
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        loadRankingData();
+                    }
+                });
+                pagination.append(nextBtn);
+            }
+
+            // 初始化页面
+            $(document).ready(function () {
+                // 初始化时间筛选按钮
+                $(".time-filter .btn").click(function () {
+                    $(".time-filter .btn").removeClass("active");
+                    $(this).addClass("active");
+
+                    // 更新时间范围
+                    currentDays = parseInt($(this).data("days"));
+                    currentPage = 1;
+                    loadRankingData();
+                });
+
+                // 初始化搜索框
+                let searchTimeout;
+                $("#searchInput").on("input", function () {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        searchQuery = $(this).val().trim();
+                        currentPage = 1;
+                        loadRankingData();
+                    }, 500);
+                });
+
+                // 加载初始数据
+                loadRankingData();
+
+                // 加载统计概览数据
+                $.ajax({
+                    url: "https://api.kuke.ink/api/playtime/stats",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.success) {
+                            $("#totalPlayers").text(response.total_players);
+                            $("#todayOnline").text(response.today_online);
+                            $("#activePlayers").text(response.active_players);
+
+                            // 格式化总在线时长
+                            let totalHours = Math.floor(response.total_playtime / 3600);
+                            $("#totalPlaytime").text(totalHours + '小时');
+                        }
+                    },
+                    error: function () {
+                        $(".stats-card .number").text('加载失败');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
