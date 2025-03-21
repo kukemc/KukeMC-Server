@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link href="static/css/bootstrap.css" rel="stylesheet">
     <link href="static/css/styles.css" rel="stylesheet">
+    <link href="static/css/animations.css" rel="stylesheet">
 
     <!-- Favicon  -->
     <link rel="icon" href="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png">
@@ -137,8 +138,6 @@
             border-top: 5px solid #666;
             pointer-events: none;
         }
-        cursor: pointer;
-        }
 
         .pagination {
             justify-content: center;
@@ -169,8 +168,8 @@
         }
 
         .pagination .page-item.active .page-link {
-            background-color: #1e266d;
-            border-color: #1e266d;
+            background-color: #c7c7c7;
+            border-color: #c7c7c7;
             color: #fff;
             font-weight: 600;
         }
@@ -183,8 +182,8 @@
             box-shadow: none;
         }
         .pagination .page-item.active .page-link {
-            background-color: #1e266d;
-            border-color: #1e266d;
+            background-color: #c7c7c7;
+            border-color: #c7c7c7;
         }
 
         .pagination .page-link {
@@ -200,7 +199,84 @@
 
         .loading {
             text-align: left;
-            padding: 20px;
+        }
+        
+        /* 加载动画样式 */
+        .loader {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        @keyframes loader_5191 {
+          from {
+            opacity: 0;
+          }
+        
+          to {
+            opacity: 1;
+          }
+        }
+        
+        .square {
+          background: #ddd;
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -5px;
+          margin-left: -5px;
+        }
+        
+        #sq1 {
+          margin-top: -25px;
+          margin-left: -25px;
+          animation: loader_5191 675ms ease-in-out 0s infinite alternate;
+        }
+        
+        #sq2 {
+          margin-top: -25px;
+          animation: loader_5191 675ms ease-in-out 75ms infinite alternate;
+        }
+        
+        #sq3 {
+          margin-top: -25px;
+          margin-left: 15px;
+          animation: loader_5191 675ms ease-in-out 150ms infinite;
+        }
+        
+        #sq4 {
+          margin-left: -25px;
+          animation: loader_5191 675ms ease-in-out 225ms infinite;
+        }
+        
+        #sq5 {
+          animation: loader_5191 675ms ease-in-out 300ms infinite;
+        }
+        
+        #sq6 {
+          margin-left: 15px;
+          animation: loader_5191 675ms ease-in-out 375ms infinite;
+        }
+        
+        #sq7 {
+          margin-top: 15px;
+          margin-left: -25px;
+          animation: loader_5191 675ms ease-in-out 450ms infinite;
+        }
+        
+        #sq8 {
+          margin-top: 15px;
+          animation: loader_5191 675ms ease-in-out 525ms infinite;
+        }
+        
+        #sq9 {
+          margin-top: 15px;
+          margin-left: 15px;
+          animation: loader_5191 675ms ease-in-out 600ms infinite;
         }
 
         #rankingTable {
@@ -256,7 +332,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumbs">
-                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;</span><span>玩家时间统计</span>
+                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;</span><span>玩家时间统计 <p>数据日期：2025年3月20日 - 今天</p></span>
                     </div> <!-- end of breadcrumbs -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -306,7 +382,7 @@
             <div class="col-lg-12">
                 <div class="text-container">
                     <div class="table-header">
-                        <h2 class="mb-4">玩家排行榜</h2>
+                        <h2>玩家排行榜</h2>
                         <div class="table-controls">
                             <div class="search-box">
                                 <input type="text" id="searchInput" placeholder="搜索玩家名称...">
@@ -341,6 +417,18 @@
                             </tr>
                         </tbody>
                     </table>
+                    <!-- 加载动画 -->
+                    <div class="loader" id="tableLoader">
+                        <div class="square" id="sq1"></div>
+                        <div class="square" id="sq2"></div>
+                        <div class="square" id="sq3"></div>
+                        <div class="square" id="sq4"></div>
+                        <div class="square" id="sq5"></div>
+                        <div class="square" id="sq6"></div>
+                        <div class="square" id="sq7"></div>
+                        <div class="square" id="sq8"></div>
+                        <div class="square" id="sq9"></div>
+                    </div>
                 </div>
 
                 <!-- Pagination -->
@@ -393,15 +481,31 @@
             });
 
             // 搜索框输入事件
+            // 统一搜索事件处理
             let searchTimeout;
-            $("#searchInput").on("input", function () {
+            const handleSearch = () => {
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(() => {
-                    searchQuery = $(this).val().trim();
+                    searchQuery = $("#searchInput").val().trim();
                     currentPage = 1;
+                    // 显示加载动画
+                    $("#tableLoader").show();
                     loadRankingData();
                 }, 500);
+            };
+
+            // 搜索按钮点击事件
+            $("#searchBtn").click(handleSearch);
+
+            // 回车键搜索
+            $("#searchInput").keypress(function (e) {
+                if (e.which === 13) {
+                    handleSearch();
+                }
             });
+
+            // 输入框实时搜索
+            $("#searchInput").on("input", handleSearch);
 
             // 加载概览数据函数
             function loadOverview() {
@@ -429,7 +533,9 @@
                 // 更新表头显示
                 $('#loginCountHeader').text(currentDays === 0 ? '登录次数' : '游玩天数');
                 // 显示加载中，不影响滚动位置
-                $("#rankingBody").html('<tr><td colspan="5" class="loading">加载中...</td></tr>');
+                $("#rankingBody").html('');
+                // 显示加载动画
+                $("#tableLoader").show();
                 // 保持当前滚动位置
                 let scrollPos = $(window).scrollTop();
 
@@ -462,13 +568,15 @@
                     success: function (response) {
                         // 清空表格
                         $("#rankingBody").empty();
+                        // 隐藏加载动画
+                        $("#tableLoader").hide();
                         // 恢复滚动位置
                         $(window).scrollTop(scrollPos);
 
                         // 检查是否有数据
                         if (response.data && response.data.length > 0) {
                             // 计算起始排名
-                            let startRank = (currentPage - 1) * 10 + 1;
+                            let startRank = (currentPage - 1) * 30 + 1;
 
                             // 遍历数据并添加到表格
                             response.data.forEach((player, index) => {
@@ -511,6 +619,8 @@
                     error: function () {
                         $("#rankingBody").html('<tr><td colspan="5" class="text-center text-danger">加载失败</td></tr>');
                         $("#pagination").empty();
+                        // 隐藏加载动画
+                        $("#tableLoader").hide();
                     }
                 });
             }
@@ -582,7 +692,7 @@
 
                 // 初始化搜索框
                 let searchTimeout;
-                $("#searchInput").on("input", function () {
+                $("#searchInput").off('input').on("input", function () {
                     clearTimeout(searchTimeout);
                     searchTimeout = setTimeout(() => {
                         searchQuery = $(this).val().trim();
@@ -596,7 +706,7 @@
 
                 // 加载统计概览数据
                 $.ajax({
-                    url: "https://api.kuke.ink/api/playtime/stats",
+                    url: "https://api.kuke.ink/api/playtime/overview",
                     type: "GET",
                     dataType: "json",
                     success: function (response) {

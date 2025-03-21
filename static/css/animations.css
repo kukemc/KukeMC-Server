@@ -1,0 +1,224 @@
+/* 
+ * KukeMC Server - Custom Animations CSS
+ * 为网站添加丝滑的动效效果
+ */
+
+/* 通用动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 导航栏动效 */
+.navbar-custom .nav-item .nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar-custom .nav-item .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #ff80ab;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-custom .nav-item .nav-link:hover::after,
+.navbar-custom .nav-item .nav-link.active::after {
+  width: 70%;
+}
+
+/* 下拉菜单动效增强 */
+.navbar-custom .dropdown-menu {
+  transform-origin: top center;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: block;
+  visibility: hidden;
+}
+
+.navbar-custom .dropdown:hover > .dropdown-menu {
+  transform: scaleY(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar-custom .dropdown-item {
+  transform: translateX(-10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-custom .dropdown:hover .dropdown-item {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.navbar-custom .dropdown:hover .dropdown-item:nth-child(1) { transition-delay: 0.05s; }
+.navbar-custom .dropdown:hover .dropdown-item:nth-child(2) { transition-delay: 0.1s; }
+.navbar-custom .dropdown:hover .dropdown-item:nth-child(3) { transition-delay: 0.15s; }
+.navbar-custom .dropdown:hover .dropdown-item:nth-child(4) { transition-delay: 0.2s; }
+.navbar-custom .dropdown:hover .dropdown-item:nth-child(5) { transition-delay: 0.25s; }
+
+/* 首页标题动效 */
+.header .text-container h1 {
+  animation: fadeIn 1s ease-out;
+}
+
+.header .text-container p {
+  animation: fadeIn 1.5s ease-out;
+}
+
+.header .btn-solid-lg {
+  animation: fadeIn 2s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header .btn-solid-lg:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 卡片动效 */
+.card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 图片动效增强 */
+.element-item .element-item-overlay {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.element-item:hover .element-item-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 排行榜动效 */
+.player {
+  animation: fadeIn 0.5s ease-out;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.player:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+.player img {
+  transition: transform 0.5s ease, border-color 0.3s ease;
+}
+
+.player:hover img {
+  transform: scale(1.1);
+}
+
+/* 搜索栏动效 */
+.search-container input {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.search-container input:focus {
+  border-color: #ff80ab;
+  box-shadow: 0 0 10px rgba(255, 128, 171, 0.3);
+  transform: translateY(-2px);
+}
+
+.search-container button {
+  transition: all 0.3s ease;
+}
+
+.search-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 页面加载动效 */
+.basic-1, .cards-2, .filter {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.basic-1 { animation-delay: 0.2s; }
+.cards-2 { animation-delay: 0.4s; }
+.filter { animation-delay: 0.6s; }
+
+/* 留言板动效 */
+.message-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 0.5s ease-out forwards;
+}
+
+.message-item:nth-child(1) { animation-delay: 0.1s; }
+.message-item:nth-child(2) { animation-delay: 0.2s; }
+.message-item:nth-child(3) { animation-delay: 0.3s; }
+.message-item:nth-child(4) { animation-delay: 0.4s; }
+.message-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* 按钮通用动效 */
+.btn-solid-reg, .btn-solid-lg {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-solid-reg:hover, .btn-solid-lg:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+}
+
+.btn-solid-reg::after, .btn-solid-lg::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.btn-solid-reg:active::after, .btn-solid-lg:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+}

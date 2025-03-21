@@ -32,17 +32,31 @@
         navLinks.forEach(link => {
             // 获取链接的 href 属性
             let href = link.getAttribute('href');
+            if (!href) return; // 添加空值检查
 
-            if (href.includes('#')) {
-                // 获取 href 中的页面路径部分
-                let hrefPage = href.split('#')[0];
-
-                // 如果当前页面路径与 href 中的路径相同，则删除 href 中的页面路径，只保留 #
-                if (currentPage === hrefPage || (currentPage === '' && hrefPage === 'index.html')) {
-                    link.setAttribute('href', '#' + href.split('#')[1]);
+            // 获取 href 中的页面路径部分，去除锚点
+            let hrefPage = href.split('#')[0];
+            
+            // 处理首页的特殊情况
+            if (currentPage === '' || currentPage === 'index.html') {
+                // 只有当href完全匹配时才高亮
+                if (href === '' || href === 'index.html' || href === '#') {
+                    link.classList.add('active');
+                }
+            } else if (currentPage === hrefPage && !href.includes('#')) {
+                // 对于非首页，只有当完全匹配且不包含锚点时才高亮
+                link.classList.add('active');
+            }
+            
+            // 如果是当前页面的锚点链接，修改href
+            if (currentPage === hrefPage || (currentPage === '' && hrefPage === 'index.html')) {
+                const hashPart = href.split('#')[1];
+                if (hashPart) {
+                    link.setAttribute('href', '#' + hashPart);
                 }
             }
-        });
+            }
+        );
     })
     .catch(error => {
         console.log('Error loading navbar:', error);

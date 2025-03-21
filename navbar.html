@@ -4,7 +4,7 @@
     <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
             
     <!-- Image Logo -->
-    <a class="navbar-brand logo-image" href=""><img src="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png" alt="alternative"></a> <!-- end of navbar brand -->
+    <a class="navbar-brand logo-image" href="index.html"><img src="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png" alt="alternative"></a> <!-- end of navbar brand -->
 
     <!-- Mobile Menu Toggle Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="index.html#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
@@ -20,16 +20,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="index.html#info">服务器介绍</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle page-scroll" href="index.html#list" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">服务器列表</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="longterm.html"><span class="item-text">长期玩法</span></a>
-                    <div class="dropdown-items-divide-hr"></div>
-                    <a class="dropdown-item" href="javascript:;"><span class="item-text">中期玩法</span></a>
-                    <div class="dropdown-items-divide-hr"></div>
-                    <a class="dropdown-item" href="javascript:;"><span class="item-text">短期玩法</span></a>
-                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="index.html#picture">风景欣赏</a>
@@ -47,6 +37,9 @@
                 <a class="nav-link page-scroll" href="message.html">玩家留言</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link page-scroll" href="playtime.html">游玩时间</a>
+            </li>
+            <li class="nav-item">
             <a class="nav-link page-scroll" onclick="window.open('https://status.kuke.ink')">状态监控</a>
             </li>
             <li class="nav-item">
@@ -54,4 +47,27 @@
             </li>
         </ul>
     </div>
+<script>
+// 自动激活当前页面导航项
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname + window.location.search;
+    const linkBase = document.querySelector('base')?.href || '/';
+    const currentPage = new URL(window.location.href).pathname
+        .replace(/index\.html$/i, '')
+        .replace(/\/$/, '');
+    console.log('Current Page:', currentPage);
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkObj = new URL(link.href, linkBase);
+        const isIndexPage = linkObj.pathname.endsWith('index.html') || linkObj.pathname === '';
+        const comparePath = linkObj.pathname.replace(/index\.html$/, '').replace(/#.*$/, '');
+        console.log('Link URL:', linkObj.href);
+        
+        if ((isIndexPage && currentPage === '') || 
+            (!isIndexPage && comparePath === currentPage)) {
+            link.classList.add('active');
+            console.log('Activated link:', link.href);
+        }
+    });
+});
+</script>
 </nav> <!-- end of navbar -->
