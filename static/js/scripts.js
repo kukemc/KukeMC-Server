@@ -106,7 +106,7 @@
     // closes the responsive menu on menu item click
     $(".navbar-nav li a").on("click", function(event) {
         if (!$(this).parent().hasClass('dropdown'))
-            $(".navbar-collapse").collapse('');
+            $(".navbar-collapse").collapse('hide');
     });
 
     /* Rotating Text - Morphtext */
