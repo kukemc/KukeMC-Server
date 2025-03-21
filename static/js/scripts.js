@@ -107,7 +107,7 @@
     $(".navbar-nav li a").on("click", function(event) {
         if (!$(this).parent().hasClass('dropdown'))
             $(".navbar-collapse").collapse('hide');
-    });
+    }); 
 
     /* Rotating Text - Morphtext */
 	$("#js-rotating").Morphext({
@@ -355,4 +355,4 @@
 		$(this).blur();
 	});
 
-})(jQuery);
+})(jQuery); 
