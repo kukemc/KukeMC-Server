@@ -388,6 +388,12 @@
                                 <input type="text" id="searchInput" placeholder="搜索玩家名称...">
                             </div>
                             <div class="time-filter">
+                                <select id="sortFilter">
+                                    <option value="playtime">按游玩时间</option>
+                                    <option value="last_login">按最后登录</option>
+                                </select>
+                            </div>
+                            <div class="time-filter">
                                 <select id="timeFilter">
                                     <option value="0">总时长排行</option>
                                     <option value="7">近7天</option>
@@ -466,6 +472,7 @@
             let currentDays = 0; // 0表示不限时间
             let searchQuery = "";
             let totalItems = 0;
+            let sortBy = "playtime"; // 默认按游玩时间排序
 
             // 加载概览数据
             loadOverview();
@@ -476,6 +483,13 @@
             // 时间筛选下拉菜单变化事件
             $("#timeFilter").change(function () {
                 currentDays = parseInt($(this).val());
+                currentPage = 1;
+                loadRankingData();
+            });
+
+            // 排序方式下拉菜单变化事件
+            $("#sortFilter").change(function () {
+                sortBy = $(this).val();
                 currentPage = 1;
                 loadRankingData();
             });
@@ -559,6 +573,9 @@
                 if (searchQuery) {
                     params.search = searchQuery;
                 }
+
+                // 添加排序参数
+                params.sort_by = sortBy;
 
                 $.ajax({
                     url: apiUrl,
