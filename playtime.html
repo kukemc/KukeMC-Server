@@ -96,6 +96,30 @@
             gap: 15px;
         }
 
+        @media (max-width: 768px) {
+            .table-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .table-controls {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .search-box,
+            .time-filter {
+                width: 100%;
+            }
+
+            .search-box input,
+            .time-filter select {
+                width: 100%;
+            }
+        }
+
         .search-box {
             position: relative;
         }
@@ -292,6 +316,23 @@
         #rankingTable tbody tr {
             padding: 8px 0;
             height: 70px;
+        }
+
+        /* 排名颜色样式 */
+        #rankingTable tbody tr td:first-child {
+            position: relative;
+        }
+
+        #rankingTable tbody tr td[data-rank="1"] {
+            color: #FFD700; /* 金色 */
+        }
+
+        #rankingTable tbody tr td[data-rank="2"] {
+            color: #C0C0C0; /* 银色 */
+        }
+
+        #rankingTable tbody tr td[data-rank="3"] {
+            color: #CD7F32; /* 铜色 */
         }
     </style>
 </head>
@@ -608,15 +649,19 @@
                                 let playtimeStr = hours === 0 ? minutes + '分钟' : hours + '小时' + minutes + '分钟';
 
                                 // 格式化最近登录时间
-                                let lastLoginDate = new Date(currentDays === 0 ? player.last_login : player.last_play_date);
-                                let lastLoginStr = lastLoginDate.getFullYear() + '-' +
-                                    String(lastLoginDate.getMonth() + 1).padStart(2, '0') + '-' +
-                                    String(lastLoginDate.getDate()).padStart(2, '0') + ' ' +
-                                    String(lastLoginDate.getHours()).padStart(2, '0') + ':' +
-                                    String(lastLoginDate.getMinutes()).padStart(2, '0') + ':' +
-                                    String(lastLoginDate.getSeconds()).padStart(2, '0');
+                                let lastLoginDate = new Date(Date.parse(currentDays === 0 ? player.last_login : player.last_play_date));
+                                let lastLoginStr = lastLoginDate.toLocaleString('zh-CN', { 
+                                    timeZone: 'UTC',
+                                    year: 'numeric',
+                                    month: 'numeric',
+                                    day: 'numeric',
+                                    hour: 'numeric',
+                                    minute: 'numeric',
+                                    second: 'numeric',
+                                    hour12: false
+                                }).replace(/\//g, '-');
 
-                                row.append($('<td>').text('#' + rank));
+                                row.append($('<td>').attr('data-rank', rank).text('#' + rank));
                                 row.append($('<td>').text(player.username));
                                 row.append($('<td>').text(playtimeStr));
                                 row.append($('<td>').text((currentDays === 0 ? player.login_count : player.play_days) + ' 次'));

@@ -20,17 +20,26 @@
         .message-list {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 10px;
         }
 
         .message-item {
             background: #ffffff;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            padding: 16px;
-            margin-bottom: 16px;
+            padding: 12px;
+            margin-bottom: 12px;
             display: flex;
-            gap: 16px;
+            gap: 12px;
             transition: transform 0.2s;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 480px) {
+            .message-item {
+                padding: 10px;
+                gap: 8px;
+            }
         }
 
         .message-item:hover {
@@ -38,8 +47,8 @@
         }
 
         .avatar {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             background: #e4e6eb;
@@ -49,44 +58,92 @@
         }
 
         .message-content {
-            flex-grow: 1;
+            flex: 1;
             min-width: 0;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        @media (max-width: 480px) {
+            .message-content {
+                width: calc(100% - 48px);
+            }
         }
 
         .user-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        @media (max-width: 480px) {
+            .user-header {
+                flex-direction: column;
+            }
         }
 
         .username {
             font-weight: 600;
             color: #1d2129;
-            font-size: 16px;
+            font-size: 15px;
             overflow: hidden;
             text-overflow: ellipsis;
+            max-width: 100%;
+            display: inline-block;
         }
 
         .message-id {
             color: #8a8f99;
             font-size: 12px;
-            margin-left: 8px;
+            margin-left: 6px;
+            display: inline-block;
+        }
+
+        @media (max-width: 480px) {
+            .username {
+                font-size: 14px;
+            }
+            .message-id {
+                margin-left: 4px;
+            }
         }
 
         .message-text {
             color: #4e5969;
-            line-height: 1.6;
-            margin: 8px 0;
+            line-height: 1.5;
+            margin: 6px 0;
             white-space: pre-wrap;
             overflow-wrap: break-word;
             word-break: break-word;
+            font-size: 14px;
+            max-width: 100%;
+        }
+
+        @media (max-width: 480px) {
+            .message-text {
+                font-size: 13px;
+                line-height: 1.4;
+                margin: 4px 0;
+            }
         }
 
         .message-time {
             color: #8a8f99;
             font-size: 12px;
             text-align: right;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .message-time {
+                width: 100%;
+                text-align: left;
+                margin-top: 2px;
+            }
         }
 
         .loading {
@@ -140,8 +197,8 @@
             background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
             color: white !important;
             border: none;
-            padding: 0px 15px;
-            border-radius: 15px;
+            padding: 4px 12px;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 12px;
             font-weight: 500;
@@ -149,6 +206,15 @@
             box-shadow: 0 2px 6px rgba(255, 68, 68, 0.2);
             position: relative;
             overflow: hidden;
+            margin-left: 6px;
+        }
+
+        @media (max-width: 480px) {
+            .delete-btn {
+                padding: 3px 10px;
+                margin-left: 4px;
+                font-size: 11px;
+            }
         }
 
         .delete-btn::before {
@@ -463,10 +529,13 @@
                             function renderMessageWithReplies(message, level = 0) {
                                 const wrapper = document.createElement('div');
                                 wrapper.className = 'message-wrapper';
-                                wrapper.style.marginLeft = level * 30 + 'px';
                                 
-                                // 添加层级指示线
-                                if (level > 0) {
+                                // 限制最大层级为3，超过3层的回复平铺显示
+                                const effectiveLevel = Math.min(level, 2);
+                                wrapper.style.marginLeft = effectiveLevel * 20 + 'px';
+                                
+                                // 只在3层以内显示层级指示线
+                                if (level > 0 && level <= 2) {
                                     const indicator = document.createElement('div');
                                     indicator.className = 'level-indicator';
                                     wrapper.appendChild(indicator);
@@ -512,3 +581,23 @@
     <script src="static/js/scripts.js"></script> <!-- Custom scripts -->
 </body>
 </html>
+
+.level-indicator {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #e4e6eb;
+}
+
+.message-wrapper {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 480px) {
+    .message-wrapper {
+        margin-left: 10px !important;
+    }
+}
