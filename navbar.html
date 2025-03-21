@@ -59,11 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.nav-link').forEach(link => {
         const linkObj = new URL(link.href, linkBase);
         const isIndexPage = linkObj.pathname.endsWith('index.html') || linkObj.pathname === '';
-        const comparePath = linkObj.pathname.replace(/index\.html$/, '').replace(/#.*$/, '');
+        const comparePath = linkObj.pathname.replace(/index\.html$/, '').replace(/#.*$/, '').replace(/\.html$/, '');
+        const currentPathNoExt = currentPage.replace(/\.html$/, '');
         console.log('Link URL:', linkObj.href);
         
         if ((isIndexPage && currentPage === '') || 
-            (!isIndexPage && comparePath === currentPage)) {
+            (!isIndexPage && comparePath === currentPathNoExt)) {
             link.classList.add('active');
             console.log('Activated link:', link.href);
         }
