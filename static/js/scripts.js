@@ -14,13 +14,6 @@
         '     |                              /                     ');
 
     // 获取古诗
-    $(window).on('scroll load', function() {
-		if ($(".navbar").offset().top > 20) {
-			$(".fixed-top").addClass("top-nav-collapse");
-		} else {
-			$(".fixed-top").removeClass("top-nav-collapse");
-		}
-    });
 
     // 动态加载 navbar.html 内容并插入到 id 为 'navbar' 的 div 中
     fetch('navbar.html')
@@ -92,6 +85,19 @@
 		hidePreloader();
 	});
 
+	
+	$(window).on("scroll load", function () {
+        var $navbar = $(".navbar");
+        // 如果元素不存在，直接退出
+        if ($navbar.length === 0) return; 
+      
+        if ($navbar.offset().top > 20) {
+          $(".fixed-top").addClass("top-nav-collapse");
+        } else {
+          $(".fixed-top").removeClass("top-nav-collapse");
+        }
+    });
+
 	// jQuery for page scrolling feature - requires jQuery Easing plugin
 	$(function() {
 		$(document).on('click', 'a.page-scroll', function(event) {
@@ -105,9 +111,10 @@
 
     // closes the responsive menu on menu item click
     $(".navbar-nav li a").on("click", function(event) {
-        if (!$(this).parent().hasClass('dropdown'))
-            $(".navbar-collapse").collapse('hide');
-    }); 
+    if (!$(this).parent().hasClass('dropdown'))
+        $(".navbar-collapse").collapse('hide');
+    });
+
 
     /* Rotating Text - Morphtext */
 	$("#js-rotating").Morphext({
@@ -355,4 +362,4 @@
 		$(this).blur();
 	});
 
-})(jQuery); 
+})(jQuery);
