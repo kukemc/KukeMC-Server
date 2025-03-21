@@ -79,6 +79,45 @@
     font-family: Arial, sans-serif;
   }
 
+  /* 响应式布局 */
+  @media (max-width: 767px) {
+    .footer-content {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .footer-column {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo img {
+      height: 40px;
+    }
+
+    .footer-social {
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .footer-social img {
+      height: 30px;
+    }
+
+    .footer-contact ul {
+      text-align: center;
+    }
+
+    .pt-3 {
+      padding: 1rem 0;
+    }
+
+    .pt-3 p {
+      font-size: 0.9rem;
+    }
+  }
+
   .footer-content {
     max-width: 1200px;
     margin: 0 auto;
