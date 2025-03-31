@@ -16,6 +16,6 @@
 
 [赞助入口ヾ(≧▽≦*)o 爱发电](https://afdian.com/a/kukemc)
 
-![wx](https://m.ccw.site/gandi_application/user_assets/7ebd7661e9bc19c088de1b7825673b57.jpg)
 
-![zfb](https://m.ccw.site/gandi_application/user_assets/10dd46a5d2ccabc91d2ab9ca6f11b707.jpg)
+<img src="https://m.ccw.site/gandi_application/user_assets/7ebd7661e9bc19c088de1b7825673b57.jpg" alt="WeChat image" style="width: 300px; height: auto; margin: 10px; border: 1px solid #ddd;">
+<img src="https://m.ccw.site/gandi_application/user_assets/10dd46a5d2ccabc91d2ab9ca6f11b707.jpg" alt="Alipay image" style="width: 300px; height: auto; margin: 10px; border: 1px solid #ddd;">
