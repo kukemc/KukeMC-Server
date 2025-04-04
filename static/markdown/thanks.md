@@ -1,4 +1,5 @@
 # 特别鸣谢
+- 2025.04.04 斩云Leonard 赞助了 **10** 元！ 非常感谢！`by QQ`
 - 2025.04.04 [tzi_aZbLA_0716](https://afdian.com/a/tzi_aZbLA_0716) 赞助了 **35** 元！ 非常感谢！`by afdian`
 - 2025.03.31 zilinkids 赞助了 **15** 元！ 非常感谢！`by Weixin`
 - 2025.03.22 <font color="Orange">rheostats</font> 赞助了 **<font color="gold">200</font>** 元！ 非常感谢!!!!!!!! `by Alipay`
