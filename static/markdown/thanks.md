@@ -1,9 +1,10 @@
 # 特别鸣谢
 - 2025.04.04 斩云Leonard 赞助了 **10** 元！ 非常感谢！`by QQ`
 - 2025.04.04 [tzi_aZbLA_0716](https://afdian.com/a/tzi_aZbLA_0716) 赞助了 **35** 元！ 非常感谢！`by afdian`
-- 2025.03.31 zilinkids 赞助了 **15** 元！ 非常感谢！`by Weixin`
+- 2025.03.31 zilinkids 赞助了 **15** 元！ 非常感谢！`由 WeChat`
 - 2025.03.22 <font color="Orange">rheostats</font> 赞助了 **<font color="gold">200</font>** 元！ 非常感谢!!!!!!!! `by Alipay`
-- 2025.02.13 一只chara 赞助了 **20** 元！ 非常感谢！`by Weixin`
+- 2025.02.13 一只chara 赞助了 **20** 元！ 非常感谢！`由 WeChat`
+- 2025.01.18 执念鱼 赞助了 **9.99** 元！ 非常感谢！`由 WeChat`
 - 2024.12.26 [<font color="Orange">椰灰狼</font>](https://space.bilibili.com/527135437) 赞助了 **<font color="gold">100</font>** 元！ 非常感谢!!!!!!!! `by afdian`
 - 2024.12.26 [<font color="Orange">椰灰狼</font>](https://space.bilibili.com/3546795693050045) 赞助了 **<font color="gold">200</font>** 元！ 非常感谢!!!!!!!! `by afdian`
 - 2024.12.26 [tzi_aZbLA_0716](https://afdian.com/a/tzi_aZbLA_0716) 赞助了 **70** 元！ 非常感谢！`by afdian`
