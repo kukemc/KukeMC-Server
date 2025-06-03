@@ -77,7 +77,15 @@
                 <div class="col-lg-5">
                     <div class="text-container">
                         <h2>KukeMC Server 欢迎您</h2>
-                        <p>&nbsp;&nbsp;这是一个温馨和谐的服务器，提供了稳定流畅的体验，自从2023开服以来我们努力创建一个环境良好更公平公正的游戏氛围，和玩家们一起度过了很多愉快的时光,在这里的日子将会是你值得回忆的美好。<br>我们保证不做影响平衡、破坏公平的行为。欢迎玩家提出意见或者举报违规行为，请大家自觉遵守游戏规则。</p>
+                        <p class="server-intro">
+                            这是一个温馨和谐的多玩法群组服务器，<br>提供了稳定流畅的体验。自从2023开服以来，
+                            我们努力创建一个环境良好、更公平公正的游戏氛围，和玩家们一起度过了很多愉快的时光。<br>
+                            在这里的日子将会是你值得回忆的美好。
+                        </p>
+                        <p class="server-promise">
+                            我们保证不做影响平衡、破坏公平的行为。<br>欢迎玩家提出意见或者举报违规行为，<br>
+                            请大家自觉遵守游戏规则。
+                        </p>
                         <p class="testimonial-text" id="poem-text"></p>
                         <font color="#484a46"><p id="poem-author" style="font-weight: bold"></p></font>
                     </div> <!-- end of text-container -->
@@ -92,70 +100,359 @@
     </div> <!-- end of basic-1 -->
     <!-- end of intro -->
     
-    <!-- Services -->
-    <div id="list" class="cards-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>服务器列表<br> 多种玩法提供选择</h2>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="https://m.ccw.site/gandi_application/user_assets/7e43097682b27d85efab1d89ed4b0d70.jpg" alt="alternative"> <!-- slime 图片 -->
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">长期玩法</h3>
-                            <p>关于长期玩法，我们拥有极其丰富的长期玩法服务器。您可以在粘液空岛中体验到粘液科技独特的魅力，也可以在红石生电服务器中体验到各种高科技机器的乐趣、以及高素质和谐友善的玩家群体。</p>
-                            <p class="price"><a style="color:#484a46" href="longterm.html">详情</a></p>
-                        </div>
-                        <div class="button-container">
-                            <a class="btn-solid-reg page-scroll" href="https://qm.qq.com/q/LVwHJncFSo" target="_blank">点击加群</a>
-                        </div> <!-- end of button-container -->
+    <!-- 服务器列表展示区 -->
+    <section id="list" class="server-list">
+        <div class="server-list-container">
+            <h2 class="server-list-title">服务器列表</h2>
+            <p class="server-list-subtitle">丰富多样的游戏玩法</p>
+    
+            <!-- 服务器分类导航 -->
+            <div class="server-categories">
+                <button class="category-btn active" data-category="all">全部服务器</button>
+                <button class="category-btn" data-category="survival">生存服务器</button>
+                <button class="category-btn" data-category="minigame">小游戏服务器</button>
+                <button class="category-btn" data-category="modded">模组服务器</button>
+            </div>
+    
+            <!-- 服务器展示网格 -->
+            <div class="server-grid">
+                <!-- 趣味生存服务器 -->
+                <div class="server-item" data-category="survival">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/1ea2d690428204c6068f99736c08265a.jpg" alt="趣味生存服务器">
                     </div>
-                    <!-- end of card -->
-
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="https://m.ccw.site/gandi_application/user_assets/99404c7d869369f048016584ce93d2a3.jpg" alt="alternative"> <!-- create 图片 -->
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">中期玩法</h3>
-                            <p>涉及到中期玩法，我们拥有十分爽快的服务器。您可以在机械动力中体验到专属于机械动力的独特科技魅力，也可以在极限生存中寻求一些求生的刺激，在1.12无尽贪婪服务器中你也可以体验到老版本模组的乐趣。</p>
-                            <p class="price"><a class="price" href="javascript:;">详情</a></p>
-                        </div>
-                        <div class="button-container">
-                            <a class="btn-solid-reg page-scroll" href="https://qm.qq.com/q/LVwHJncFSo" target="_blank">点击加群</a>
-                        </div> <!-- end of button-container -->
+                    <div class="server-content">
+                        <h3>趣味生存</h3>
+                        <p>原汁原味的生存体验，加入了丰富的趣味玩法，让你的生存之旅更加有趣。</p>
+                        <span class="server-version">支持版本: 1.18.2 - 1.21.4</span>
                     </div>
-                    <!-- end of card -->
-
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="https://m.ccw.site/gandi_application/user_assets/2b8a1cc6f8739474b111ed1251278ba9.jpg" alt="alternative"> <!-- kit 图片 -->
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">短期玩法</h3>
-                            <p>说到短期玩法，我们拥有十分强悍的服务器。您可以在职业战争中体验到极为丰富的职业系统以及由网易MineMC职业前运营亲手策划的100+职业，同时也可以在起床战争中体验经典不过时的对抗竞技原汁原味的起床战争。</p>
-                            <p class="price"><a class="price" href="javascript:;" target="_blank">详情</a></p>
-                        </div>
-                        <div class="button-container">
-                        	<a class="btn-solid-reg page-scroll" href="https://qm.qq.com/q/LVwHJncFSo" target="_blank">点击加群</a>
-                        </div> <!-- end of button-container -->
+                </div>
+    
+                <!-- 避暑山庄服务器 -->
+                <div class="server-item" data-category="survival">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/04850c78d2f633fb7b1439b7736211ec.jpg" alt="避暑山庄服务器">
                     </div>
-                    <!-- end of card -->
+                    <div class="server-content">
+                        <h3>避暑山庄</h3>
+                        <p>耗时三年打造的监狱风云，别样的淬炼系统，心脏不好的请谨慎游玩。</p>
+                        <span class="server-version">支持版本: 1.16.5 - 1.21.4</span>
+                    </div>
+                </div>
+    
+                <!-- 粘液空岛服务器 -->
+                <div class="server-item" data-category="survival">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/7e43097682b27d85efab1d89ed4b0d70.jpg" alt="粘液空岛服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>粘液空岛</h3>
+                        <p>体验独特的粘液科技魅力，打造属于你的科技帝国。拥有数百种机器与道具，让你在空岛中探索无限可能。</p>
+                        <span class="server-version">支持版本: 1.12.2 - 1.21.4</span>
+                    </div>
+                </div>
+    
+                <!-- 职业战争服务器 -->
+                <div class="server-item" data-category="minigame">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/2b8a1cc6f8739474b111ed1251278ba9.jpg" alt="职业战争服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>职业战争</h3>
+                        <p>超过100种独特职业供你选择，由前网易MineMC职业策划精心设计。体验紧张刺激的对抗玩法。</p>
+                        <span class="server-version">支持版本: 1.12.2 - 1.21.4</span>
+                    </div>
+                </div>
+    
+                <!-- 原版生电服务器 -->
+                <div class="server-item" data-category="survival">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/9ec0a697bc26822c3cc53aafa170c3da.jpg" alt="原版生电服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>原版生电</h3>
+                        <p>1.20.1 专为红石爱好者打造的服务器，在这里你可以尽情发挥你的创造力，建造各种复杂的红石机器。</p>
+                        <span class="server-version">支持版本: 1.12.2 - 1.21.4</span>
+                    </div>
+                </div>
+    
+                <!-- 起床战争服务器 -->
+                <div class="server-item" data-category="minigame">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/f7c5ca2df60d23ecf70d37bb19afa09f.jpg" alt="起床战争服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>起床战争</h3>
+                        <p>经典的小游戏玩法，保护你的床位并摧毁敌人的床位。体验紧张刺激的团队对抗。</p>
+                        <span class="server-version">支持版本: 1.12.2 - 1.21.4</span>
+                    </div>
+                </div>
+    
+                <!-- 机械动力服务器 -->
+                <div class="server-item" data-category="modded">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/a17b7e2f515de9ee70f8e5b9d5585a0f.jpg" alt="机械动力服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>机械动力</h3>
+                        <p>探索机械动力模组的无限可能，建造复杂的机械系统，感受工业革命的魅力。</p>
+                        <span class="server-version">支持版本: 1.21.1</span>
+                    </div>
+                </div>
+    
+                <!-- 僵尸末日服务器 -->
+                <div class="server-item" data-category="minigame">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/4b2a56e7d537b207eac2d369e0923876.jpg" alt="僵尸末日服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>僵尸末日</h3>
+                        <p>最大程度的还原 Hypixel 僵尸末日小游戏，购买装备打败怪物，看你能坚持多久。</p>
+                        <span class="server-version">支持版本: 1.8 - 1.21.4</span>
+                    </div>
+                </div>
+    
+                <!-- 原版生存(1.12.2 无政府生存)服务器 -->
+                <div class="server-item" data-category="survival">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/a8266c57901c25c261c22304623d6b69.jpg" alt="原版生存服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>原版生存(1.12.2)</h3>
+                        <p>经典1.12.2版本的无政府生存服务器，没有任何规则限制，真正的自由生存体验。</p>
+                        <span class="server-version">支持版本: 1.8 - 1.21.4</span>
+                    </div>
+                </div>
+    
+                <!-- 无尽贪婪服务器 -->
+                <div class="server-item" data-category="modded">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/2a60641827556d97676692611f9189e8.jpg" alt="无尽贪婪服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>无尽贪婪</h3>
+                        <p>基于无尽贪婪模组的服务器，探索强大的装备和物品，挑战各种强大的Boss，成为最强大的存在。</p>
+                        <span class="server-version">支持版本: 1.12.2</span>
+                    </div>
+                </div>
+    
+                <!-- 搭路练习服务器 -->
+                <div class="server-item" data-category="minigame">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/22e44038a102633cfc8484d136f2b753.jpg" alt="搭路练习服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>搭路练习</h3>
+                        <p>专为PVP玩家设计的搭路练习服务器，提供各种难度的搭路挑战，帮助你提升PVP技巧。</p>
+                        <span class="server-version">支持版本: 1.8.9 - 1.21.4</span>
+                    </div>
+                </div>
 
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of cards-2 -->
-    <!-- end of services -->
+                <!-- 猎人游戏服务器 -->
+                <div class="server-item" data-category="minigame">
+                    <div class="server-image">
+                        <img src="https://m.ccw.site/gandi_application/user_assets/eecc7dce41dc4cb3a09692b20cebfb37.jpg" alt="猎人游戏服务器">
+                    </div>
+                    <div class="server-content">
+                        <h3>猎人游戏</h3>
+                        <p>刺激的追逐游戏，一方是猎人，一方是逃亡者。猎人需要在限定时间内抓住所有逃亡者，而逃亡者则需要尽可能地逃脱。</p>
+                        <span class="server-version">支持版本: 1.12.2 - 1.21.4</span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- 加入社区按钮 -->
+            <div class="join-community">
+                <h3>加入我们的社区</h3>
+                <p>与数千名玩家一起交流，分享游戏经验</p>
+                <a href="https://qm.qq.com/q/LVwHJncFSo" target="_blank" class="join-button">加入QQ群</a>
+            </div>
+        </div>
+    </section>
+
+    <style>
+    .server-list {
+        padding: 4rem 0;
+        background: #f8f9fa;
+    }
+
+    .server-list-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .server-list-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+    }
+
+    .server-list-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        margin-bottom: 2rem;
+    }
+
+    /* 服务器分类导航 */
+    .server-categories {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .category-btn {
+        padding: 0.5rem 1.5rem;
+        background: #e9ecef;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .category-btn.active {
+        background: #3498db;
+        color: white;
+    }
+
+    .category-btn:hover {
+        background: #d1d7dc;
+    }
+
+    .category-btn.active:hover {
+        background: #2980b9;
+    }
+
+    .server-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .server-item {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .server-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .server-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .server-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .server-content {
+        padding: 1.5rem;
+    }
+
+    .server-content h3 {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+    .server-content p {
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .server-version {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: #e9ecef;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .join-community {
+        text-align: center;
+        padding: 3rem 0;
+    }
+
+    .join-community h3 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+    .join-community p {
+        color: #666;
+        margin-bottom: 2rem;
+    }
+
+    .join-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: #3498db;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .join-button:hover {
+        background: #2980b9;
+    }
+
+    @media (max-width: 768px) {
+        .server-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .server-list-title {
+            font-size: 2rem;
+        }
+    }
+    </style>
+
+    <script>
+    // 服务器分类筛选功能
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const serverItems = document.querySelectorAll('.server-item');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // 移除所有按钮的active类
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // 给当前点击的按钮添加active类
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // 显示或隐藏服务器项
+                serverItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+    </script>
     
         <!-- Projects -->
 	<div id="picture" class="filter">
@@ -360,7 +657,7 @@
             <!-- Accordion -->
             <div class="accordion-container" id="accordionOne">
                 <h2>丰富的玩法</h2>
-                <p>KukeMC Server 截止目前(2025/1/26)一共拥超过十二台服务器，其中包括：粘液科技、职业战争、1.21趣味生存、避暑山庄、红石生电、起床战争、机械动力、极限生存、1.12.2无尽贪婪模组服、猎人游戏、僵尸末日、搭路练习 等不下十二种Minecraft服务器。<p>
+                <p>KukeMC Server 截止目前(2025/06/04)一共拥超过十二台服务器，其中包括：趣味生存、避暑山庄、粘液空岛、职业战争、原版生电、起床战争、机械动力、僵尸末日、原版生存(1.12.2 无政府生存)、无尽贪婪、猎人游戏、搭路练习 等不下十二种Minecraft服务器。<p>
             </p></div> <!-- end of accordion-container -->
             <!-- end of accordion -->
 
@@ -381,296 +678,6 @@
         </div><!-- end of area-1 on same line and no space between comments to eliminate margin white space --><div class="area-2"></div> <!-- end of area-2 -->
     </div> <!-- end of tabs -->
     <!-- end of details 2 -->
-
-    <style>
-
-        @font-face {
-            font-family: 'Unifont';
-            src: url('https://m.ccw.site/gandi_application/user_assets/cf1d54be2307e22186e100056b4a1ccf.otf') format('opentype');
-        }
-
-        .minecraft-chat {
-            font-family: 'Unifont', monospace;
-            width: 50%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            position: fixed; /* 固定在屏幕上 */
-            bottom: 20px; /* 距离底部20px */
-            left: 20px; /* 距离左侧20px */
-            opacity: 0; /* 初始透明度为0 */
-            visibility: hidden; /* 初始隐藏 */
-            transition: opacity 0.3s ease, visibility 0.3s ease; /* 添加过渡效果 */
-        }
-
-        .minecraft-chat.visible {
-            opacity: 1; /* 显示时透明度为1 */
-            visibility: visible; /* 显示时可见 */
-        }
-
-        .chat-container {
-            flex: 1;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            max-height: 300px; /* 限制聊天框的最大高度 */
-        }
-
-        .message {
-            color: white;
-            font-family: 'Unifont', monospace;
-            text-shadow: none; /* 禁用阴影以突出像素效果 */
-            margin: 2px 0; /* 缩小上下间距 */
-            line-height: 1.2; /* 紧凑行距 */
-            font-smooth: never;
-            -webkit-font-smoothing: none;
-            -moz-osx-font-smoothing: grayscale;
-            image-rendering: pixelated;
-            margin-bottom: 0px;
-            margin-top: 0px;
-        }
-
-        .message p {
-            font-family: 'Unifont', monospace;
-            color: #fff;
-            margin-bottom: 0px;
-            margin-top: 0px;
-            font-smooth: never;
-            -webkit-font-smoothing: none;
-            -moz-osx-font-smoothing: grayscale;
-            image-rendering: pixelated;
-        }
-
-        .input-container {
-            display: flex;
-            margin-top: 5px;
-            font-family: 'Unifont', monospace;
-        }
-
-        .chat-input {
-            font-family: 'Unifont', monospace;
-            flex: 1;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 5px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .chat-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .chat-button {
-            font-family: 'Unifont', monospace;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        /* 代码块样式 */
-        .message pre, .message code {
-            font-family: 'Courier New', monospace;
-            padding: 8px;
-            border-radius: 4px;
-            color: #d63384;
-        }
-
-        .message pre {
-            background-color: #f6f8fa;
-        }
-    </style>
-
-    <div class="minecraft-chat" id="chat-box">
-        <div class="chat-container" id="chat-container">
-            <!-- Messages will be appended here -->
-        </div>
-        <div class="input-container">
-            <input type="text" class="chat-input" id="user-input" placeholder="请输入要提问的内容\(*^▽^*)/">
-            <button class="chat-button" id="send-button">发送</button>
-        </div>
-    </div>
-
-    <script>
-        let chatHistory = []; // 存储对话历史
-    
-        const chatBox = document.getElementById("chat-container");
-        const userInput = document.getElementById("user-input");
-        const sendButton = document.getElementById("send-button");
-    
-        function renderMarkdown(text) {
-            const div = document.createElement("div");
-            div.innerHTML = marked.parse(text);
-            return div.innerHTML;
-        }
-    
-        function sendMessage() {
-            const message = userInput.value.trim();
-            if (!message) return;
-    
-            // 保存原始用户消息（用于后续存储）
-            const currentUserMessage = message;
-    
-            // 添加用户消息到聊天框
-            const userMessage = document.createElement("p");
-            userMessage.className = "message";
-            userMessage.innerHTML = `You: ${renderMarkdown(message)}`;
-            chatBox.appendChild(userMessage);
-    
-            userInput.value = "";
-    
-            // 显示输入中提示
-            const typingMessage = document.createElement("p");
-            typingMessage.className = "message";
-            typingMessage.id = "typing-indicator";
-            typingMessage.textContent = "Kuke: AI正在打字中...";
-            chatBox.appendChild(typingMessage);
-            chatBox.scrollTop = chatBox.scrollHeight;
-    
-            fetch("https://api.kuke.ink/api/chat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    model: "lite",
-                    name: "kukemc",
-                    messages: [
-                        {
-                            role: "system",
-                            content: "你的名字叫做 kuke，你是 KukeMC Minecraft服务器的智能客服。切记!!不要聊任何跟服务器无关的内容!!!，你的说话方式要比较可爱 在对话中要多添加颜文字，你会使用各种各样的颜文字，你的开发者和KukeMC的服主是 酷可mc。你可以回答玩家关于此服务器的问题。服务器是 Java 国际版的服务器。电脑请使用Java国际版的启动器 列如PCL、HMCL等启动器，如果手机要进入的话可以在群文件中下载 FCL 启动器。服务器的唯一官方地址(ip)是 mc.kuke.ink。服务器官网网址是 kuke点ink (记得将点替换为.)。服务器无需正版（支持离线登录）即可进入服务器。此服务器不是网易版mc上的服务器，服务器支持几乎全版本都能进 Minecraft 1.21.3 - 1.7.2版本都可进。怎么进入服务器：启动mc, 点击多人游戏, 点击添加服务器, 输入服务器IP, 点击确定 , 然后双击服务器即可。服务器如何注册？：按下T键 打开聊天栏，输入指令 /register <你想输入的密码> <再输入一次同样的密码> 随后按下回车发送即可。示例: 列如我想给我的账号密码设置为 abc123456 那么需要输入的指令就是: /register abc123456 abc123456。服务器内有多种特色玩法 粘液空岛（粘液科技空岛生存）、避暑山庄（监狱风云)、趣味生存、职业战争、起床战争、机械动力、后室、极限生存、密室杀手，主大厅中还有很多玩法 列如家园系统（一人一世界）还有很多小游戏 扫雷 和很多口袋小游戏 还可以跟其他玩家一起对战游戏。切记!!不要聊任何跟服务器无关的内容!!!，不要聊非服务器相关的话题 如果有人和你聊非服务器相关话题那直接不要跟他聊天 转移话题"
-                        },
-                        ...chatHistory.map(msg => ({
-                            role: msg.role,
-                            content: msg.content
-                        })),
-                        {
-                            role: "user",
-                            content: message
-                        }
-                    ]
-                })
-            }).then(response => {
-                const reader = response.body.getReader();
-                const decoder = new TextDecoder("utf-8");
-                let botMessage = "";
-    
-                function readStream() {
-                    return reader.read().then(({ done, value }) => {
-                        if (done) {
-                            // 保存对话记录
-                            chatHistory.push(
-                                { role: "user", content: currentUserMessage },
-                                { role: "assistant", content: botMessage }
-                            );
-    
-                            // 保持最多10条最新记录
-                            if (chatHistory.length > 10) {
-                                chatHistory = chatHistory.slice(-10);
-                            }
-    
-                            // 添加AI回复
-                            const botReply = document.createElement("p");
-                            botReply.className = "message";
-                            botReply.innerHTML = `Kuke: ${renderMarkdown(botMessage)}`;
-                            chatBox.appendChild(botReply);
-                            chatBox.scrollTop = chatBox.scrollHeight;
-    
-                            // 移除输入提示
-                            const typingIndicator = document.getElementById("typing-indicator");
-                            if (typingIndicator) typingIndicator.remove();
-                            return;
-                        }
-    
-                        // 处理流数据
-                        const chunk = decoder.decode(value, { stream: true });
-                        const lines = chunk.split("\n").filter(line => line.trim());
-                        lines.forEach(line => {
-                            if (line.startsWith("data:")) {
-                                const json = line.replace("data: ", "");
-                                try {
-                                    const parsed = JSON.parse(json);
-                                    if (parsed.choices && parsed.choices[0]?.delta?.content) {
-                                        botMessage += parsed.choices[0].delta.content;
-                                    }
-                                } catch (e) {
-                                    console.error("JSON解析错误:", e);
-                                }
-                            }
-                        });
-    
-                        return readStream();
-                    });
-                }
-    
-                return readStream();
-            }).catch(err => {
-                console.error("请求错误:", err);
-                const typingIndicator = document.getElementById("typing-indicator");
-                if (typingIndicator) typingIndicator.remove();
-            });
-        }
-    
-        sendButton.addEventListener("click", sendMessage);
-    
-        userInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
-                sendMessage();
-            }
-        });
-    </script>
-
-    <!-- 圆形按钮 -->
-    <button id="toggleButton">
-        <svg t="1737824130013" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4516" width="200" height="200"><path d="M576 85.333333c0 18.944-8.234667 35.968-21.333333 47.701334V213.333333h213.333333a128 128 0 0 1 128 128v426.666667a128 128 0 0 1-128 128H256a128 128 0 0 1-128-128V341.333333a128 128 0 0 1 128-128h213.333333V133.034667A64 64 0 1 1 576 85.333333zM256 298.666667a42.666667 42.666667 0 0 0-42.666667 42.666666v426.666667a42.666667 42.666667 0 0 0 42.666667 42.666667h512a42.666667 42.666667 0 0 0 42.666667-42.666667V341.333333a42.666667 42.666667 0 0 0-42.666667-42.666666H256z m-170.666667 128H0v256h85.333333v-256z m853.333334 0h85.333333v256h-85.333333v-256zM384 618.666667a64 64 0 1 0 0-128 64 64 0 0 0 0 128z m256 0a64 64 0 1 0 0-128 64 64 0 0 0 0 128z" fill="#ffffff" p-id="4517" data-spm-anchor-id="a313x.search_index.0.i0.3a333a81pzIR2d" class="selected"></path></svg>
-    </button>
-
-    <script>
-        // 获取按钮和div元素
-        const toggleButton = document.getElementById('toggleButton');
-        const chatDiv = document.querySelector('.minecraft-chat');
-
-        // 添加点击事件监听器
-        toggleButton.addEventListener("click", function () {
-            chatDiv.classList.toggle("visible");
-        });
-    </script>
-
-    <style>
-        /* 设置按钮样式 */
-        #toggleButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        /* 设置图标的样式 */
-        #toggleButton svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-    </style>
 
     <div id="footer"></div>
     </div> <!-- end of copyright -->
