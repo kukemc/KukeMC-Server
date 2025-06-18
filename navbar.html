@@ -51,21 +51,34 @@
 <script>
 // 自动激活当前页面导航项
 document.addEventListener('DOMContentLoaded', function() {
-    const currentPath = window.location.pathname + window.location.search;
+    const currentPath = window.location.pathname; // 获取当前路径，例如 /playtime 或 /playtime.html
     const linkBase = document.querySelector('base')?.href || '/';
-    const currentPage = new URL(window.location.href).pathname
-        .replace(/index\.html$/i, '')
-        .replace(/\/$/, '');
-    console.log('Current Page:', currentPage);
+
+    // 规范化当前页面路径：去除 .html 扩展名，去除末尾斜杠，去除前导斜杠
+    const normalizedCurrentPath = currentPath
+        .replace(/index\.html$/i, '') // 移除 index.html
+        .replace(/\.html$/i, '')     // 移除 .html
+        .replace(//$/, '')          // 移除末尾斜杠
+        .replace(/^\//, '');         // 移除前导斜杠
+
+    console.log('Normalized Current Page:', normalizedCurrentPath);
+
     document.querySelectorAll('.nav-link').forEach(link => {
         const linkObj = new URL(link.href, linkBase);
-        const isIndexPage = linkObj.pathname.endsWith('index.html') || linkObj.pathname === '';
-        const comparePath = linkObj.pathname.replace(/index\.html$/, '').replace(/#.*$/, '').replace(/\.html$/, '');
-        const currentPathNoExt = currentPage.replace(/\.html$/, '');
-        console.log('Link URL:', linkObj.href);
+        const linkPath = linkObj.pathname;
+
+        // 规范化导航链接路径：去除 .html 扩展名，去除末尾斜杠，去除前导斜杠
+        const normalizedLinkPath = linkPath
+            .replace(/index\.html$/i, '') // 移除 index.html
+            .replace(/#.*$/, '')         // 移除 # 后面的内容
+            .replace(/\.html$/i, '')     // 移除 .html
+            .replace(//$/, '')          // 移除末尾斜杠
+            .replace(/^\//, '');         // 移除前导斜杠
+
+        console.log('Link URL:', linkObj.href, 'Normalized Link Path:', normalizedLinkPath);
         
-        if ((isIndexPage && currentPage === '') || 
-            (!isIndexPage && comparePath === currentPathNoExt)) {
+        // 比较规范化后的路径
+        if (normalizedLinkPath === normalizedCurrentPath) {
             link.classList.add('active');
             console.log('Activated link:', link.href);
         }
