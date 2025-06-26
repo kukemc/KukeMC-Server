@@ -1,4 +1,5 @@
 # 特别鸣谢
+- 2025.06.26 [tzi_aZbLA_0716](https://afdian.com/a/tzi_aZbLA_0716) 赞助了 **65** 元！ 非常感谢！`by afdian`
 - 2025.06.13 [加油](1b431a10484c11f0b9e65254001e7c00) 赞助了 **15** 元！ 非常感谢！`by afdian`
 - 2025.06.13 [tzi_aZbLA_0716](https://afdian.com/a/tzi_aZbLA_0716) 赞助了 **40** 元！ 非常感谢！`by afdian`
 - 2025.06.13 zilinkids 赞助了 **20** 元！ 非常感谢！`由 WeChat`
