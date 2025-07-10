@@ -1,230 +1,258 @@
-<footer class="footer">
-  <!-- 顶部层：Logo 和社交图标 -->
-  <div class="footer-top">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="https://m.ccw.site/gandi_application/user_assets/882cd4d62845e0821701615178ddcd2c.webp" alt="KukeMC群组服">
-      </div>
-      <div class="footer-social">
-        <a target="_blank" rel="noopener" href="https://qm.qq.com/q/LVwHJncFSo">
-          <img class="filter-gray mb-3 ls-is-cached lazyloaded" height="40" src="https://m.ccw.site/gandi_application/user_assets/871cdb3951611ea491c2f879e8e74700.svg" alt="QQ">
-        </a>
-        <a href="https://www.bilibili.com/video/BV1UnDZYGEbU/">
-          <img class="filter-gray mb-3 ls-is-cached lazyloaded" height="40" src="https://m.ccw.site/gandi_application/user_assets/fe843ee34fb8211b0bb102ec0b6f236e.svg" alt="bilibili">
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- 分割线 -->
-  <div class="footer-divider"></div>
-
-  <!-- 中间层：信息列表 -->
-  <div class="footer-middle">
-    <div class="footer-content">
-      <div class="footer-column">
-        <h5>友情链接</h5>
-        <ul>
-          <li><a href="https://sipc.ink/" target="_blank" rel="noopener">sipc.ink</a></li>
-          <li><a href="https://lyrify.cloud/" target="_blank" rel="noopener">lyrify-Web端聚合翻译项目</a></li>
-          <li><a href="https://ccw.site/" target="_blank" rel="noopener">CCW 共创世界</a></li>
-          <li><a href="https://ccwl.appinnov.cn/" target="_blank" rel="noopener">CCW launcher</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h5>关注我们</h5>
-        <ul>
-          <li><a href="https://klpbbs.com/thread-151387-1-1.html" target="_blank" rel="noopener">苦力怕论坛宣传贴</a></li>
-          <li><a href="https://space.bilibili.com/3546652948302452/" target="_blank" rel="noopener">b站官方账号</a></li>
-          <li><a href="https://www.mclists.cn/server/7682.html" target="_blank" rel="noopener">mclists服务器列表</a></li>
-          <li><a href="https://www.minebbs.com/threads/1-6-1-21-kukemc-rpg.29497/" target="_blank" rel="noopener">Minebbs宣传贴</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h5>服务相关</h5>
-        <ul>
-          <li><a href="https://status.kuke.ink/" target="_blank" rel="noopener">服务器状态监控</a></li>
-          <li><a href="/banlist.html" target="_blank" rel="noopener">服务器封禁玩家</a></li>
-          <li><a href="/news.html" target="_blank" rel="noopener">服务器游戏公告</a></li>
-          <li><a href="/player.html" target="_blank" rel="noopener">服务器在线玩家</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h5>联系我们</h5>
-        <div class="footer-contact">
-          <ul>
-            <li><a>腐竹邮箱：</a><a href="mailto:kukemc@qq.com" target="_blank" rel="noopener" style="text-decoration: underline;">kukemc@qq.com</a></li>
-            <li><a>站点运维：</a><a href="mailto:kkmc@0ctber.cn" target="_blank" rel="noopener" style="text-decoration: underline;">kkmc@0ctber.cn</a></li>
-            <li><a>玩家交流：</a><a href="https://qm.qq.com/q/GLZnakrlaq" target="_blank" rel="noopener" style="text-decoration: underline;">QQ群: 940335608</a></li>
-            <li><a>纯凑数的：</a><a href="https://space.bilibili.com/94782782" target="_blank" rel="noopener" style="text-decoration: underline;">静静的凑数(/▽＼)</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>  
-
-  <!-- 底部层：版权信息 -->
-  <div class="pt-3 pb-5 text-center">
-    <p>Copyright © 2023-2025 KukeMC Server丨版权所有</p>
-    <p>
-      <img src="https://icp.gov.moe/favicon.ico" width="15" height="15">
-      <a href="https://icp.gov.moe/?keyword=20241120" target="_blank">萌ICP备20241120号</a>
-    </p>
-  </div>
-</footer>
-
-<style>
-  /* 通用样式 */
-  .footer {
-    font-family: Arial, sans-serif;
-  }
-
-  /* 响应式布局 */
-  @media (max-width: 767px) {
-    .footer-content {
-      flex-direction: column;
-      padding: 1rem;
+  <style>
+    .footer-namespace {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111827; /* 深黑背景 */
+      color: white;
+      padding: 2rem 1rem;
     }
 
-    .footer-column {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 2rem;
+    .footer-namespace .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .footer-logo img {
-      height: 40px;
+    .footer-namespace .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 1rem;
     }
 
-    .footer-social {
-      justify-content: center;
+    .footer-namespace .footer-about {
+      flex: 1 1 250px;
       margin-top: 1rem;
     }
 
-    .footer-social img {
-      height: 30px;
+    .footer-namespace .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #60a5fa; /* 标题改为蓝色 */
     }
 
-    .footer-contact ul {
-      text-align: center;
+    .footer-namespace .footer-logo img {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.375rem;
     }
 
-    .pt-3 {
-      padding: 1rem 0;
-    }
-
-    .pt-3 p {
+    .footer-namespace .footer-about p {
+      color: #9ca3af;
+      margin-top: 0.5rem;
       font-size: 0.9rem;
     }
-  }
 
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .footer-namespace .social-icons a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-right: 0.5rem;
+      background-color: #374151;
+      border-radius: 9999px;
+      transition: background-color 0.3s ease;
+    }
 
-  /* 顶部层 */
-  .footer-top {
-    background-color: #1F2829;
-    padding: 0.3rem 0;
-  }
+    .footer-namespace .social-icons a:hover {
+      background-color: #2d3748;
+    }
 
-  .footer-logo img {
-    height: 50px;
-  }
+    .footer-namespace .social-icons svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: #cccccc;
+      transition: fill 0.3s ease;
+    }
 
-  .footer-logo .logo {
-    line-height: 0.5;
-  }
+    .footer-namespace .social-icons a:hover svg {
+      fill: #ffffff;
+    }
 
-  .footer-social {
-    display: flex;
-    gap: 1rem;
-  }
+    .footer-namespace .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      flex: 2 1 600px;
+    }
 
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    background-color: #fff;
-    color: #1D1B4B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+    .footer-namespace .footer-links-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #60a5fa; /* 所有标题统一为蓝色 */
+    }
 
-  .social-icon:hover {
-    background-color: #1F2829;
-    color: #fff;
-  }
+    .footer-namespace .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
 
-  /* 分割线 */
-  .footer-divider {
-    height: 1px;
-    background-color: #484A46;
-    margin: 0;
-  }
+    .footer-namespace .footer-links li {
+      margin-bottom: 0.5rem;
+    }
 
-  /* 中间层 */
-  .footer-middle {
-    background-color: #1F2829;
-    padding: 2rem 0;
-  }
+    .footer-namespace .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-  .footer-column {
-    flex: 1;
-    min-width: 200px;
-  }
+    .footer-namespace .footer-links a:hover {
+      color: #4ade80;
+    }
 
-  .footer-column h5 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    position: relative; /* 让伪元素相对于文字定位 */
-    color: #fff;
-  }
+    /* 底部版权 */
+    .footer-namespace .footer-bottom {
+      margin-top: 1rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid #374151;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
 
-  .footer-column h5::after {
-    content: '';
-    display: block;
-    width: 30px; /* 横杠的宽度 */
-    height: 2px; /* 横杠的高度 */
-    background-color: #fff; /* 横杠的颜色 */
-    margin: 0 auto;
-    position: absolute;
-    bottom: -5px; /* 横杠距离文字的间距 */
-    left: 15px;
-    transform: translateX(-50%); /* 居中对齐 */
-  }
+    /* 友情链接区域（放在分割线下方） */
+    .footer-namespace .friend-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      padding: 0.25rem 0;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
 
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-  }
+    .footer-namespace .friend-links-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      min-width: 80px;
+      color: #60a5fa; /* 标题统一为蓝色 */
+    }
 
-  .footer-column ul li {
-    margin-bottom: 0.5rem;
-  }
+    .footer-namespace .friend-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.8rem;
+    }
 
-  .footer-column ul li a {
-    color: #787976;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
+    .footer-namespace .friend-links a:hover {
+      color: #4ade80;
+    }
 
-  .footer-column ul li a:hover {
-    color: #4f27ff;
-  }
+    .footer-namespace .friend-links .link-separator {
+      color: #60a5fa;
+      margin: 0 0.25rem;
+    }
+    
+    .footer-namespace .footer-contact-label {
+      color: #9ca3af; /* 和其他链接文字颜色一致 */
+      font-weight: normal;
+      margin-right: 0.25rem;
+    }
+  </style>
+</head>
+<body>
 
-  /* 底部层 */
-  .pt-3 {
-    background-color: #1e2424;
-  }
-</style>
+  <!-- Footer 区域（完全独立样式） -->
+<footer class="footer-namespace">
+  <div class="container">
+
+    <!-- 同一行内容 -->
+    <div class="footer-top">
+      <!-- 左侧：Logo & About -->
+      <div class="footer-about" style="align-self: flex-start;">
+        <div class="footer-logo">
+          <img src="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png " alt="Logo" style="width: 2.25rem; height: 2.25rem;" />
+          <span>KukeMC 群组服</span>
+        </div>
+        <p>
+          我们是一个创立于2023年的我的世界群组服，提供多样的游戏玩法和优秀的玩家氛围。
+        </p>
+        <div class="social-icons">
+          <!-- QQ 图标 -->
+          <a href="https://qm.qq.com/q/LVwHJncFSo " title="加入我们的 QQ 群">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.395 15.035a40 40 0 0 0-.803-2.264l-1.079-2.695c.001-.032.014-.562.014-.836C19.526 4.632 17.351 0 12 0S4.474 4.632 4.474 9.241c0 .274.013.804.014.836l-1.08 2.695a39 39 0 0 0-.802 2.264c-1.021 3.283-.69 4.643-.438 4.673.54.065 2.103-2.472 2.103-2.472 0 1.469.756 3.387 2.394 4.771-.612.188-1.363.479-1.845.835-.434.32-.379.646-.301.778.343.578 5.883.369 7.482.189 1.6.18 7.14.389 7.483-.189.078-.132.132-.458-.301-.778-.483-.356-1.233-.646-1.846-.836 1.637-1.384 2.393-3.302 2.393-4.771 0 0 1.563 2.537 2.103 2.472.251-.03.581-1.39-.438-4.673"/>
+            </svg>
+          </a>
+
+          <!-- B站 图标 -->
+          <a href="https://space.bilibili.com/3546652948302452 " title="关注我们的 B站 账号">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 右侧：三列链接 -->
+      <div class="footer-columns">
+        <div class="footer-links">
+          <div class="footer-links-title">关注我们</div>
+          <ul>
+            <li><a href="https://klpbbs.com/thread-151387-1-1.html ">苦力怕论坛宣传贴</a></li>
+            <li><a href="https://space.bilibili.com/3546652948302452/ ">b站官方账号</a></li>
+            <li><a href="https://www.mclists.cn/server/7682.html ">MClists服务器列表</a></li>
+            <li><a href="https://www.minebbs.com/threads/1-6-1-21-kukemc-rpg.29497/ ">Minebbs宣传贴</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-links-title">实用工具</div>
+          <ul>
+            <li><a href="https://kuke.ink ">KukeWiki 官方百科</a></li>
+            <li><a href="https://kuke.ink ">服务器封禁玩家列表</a></li>
+            <li><a href="https://kuke.ink ">服务器在线玩家</a></li>
+            <li><a href="https://kuke.ink ">服务器玩家留言板</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-links-title">联系我们</div>
+            <ul>
+              <li>
+                <span class="footer-contact-label">服主邮箱:</span>
+                <a href="mailto:kukemc@qq.com" target="_blank" rel="noopener">kukemc@qq.com</a>
+              </li>
+              <li>
+                <span class="footer-contact-label">站点运维邮箱:</span>
+                 <a href="mailto:kkmc@0ctber.cn" target="_blank" rel="noopener">kkmc@0ctber.cn</a>
+              </li>
+              <li>
+                <span class="footer-contact-label">官方QQ群:</span>
+                <a href="https://qm.qq.com/q/GLZnakrlaq " target="_blank" rel="noopener">940335608</a>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 横向友情链接 -->
+    <div class="friend-links">
+      <div class="friend-links-title">友情链接：</div>
+      <a href="https://sipc.ink/ ">SIPC的个人主页</a>
+      <span class="link-separator">·</span>
+      <a href="https://lyrify.cloud/ ">lyrify-Web端聚合翻译项目</a>
+      <span class="link-separator">·</span>
+      <a href="https://ccw.site ">共创世界</a>
+      <span class="link-separator">·</span>
+      <a href="https://ccwl.appinnov.cn/ ">CCW launcher</a>
+    </div>
+
+    <!-- 底部版权 -->
+    <div class="footer-bottom" style="margin-top: 0.5rem; padding-top: 0.25rem;">
+      <p>Copyright © 2023-2025 KukeMC Server丨版权所有。</p>
+      <p>
+        <a href="https://icp.gov.moe/?keyword=20241120" target="_blank" rel="noopener noreferrer" style="color: #6b7280; text-decoration: underline;">萌ICP备20241120号</a>
+      </p>
+    </div>
+  </div>
+</footer>
