@@ -163,10 +163,18 @@
   color: #9ca3af;
   font-weight: normal;
   margin-right: 0.25rem;
+  white-space: pre;
 }
 
-.footer-namespace .footer-about-top {
-  align-self: flex-start;
+.footer-namespace .footer-contact-link {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-namespace .footer-contact-link:hover {
+  color: #4ade80;
 }
 </style>
 
@@ -177,7 +185,7 @@
     <!-- 同一行内容 -->
     <div class="footer-top">
       <!-- 左侧：Logo & About -->
-      <div class="footer-about footer-about-top">
+      <div class="footer-about">
         <div class="footer-logo">
           <img src="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png " alt="Logo" />
           <span>KukeMC 群组服</span>
@@ -187,7 +195,7 @@
         </p>
         <div class="social-icons">
           <!-- QQ 图标 -->
-          <a href="https://qm.qq.com/q/LVwHJncFSo " title="加入我们的 QQ 群">
+          <a href="https://qm.qq.com/q/GLZnakrlaq " title="加入我们的 QQ 群">
             <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M21.395 15.035a40 40 0 0 0-.803-2.264l-1.079-2.695c.001-.032.014-.562.014-.836C19.526 4.632 17.351 0 12 0S4.474 4.632 4.474 9.241c0 .274.013.804.014.836l-1.08 2.695a39 39 0 0 0-.802 2.264c-1.021 3.283-.69 4.643-.438 4.673.54.065 2.103-2.472 2.103-2.472 0 1.469.756 3.387 2.394 4.771-.612.188-1.363.479-1.845.835-.434.32-.379.646-.301.778.343.578 5.883.369 7.482.189 1.6.18 7.14.389 7.483-.189.078-.132.132-.458-.301-.778-.483-.356-1.233-.646-1.846-.836 1.637-1.384 2.393-3.302 2.393-4.771 0 0 1.563 2.537 2.103 2.472.251-.03.581-1.39-.438-4.673"/>
             </svg>
@@ -207,20 +215,20 @@
         <div class="footer-links">
           <div class="footer-links-title">关注我们</div>
           <ul>
-            <li><a href="https://klpbbs.com/thread-151387-1-1.html ">苦力怕论坛宣传贴</a></li>
-            <li><a href="https://space.bilibili.com/3546652948302452/ ">B站官方账号</a></li>
-            <li><a href="https://www.mclists.cn/server/7682.html ">MClists服务器列表</a></li>
-            <li><a href="https://www.minebbs.com/threads/1-6-1-21-kukemc-rpg.29497/ ">Minebbs宣传贴</a></li>
+            <li><a href="https://klpbbs.com/thread-151387-1-1.html " class="footer-contact-link">苦力怕论坛宣传贴</a></li>
+            <li><a href="https://space.bilibili.com/3546652948302452/ " class="footer-contact-link">B站官方账号</a></li>
+            <li><a href="https://www.mclists.cn/server/7682.html " class="footer-contact-link">MClists服务器列表</a></li>
+            <li><a href="https://www.minebbs.com/threads/1-6-1-21-kukemc-rpg.29497/ " class="footer-contact-link">Minebbs宣传贴</a></li>
           </ul>
         </div>
 
         <div class="footer-links">
           <div class="footer-links-title">实用工具</div>
           <ul>
-            <li><a href="https://kuke.ink ">KukeWiki 官方百科</a></li>
-            <li><a href="https://kuke.ink ">服务器封禁玩家列表</a></li>
-            <li><a href="https://kuke.ink ">服务器在线玩家</a></li>
-            <li><a href="https://kuke.ink ">服务器玩家留言板</a></li>
+            <li><a href="https://kuke.ink " class="footer-contact-link">KukeWiki 官方百科</a></li>
+            <li><a href="https://kuke.ink " class="footer-contact-link">服务器封禁玩家列表</a></li>
+            <li><a href="https://kuke.ink " class="footer-contact-link">服务器在线玩家</a></li>
+            <li><a href="https://kuke.ink " class="footer-contact-link">服务器玩家留言板</a></li>
           </ul>
         </div>
 
@@ -229,15 +237,15 @@
           <ul>
             <li>
               <span class="footer-contact-label">服主邮箱：</span>
-              <a href="mailto:kukemc@qq.com" target="_blank" rel="noopener">kukemc@qq.com</a>
+              <a href="mailto:kukemc@qq.com" target="_blank" rel="noopener noreferrer" class="footer-contact-link">kukemc@qq.com</a>
             </li>
             <li>
               <span class="footer-contact-label">站点运维邮箱：</span>
-              <a href="mailto:kkmc@0ctber.cn" target="_blank" rel="noopener">kkmc@0ctber.cn</a>
+              <a href="mailto:kkmc@0ctber.cn" target="_blank" rel="noopener noreferrer" class="footer-contact-link">kkmc@0ctber.cn</a>
             </li>
             <li>
               <span class="footer-contact-label">官方QQ群：</span>
-              <a href="https://qm.qq.com/q/GLZnakrlaq " target="_blank" rel="noopener">940335608</a>
+              <a href="https://qm.qq.com/q/GLZnakrlaq " target="_blank" rel="noopener noreferrer" class="footer-contact-link">940335608</a>
             </li>
           </ul>
         </div>
