@@ -1,174 +1,186 @@
-<style>
-.footer-namespace {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #111827;
-  color: white;
-  padding: 2rem 1rem;
-}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>KukeMC Footer</title>
+  <style>
+    .footer-namespace {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111827;
+      color: white;
+      padding: 2rem 1rem;
+    }
 
-.footer-namespace .container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    .footer-namespace .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-.footer-namespace .footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 1rem;
-}
+    .footer-namespace .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
 
-.footer-namespace .footer-about {
-  flex: 1 1 250px;
-  margin-top: 1rem;
-}
+    .footer-namespace .footer-about {
+      flex: 1 1 250px;
+      margin-top: 1rem;
+    }
 
-.footer-namespace .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #60a5fa;
-}
+    .footer-namespace .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #60a5fa;
+    }
 
-.footer-namespace .footer-logo img {
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 0.375rem;
-}
+    .footer-namespace .footer-logo img {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.375rem;
+    }
 
-.footer-namespace .footer-about p {
-  color: #9ca3af;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-}
+    .footer-namespace .footer-about p {
+      color: #9ca3af;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
 
-.footer-namespace .social-icons a {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-right: 0.5rem;
-  background-color: #374151;
-  border-radius: 9999px;
-  transition: background-color 0.3s ease;
-}
+    .footer-namespace .social-icons a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-right: 0.5rem;
+      background-color: #374151;
+      border-radius: 9999px;
+      transition: background-color 0.3s ease;
+    }
 
-.footer-namespace .social-icons a:hover {
-  background-color: #2d3748;
-}
+    .footer-namespace .social-icons a:hover {
+      background-color: #2d3748;
+    }
 
-.footer-namespace .social-icons svg {
-  width: 1.2rem;
-  height: 1.2rem;
-  fill: #cccccc;
-  transition: fill 0.3s ease;
-}
+    .footer-namespace .social-icons svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: #cccccc;
+      transition: fill 0.3s ease;
+    }
 
-.footer-namespace .social-icons a:hover svg {
-  fill: #ffffff;
-}
+    .footer-namespace .social-icons a:hover svg {
+      fill: #ffffff;
+    }
 
-.footer-namespace .footer-columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-  flex: 2 1 600px;
-}
+    .footer-namespace .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      flex: 2 1 600px;
+    }
 
-.footer-namespace .footer-links-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #60a5fa;
-}
+    .footer-namespace .footer-links-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #60a5fa;
+    }
 
-.footer-namespace .footer-links ul {
-  list-style: none;
-  padding: 0;
-}
+    .footer-namespace .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
 
-.footer-namespace .footer-links li {
-  margin-bottom: 0.5rem;
-}
+    .footer-namespace .footer-links li {
+      margin-bottom: 0.5rem;
+    }
 
-.footer-namespace .footer-links a {
-  color: #9ca3af;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+    .footer-namespace .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-.footer-namespace .footer-links a:hover {
-  color: #4ade80;
-}
+    .footer-namespace .footer-links a:hover {
+      color: #4ade80;
+    }
 
-.footer-namespace .footer-bottom {
-  margin-top: 0.5rem;
-  padding-top: 0.25rem;
-  border-top: 1px solid #374151;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #6b7280;
-}
+    .footer-namespace .footer-bottom {
+      margin-top: 0.5rem;
+      padding-top: 0.25rem;
+      border-top: 1px solid #374151;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
 
-.footer-namespace .footer-bottom a {
-  color: #6b7280;
-  text-decoration: underline;
-}
+    .footer-namespace .footer-bottom a {
+      color: #6b7280;
+      text-decoration: underline;
+    }
 
-.footer-namespace .footer-bottom a:hover {
-  color: #4ade80;
-}
+    .footer-namespace .footer-bottom a:hover {
+      color: #4ade80;
+    }
 
-.footer-namespace .friend-links {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  padding: 0.25rem 0;
-  font-size: 0.8rem;
-  margin-top: 1rem;
-  justify-content: center;
-}
+    .footer-namespace .friend-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      padding: 0.25rem 0;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
 
-.footer-namespace .friend-links-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-  min-width: 80px;
-  color: #60a5fa;
-}
+    .footer-namespace .friend-links-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      min-width: 80px;
+      color: #60a5fa;
+    }
 
-.footer-namespace .friend-links a {
-  color: #9ca3af;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 0.8rem;
-}
+    .footer-namespace .friend-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.8rem;
+    }
 
-.footer-namespace .friend-links a:hover {
-  color: #4ade80;
-}
+    .footer-namespace .friend-links a:hover {
+      color: #4ade80;
+    }
 
-.footer-namespace .friend-links .link-separator {
-  color: #60a5fa;
-  margin: 0 0.25rem;
-}
+    .footer-namespace .friend-links .link-separator {
+      color: #60a5fa;
+      margin: 0 0.25rem;
+    }
 
-.footer-namespace .footer-contact-label {
-  color: #9ca3af;
-  font-weight: normal;
-  margin-right: 0.25rem;
-  white-space: pre; /* 关键点：防止浏览器自动解析成链接 */
-  pointer-events: none; /* 禁止交互 */
-}
-</style>
+    .footer-namespace .footer-contact-label {
+      color: #9ca3af;
+      font-weight: normal;
+      margin-right: 0.25rem;
+      white-space: pre;
+      pointer-events: none;
+    }
 
-<!-- Footer 区域（完全独立样式） -->
+    /* 使用伪类显示邮箱 */
+    .hide-email::before {
+      content: attr(data-email);
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
 <footer class="footer-namespace">
   <div class="container">
 
@@ -208,7 +220,7 @@
             <li><a href="https://klpbbs.com/thread-151387-1-1.html ">苦力怕论坛宣传贴</a></li>
             <li><a href="https://space.bilibili.com/3546652948302452/ ">B站官方账号</a></li>
             <li><a href="https://www.mclists.cn/server/7682.html ">MClists服务器列表</a></li>
-            <li><a href="https://www.minebbs.com/threads/1-6-1-21-kukemc-rpg.29497/ ">Minebbs宣传贴</a></li>
+            <li><a href="https://www.minebbs.com/threads/1-6-1-21-kukemc.29497/ ">Minebbs宣传贴</a></li>
           </ul>
         </div>
 
@@ -227,11 +239,11 @@
           <ul>
             <li>
               <span class="footer-contact-label">服主邮箱：</span>
-              <a href="mailto:kukemc@qq.com" target="_blank" rel="noopener">kukemc@qq.com</a>
+              <a href="mailto:kukemc@qq.com" target="_blank" rel="noopener" class="hide-email" data-email="kukemc@qq.com"></a>
             </li>
             <li>
               <span class="footer-contact-label">站点运维邮箱：</span>
-              <a href="mailto:kkmc@0ctber.cn" target="_blank" rel="noopener">kkmc@0ctber.cn</a>
+              <a href="mailto:kkmc@0ctber.cn" target="_blank" rel="noopener" class="hide-email" data-email="kkmc@0ctber.cn"></a>
             </li>
             <li>
               <span class="footer-contact-label">官方QQ群：</span>
@@ -250,6 +262,8 @@
       <a href="https://lyrify.cloud/ ">lyrify-Web端聚合翻译项目</a>
       <span class="link-separator">·</span>
       <a href="https://ccw.site ">共创世界</a>
+      <span class="link-separator">·</span>
+      <a href="https://ccwl.appinnov.cn/ ">CCW launcher</a>
     </div>
 
     <!-- 底部版权 -->
@@ -261,3 +275,6 @@
     </div>
   </div>
 </footer>
+
+</body>
+</html>
