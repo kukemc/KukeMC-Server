@@ -46,11 +46,14 @@
         }
 
         .text-container-2 {
-            background: rgba(255, 255, 255, 0.322);
+            background: rgba(255, 255, 255, 0.25);
             padding: 30px;
             margin: 15px;
             border-radius: 15px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             min-height: 300px;
             max-height: 300px;
             overflow: hidden; /* 隐藏溢出的内容 */
@@ -67,20 +70,24 @@
 
         /* 玩家卡片样式 */
         .player {
-            background: rgba(54, 185, 202, 0.363); /* 半透明白色背景 */
+            background: rgba(255, 255, 255, 0.25); /* 半透明白色背景 */
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 20px;
             margin: 15px;
             text-align: center;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s, box-shadow 0.3s;
+            width: 180px;
         }
 
         /* 鼠标悬停效果 */
         .player:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.35);
         }
 
         /* 玩家头像样式 */
@@ -105,6 +112,17 @@
             font-size: 1.2em;
             font-weight: bold;
             color: #333;
+        }
+
+        /* 服务器信息样式 */
+        .player-server {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 5px;
+            display: inline-block;
         }
     </style>
 </head>
@@ -162,7 +180,7 @@
                         <h1 style="font-size: 3em;
                         margin-bottom: 20px;
                         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-                        text-align: center; /* 标题居中 */">在线玩家</h1>
+                        text-align: center; /* 标题居中 */; color: #ffffff;">在线玩家</h1>
                         <h4 style="color:white;margin-bottom:3rem;text-shadow: 
                         0 0 10px #fff,
                         0 0 20px rgba(81, 203, 238, 1),
@@ -178,6 +196,22 @@
                         <div class="player-list" id="playerList"></div>
 
                         <script>
+                            // 服务器名称映射
+                            const serverNames = {
+                                "kitbattle": "职业战争",
+                                "slime": "粘液空岛",
+                                "bedwars": "起床战争",
+                                "redstone": "纯净生存",
+                                "lobby": "大厅",
+                                "surret": "避暑山庄",
+                                "auth": "登录大厅",
+                                "funsurvival": "趣味生存",
+                                "bridgepractise": "搭路练习",
+                                "zombies": "僵尸末日",
+                                "creative": "创造家园",
+                                "murdermystery": "密室杀手"
+                            };
+
                             async function fetchPlayerList() {
                                 try {
                                     const response = await fetch('https://api.kuke.ink/api/playerlist');
@@ -201,14 +235,22 @@
                                             const playerImage = document.createElement('img');
                                             playerImage.src = `https://crafthead.net/cube/${player.name}`;
                                             playerImage.alt = `${player.name}'s avatar`;
+                                            playerImage.onerror = function() {
+                                                this.src = 'https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png';
+                                            };
 
                                             const playerName = document.createElement('div');
                                             playerName.className = 'player-name';
                                             playerName.textContent = player.name;
 
+                                            const playerServer = document.createElement('div');
+                                            playerServer.className = 'player-server';
+                                            playerServer.textContent = serverNames[player.server] || player.server;
+
                                             playerAvatar.appendChild(playerImage);
                                             playerDiv.appendChild(playerAvatar);
                                             playerDiv.appendChild(playerName);
+                                            playerDiv.appendChild(playerServer);
                                             playerListDiv.appendChild(playerDiv);
                                         });
                                         textContainer.style.maxHeight = textContainer.scrollHeight + 'px';
