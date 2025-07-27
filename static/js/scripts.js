@@ -46,7 +46,7 @@
             }
             
             // 如果是主页，根据锚点确定高亮项
-            if (normalizedCurrentPath === '') {
+            if (normalizedCurrentPath === '' || normalizedCurrentPath === 'index') {
                 const hash = window.location.hash;
                 if (hash) {
                     // 根据hash值确定应该高亮的导航项
@@ -59,7 +59,8 @@
                     // 如果没有hash，默认高亮首页
                     document.querySelectorAll('.nav-link').forEach(link => {
                         if (link.getAttribute('href') === 'index.html#header' || 
-                            link.getAttribute('href') === 'index.html') {
+                            link.getAttribute('href') === 'index.html' ||
+                            link.getAttribute('href') === '#header') {
                             link.classList.add('active');
                         }
                     });
@@ -115,7 +116,7 @@
         window.addEventListener('hashchange', updateNavHighlight);
         
         // 监听滚动事件，实现智能高亮（仅在主页时）
-        if (normalizedCurrentPath === '') {
+        if (normalizedCurrentPath === '' || normalizedCurrentPath === 'index') {
             let isScrolling = false;
             
             window.addEventListener('scroll', function() {
