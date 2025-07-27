@@ -19,6 +19,7 @@
     <link href="static/css/bootstrap.css" rel="stylesheet">
     <link href="static/css/styles.css" rel="stylesheet">
     <link href="static/css/animations.css" rel="stylesheet">
+    <link href="static/css/banlist.css" rel="stylesheet">
     <link rel="icon" href="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
@@ -63,165 +64,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-container">
-                        <style>
-                            @media (min-width: 1300px) {
-                                .container {
-                                    max-width: 1300px;
-                                }
-                            }
-
-                            table {
-                                width: 100%;
-                                border-collapse: separate;
-                                border-spacing: 0 0px;
-                                font-family: Arial, sans-serif;
-                            }
-
-                            @media (max-width: 768px) {
-                                table {
-                                    font-size: 14px;
-                                    width: 100%;
-                                    overflow-x: auto;
-                                    display: block;
-                                    white-space: nowrap;
-                                    margin: 0 auto;
-                                }
-                                th, td {
-                                    padding: 8px;
-                                    white-space: normal;
-                                    word-break: break-word;
-                                }
-                                th {
-                                    display: none;
-                                }
-                                td {
-                                    display: block;
-                                    text-align: left;
-                                    border-bottom: 1px solid #eee;
-                                    position: relative;
-                                    padding-left: 40%;
-                                    min-height: 40px;
-                                }
-                                td::before {
-                                    content: attr(data-label);
-                                    position: absolute;
-                                    left: 0;
-                                    width: 35%;
-                                    padding-right: 10px;
-                                    white-space: nowrap;
-                                    text-align: right;
-                                    font-weight: bold;
-                                    color: #666;
-                                }
-                                td[data-label="玩家"]::before {
-                                    content: "玩家：";
-                                }
-                                td[data-label="处理者"]::before {
-                                    content: "处理者：";
-                                }
-                                td[data-label="原因"]::before {
-                                    content: "原因：";
-                                }
-                                td[data-label="处理日期"]::before {
-                                    content: "处理日期：";
-                                }
-                                td[data-label="过期时间"]::before {
-                                    content: "过期时间：";
-                                }
-                                td[data-label="处罚范围"]::before {
-                                    content: "处罚范围：";
-                                }
-                                .ban-type {
-                                    padding: 2px 4px;
-                                    font-size: 10px;
-                                }
-                                .avatar {
-                                    width: 16px;
-                                    height: 16px;
-                                }
-                            }
-                            th, td {
-                                padding: 12px;
-                                text-align: left;
-                            }
-                            th {
-                                background-color: #fff;
-                                font-weight: bold;
-                                text-align: center;
-                                font-size: 16px;
-                                border-bottom: 2px solid #ddd;
-                            }
-                            td {
-                                text-align: center;
-                                padding: 18px;
-                            }
-                            .ban-type {
-                                color: white;
-                                background-color: red;
-                                padding: 5px 10px;
-                                border-radius: 5px;
-                                font-weight: bold;
-                            }
-                            .avatar {
-                                width: 30px;
-                                height: 30px;
-                            }
-                            .highlight {
-                                color: red;
-                                font-weight: bold;
-                            }
-                            tbody tr + tr {
-                                margin-top: 0;
-                            }
-                            tbody td {
-                                border-bottom: 1px solid #ddd;
-                            }
-                            .pagination-container {
-                                margin-top: 20px;
-                                text-align: center;
-                                position: absolute; /* 使用绝对定位 */
-                                bottom: 140px; /* 定位到底部 */
-                                width: 100%; /* 占满整个容器宽度 */
-                            }
-                            .pagination-container button {
-                                padding: 10px 20px;
-                                margin: 0 15px; /* 调整按钮之间的间距 */
-                                color: #fff;
-                                background-color: #007bff;
-                                border: 1px solid #007bff;
-                                border-radius: 5px;
-                                font-weight: bold;
-                                cursor: pointer;
-                                transition: all 0.3s ease-in-out;
-                            }
-                            .pagination-container button:disabled {
-                                background-color: #cccccc;
-                                border-color: #cccccc;
-                                cursor: not-allowed;
-                            }
-                            .pagination-container button:hover {
-                                background-color: #0056b3;
-                                border-color: #0056b3;
-                            }
-                            .pagination-container button:disabled:hover {
-                                background-color: #cccccc;
-                                border-color: #cccccc;
-                            }
-                            .ex-basic-2 {
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: space-between;
-                                min-height: 0vh;
-                            }
-                        </style>
                         <h1>封禁名单</h1>
                         <p>以下为 KukeMC 服务器封禁名单，如有任何疑问请联系管理员。</p>
                         
                         <!-- 添加搜索框 -->
                         <div style="margin-bottom: 20px;">
                             <input type="text" id="searchInput" placeholder="搜索玩家名称..." style="padding: 8px; width: 300px; border: 1px solid #ddd; border-radius: 4px;">
-                            <button onclick="searchBans()" style="padding: 8px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">搜索</button>
-                            <button onclick="resetSearch()" style="padding: 8px 15px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">重置</button>
+                            <button id="searchButton" style="padding: 8px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px;">搜索</button>
+                            <button id="resetButton" style="padding: 8px 15px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 5px;">重置</button>
                         </div>
 
                         <div id="loadingIndicator" style="text-align: center; margin: 20px;">
@@ -244,210 +94,12 @@
                             </tbody>
                         </table>
                         <div class="pagination-container">
-                            <button id="prevPage" onclick="changePage(-1)" disabled>上一页</button>
-                            <span id="pageInfo">1/1</span>
-                            <button id="nextPage" onclick="changePage(1)">下一页</button>
+                            <nav style="padding: 12px;">
+                                <ul class="pagination" id="pagination">
+                                    <!-- Pagination will be generated by JavaScript -->
+                                </ul>
+                            </nav>
                         </div>
-                        <script>
-                            let currentPage = 1;
-                            const itemsPerPage = 20;
-                            let totalPages = 1;
-                            let totalItems = 0;
-                            let currentSearch = '';
-
-                            // 格式化日期的函数
-                            function formatDate(dateString) {
-                                if (!dateString || dateString === "forever") return "永久";
-                                
-                                // 处理带微秒和时区的日期格式: 2025-07-27T07:04:56.089000 +0800
-                                let formattedString = dateString;
-                                if (dateString.includes('.')) {
-                                    // 移除微秒部分并重新组合日期字符串
-                                    const parts = dateString.split(' ');
-                                    if (parts.length === 3) {
-                                        // 格式为: 2025-07-27T07:04:56.089000 +0800
-                                        const dateTimePart = parts[0].split('.')[0]; // 获取日期时间部分，去掉微秒
-                                        const timezonePart = parts[2]; // 获取时区部分
-                                        formattedString = dateTimePart + ' ' + timezonePart;
-                                    } else {
-                                        // 如果不是预期格式，尝试直接处理
-                                        formattedString = dateString.split('.')[0];
-                                    }
-                                }
-                                
-                                // 创建日期对象
-                                const date = new Date(formattedString);
-                                if (isNaN(date)) {
-                                    // 如果还是无效日期，尝试其他格式
-                                    const cleanedString = dateString.replace(/\.\d+/, '');
-                                    const date2 = new Date(cleanedString);
-                                    if (isNaN(date2)) {
-                                        return "无效日期";
-                                    }
-                                    const year = date2.getFullYear();
-                                    const month = String(date2.getMonth() + 1).padStart(2, '0');
-                                    const day = String(date2.getDate()).padStart(2, '0');
-                                    const hours = String(date2.getHours()).padStart(2, '0');
-                                    const minutes = String(date2.getMinutes()).padStart(2, '0');
-                                    const seconds = String(date2.getSeconds()).padStart(2, '0');
-                                    return `${year}-${month}-${day}<br>${hours}:${minutes}:${seconds}`;
-                                }
-                                
-                                const year = date.getFullYear();
-                                const month = String(date.getMonth() + 1).padStart(2, '0');
-                                const day = String(date.getDate()).padStart(2, '0');
-                                const hours = String(date.getHours()).padStart(2, '0');
-                                const minutes = String(date.getMinutes()).padStart(2, '0');
-                                const seconds = String(date.getSeconds()).padStart(2, '0');
-                                return `${year}-${month}-${day}<br>${hours}:${minutes}:${seconds}`;
-                            }
-
-                            // 搜索功能
-                            function searchBans() {
-                                const searchInput = document.getElementById('searchInput');
-                                currentSearch = searchInput.value.trim();
-                                currentPage = 1;
-                                fetchBanList();
-                            }
-
-                            // 重置搜索
-                            function resetSearch() {
-                                document.getElementById('searchInput').value = '';
-                                currentSearch = '';
-                                currentPage = 1;
-                                fetchBanList();
-                            }
-
-                            // 获取封禁列表
-                            function fetchBanList() {
-                                // 显示加载指示器
-                                document.getElementById('loadingIndicator').style.display = 'block';
-                                document.getElementById('banListTable').style.display = 'none';
-
-                                // 构造API URL
-                                let apiUrl = `https://api.kuke.ink/api/banlist?page=${currentPage}&per_page=${itemsPerPage}`;
-                                if (currentSearch) {
-                                    apiUrl += `&search=${encodeURIComponent(currentSearch)}`;
-                                }
-
-                                fetch(apiUrl)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        // 更新分页信息
-                                        totalItems = data.total;
-                                        totalPages = data.pages;
-                                        currentPage = data.current_page;
-
-                                        // 显示数据
-                                        displayBanList(data.data);
-
-                                        // 更新分页控件
-                                        updatePagination();
-
-                                        // 隐藏加载指示器，显示表格
-                                        document.getElementById('loadingIndicator').style.display = 'none';
-                                        document.getElementById('banListTable').style.display = 'table';
-                                    })
-                                    .catch(error => {
-                                        console.error('Error:', error);
-                                        document.getElementById('loadingIndicator').innerHTML = '<p style="color: red;">加载失败，请重试。</p>';
-                                    });
-                            }
-
-                            // 显示封禁列表
-                            function displayBanList(banData) {
-                                const banListBody = document.getElementById('banListBody');
-                                banListBody.innerHTML = '';
-
-                                if (!banData || banData.length === 0) {
-                                    const row = document.createElement('tr');
-                                    row.innerHTML = `
-                                        <td colspan="7" style="text-align: center; padding: 20px;">
-                                            没有找到相关封禁记录
-                                        </td>
-                                    `;
-                                    banListBody.appendChild(row);
-                                    return;
-                                }
-
-                                banData.forEach(ban => {
-                                    let row = document.createElement('tr');
-                                    row.innerHTML = `
-                                        <td><span class="ban-type">封禁</span></td>
-                                        <td>
-                                            <img src="https://crafthead.net/avatar/${ban.name}" 
-                                                 alt="${ban.name}'s avatar" 
-                                                 class="avatar" 
-                                                 style="margin-top: 3px; margin-bottom: 1px;" 
-                                                 onerror="this.src='https://m.ccw.site/gandi_application/user_assets/b23d1f215b69e9782b51a2a324b9469e.png'; this.onerror=null;">
-                                            <br>${ban.name}
-                                        </td>
-                                        <td>
-                                            ${ban.source === '控制台'
-                                                ? `<img src="https://m.ccw.site/gandi_application/user_assets/b23d1f215b69e9782b51a2a324b9469e.png" alt="${ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"><br>${ban.source}`
-                                                : `<img src="https://crafthead.net/avatar/${ban.banned_by_name || ban.source}" alt="${ban.banned_by_name || ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;" onerror="this.src='https://m.ccw.site/gandi_application/user_assets/b23d1f215b69e9782b51a2a324b9469e.png'; this.onerror=null;"><br>${ban.banned_by_name || ban.source}`
-                                            }
-                                        </td>
-                                        <td style="max-width: 400px;">KukeMC | ${ban.reason}</td>
-                                        <td>${formatDate(ban.created)}</td>
-                                        <td>
-                                            ${ban.expires === "forever" || ban.expires === null
-                                                ? (ban.active 
-                                                    ? '<span class="highlight">永久封禁</span>'
-                                                    : '<span class="highlight">永久封禁 (已解封 | 处理者: ' + (ban.removed_by_name || '未知') + ')</span>')
-                                                : (ban.active 
-                                                    ? formatDate(ban.expires)
-                                                    : formatDate(ban.created) + ' (已解封 | 处理者: ' + (ban.removed_by_name || '未知') + ')')
-                                            }
-                                        </td>
-                                        <td>${ban.server_scope}</td>
-                                    `;
-                                    banListBody.appendChild(row);
-                                });
-                            }
-
-                            // 更新分页控件
-                            function updatePagination() {
-                                const prevButton = document.getElementById('prevPage');
-                                const nextButton = document.getElementById('nextPage');
-                                const pageInfo = document.getElementById('pageInfo');
-
-                                pageInfo.textContent = `${currentPage}/${totalPages}`;
-
-                                if (currentPage === 1) {
-                                    prevButton.disabled = true;
-                                } else {
-                                    prevButton.disabled = false;
-                                }
-
-                                if (currentPage === totalPages) {
-                                    nextButton.disabled = true;
-                                } else {
-                                    nextButton.disabled = false;
-                                }
-                            }
-
-                            // 切换页面
-                            function changePage(direction) {
-                                const newPage = currentPage + direction;
-                                if (newPage >= 1 && newPage <= totalPages) {
-                                    currentPage = newPage;
-                                    fetchBanList();
-                                }
-                            }
-
-                            // 页面加载完成后获取数据
-                            document.addEventListener('DOMContentLoaded', function() {
-                                fetchBanList();
-                                
-                                // 添加回车搜索功能
-                                document.getElementById('searchInput').addEventListener('keypress', function(e) {
-                                    if (e.key === 'Enter') {
-                                        searchBans();
-                                    }
-                                });
-                            });
-                        </script>
                         <br><br><br><br><br><br>
                     </div>
                 </div>
@@ -467,6 +119,7 @@
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Morphext/2.4.4/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
     <script crossorigin="anonymous" integrity="sha384-8CYhPwYlLELodlcQV713V9ZikA3DlCVaXFDpjHfP8Z36gpddf/Vrt47XmKDsCttu" src="static/js/clipboard.min.js"></script>
     <script src="static/js/js.js"></script>
-    <script src="static/js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="static/js/scripts.js"></script>
+    <script src="static/js/banlist.js"></script> <!-- Banlist scripts -->
 </body>
 </html>

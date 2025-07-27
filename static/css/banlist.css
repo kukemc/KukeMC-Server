@@ -1,0 +1,184 @@
+@media (min-width: 1300px) {
+    .container {
+        max-width: 1300px;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0px;
+    font-family: Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+        margin: 0 auto;
+    }
+    th, td {
+        padding: 8px;
+        white-space: normal;
+        word-break: break-word;
+    }
+    th {
+        display: none;
+    }
+    td {
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 40%;
+        min-height: 40px;
+    }
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 35%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: right;
+        font-weight: bold;
+        color: #666;
+    }
+    td[data-label="玩家"]::before {
+        content: "玩家：";
+    }
+    td[data-label="处理者"]::before {
+        content: "处理者：";
+    }
+    td[data-label="原因"]::before {
+        content: "原因：";
+    }
+    td[data-label="处理日期"]::before {
+        content: "处理日期：";
+    }
+    td[data-label="过期时间"]::before {
+        content: "过期时间：";
+    }
+    td[data-label="处罚范围"]::before {
+        content: "处罚范围：";
+    }
+    .ban-type {
+        padding: 2px 4px;
+        font-size: 10px;
+    }
+    .avatar {
+        width: 16px;
+        height: 16px;
+        border-radius: 8px; /* 小头像也加圆角 */
+    }
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 2px solid #ddd;
+}
+
+td {
+    text-align: center;
+    padding: 18px;
+}
+
+.ban-type {
+    color: white;
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 10%; /* 圆形头像 */
+}
+
+.highlight {
+    color: red;
+    font-weight: bold;
+}
+
+tbody tr + tr {
+    margin-top: 0;
+}
+
+tbody td {
+    border-bottom: 1px solid #ddd;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.pagination .page-item {
+    list-style: none;
+}
+
+.pagination .page-link {
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    display: block;
+}
+
+.pagination .page-link:hover {
+    background-color: #f8f9fa;
+    color: #1e266d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #f8f9fa;
+    border-color: #e0e0e0;
+    color: #adb5bd;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #c7c7c7;
+    border-color: #c7c7c7;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ex-basic-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0vh;
+}
