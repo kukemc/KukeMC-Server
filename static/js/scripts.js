@@ -33,33 +33,163 @@
             .replace(/\/$/, '')           // 移除末尾斜杠
             .replace(/^\/+/, '');         // 移除前导斜杠
     
-        document.querySelectorAll('.nav-link').forEach(link => {
-            try {
-                const linkObj = new URL(link.href, linkBase);
-                let linkPath = linkObj.pathname;
-    
-                // 特殊处理：如果 href 是相对路径或 hash，pathname 可能为空
-                if (!linkPath && link.getAttribute('href').startsWith('#')) {
-                    // 对于锚点链接，跳过处理（如 index.html#info）
-                    return;
-                }
-    
-                // 规范化导航链接路径
-                const normalizedLinkPath = linkPath
-                    .replace(/index\.html$/i, '') // 移除 index.html
-                    .replace(/#.*$/, '')          // 移除 # 后面的内容
-                    .replace(/\.html$/i, '')      // 移除 .html
-                    .replace(/\/$/, '')           // 移除末尾斜杠
-                    .replace(/^\//, '');          // 移除前导斜杠
-    
-                // 比较两个路径是否匹配
-                if (normalizedLinkPath === normalizedCurrentPath) {
-                    link.classList.add('active');
-                }
-            } catch (e) {
-                console.warn('Invalid URL in nav link:', link.href);
+        // 更新导航高亮状态的函数
+        function updateNavHighlight() {
+            // 移除所有导航项的高亮
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // 处理外部链接
+            if (window.location.hostname !== new URL(linkBase).hostname) {
+                return;
             }
-        });
+            
+            // 如果是主页，根据锚点确定高亮项
+            if (normalizedCurrentPath === '') {
+                const hash = window.location.hash;
+                if (hash) {
+                    // 根据hash值确定应该高亮的导航项
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        if (link.getAttribute('href') === `index.html${hash}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                } else {
+                    // 如果没有hash，默认高亮首页
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        if (link.getAttribute('href') === 'index.html#header' || 
+                            link.getAttribute('href') === 'index.html') {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            } else {
+                // 非主页的处理逻辑
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    try {
+                        // 处理外部链接，如状态监控和官方文档
+                        if (link.getAttribute('href').startsWith('http')) {
+                            // 如果是外部链接，只有当href完全匹配当前URL时才高亮
+                            if (link.href === window.location.href) {
+                                link.classList.add('active');
+                            }
+                            return;
+                        }
+                        
+                        const linkObj = new URL(link.href, linkBase);
+                        let linkPath = linkObj.pathname;
+        
+                        // 特殊处理：如果 href 是相对路径或 hash，pathname 可能为空
+                        if (!linkPath && link.getAttribute('href').startsWith('#')) {
+                            // 对于锚点链接，在主页时应该高亮第一个锚点链接（首页）
+                            if (normalizedCurrentPath === '' && link.getAttribute('href') === '#header') {
+                                link.classList.add('active');
+                            }
+                            return;
+                        }
+        
+                        // 规范化导航链接路径
+                        const normalizedLinkPath = linkPath
+                            .replace(/index\.html$/i, '') // 移除 index.html
+                            .replace(/#.*$/, '')          // 移除 # 后面的内容
+                            .replace(/\.html$/i, '')      // 移除 .html
+                            .replace(/\/$/, '')           // 移除末尾斜杠
+                            .replace(/^\//, '');          // 移除前导斜杠
+        
+                        // 比较两个路径是否匹配
+                        if (normalizedLinkPath === normalizedCurrentPath) {
+                            link.classList.add('active');
+                        }
+                    } catch (e) {
+                        console.warn('Invalid URL in nav link:', link.href);
+                    }
+                });
+            }
+        }
+
+        // 初始更新导航高亮状态
+        updateNavHighlight();
+
+        // 监听 hashchange 事件（当用户点击锚点链接时触发）
+        window.addEventListener('hashchange', updateNavHighlight);
+        
+        // 监听滚动事件，实现智能高亮（仅在主页时）
+        if (normalizedCurrentPath === '') {
+            let isScrolling = false;
+            
+            window.addEventListener('scroll', function() {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(function() {
+                        updateNavHighlightOnScroll();
+                        isScrolling = false;
+                    });
+                    
+                    isScrolling = true;
+                }
+            });
+            
+            // 根据滚动位置更新导航高亮
+            function updateNavHighlightOnScroll() {
+                // 获取所有可滚动到的区域
+                const sections = [
+                    { id: 'header', link: 'index.html#header' },
+                    { id: 'info', link: 'index.html#info' },
+                    { id: 'picture', link: 'index.html#picture' }
+                ];
+                
+                // 获取当前视窗中的元素
+                let currentSection = '';
+                for (let section of sections) {
+                    const element = document.getElementById(section.id);
+                    if (element) {
+                        const rect = element.getBoundingClientRect();
+                        // 如果元素在视窗中（元素顶部在视窗上半部分且元素底部在视窗下半部分）
+                        if (rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
+                            currentSection = section.link;
+                            break;
+                        }
+                        // 特殊处理：如果元素占据视窗的大部分（超过50%）
+                        const elementHeight = rect.bottom - rect.top;
+                        const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                        if (visibleHeight > elementHeight / 2) {
+                            currentSection = section.link;
+                        }
+                    }
+                }
+                
+                // 移除所有高亮
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // 设置当前区域对应的导航项为高亮
+                if (currentSection) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        if (link.getAttribute('href') === currentSection) {
+                            link.classList.add('active');
+                        }
+                    });
+                } else if (window.scrollY === 0) {
+                    // 如果在页面顶部，高亮首页
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        if (link.getAttribute('href') === 'index.html#header') {
+                            link.classList.add('active');
+                        }
+                    });
+                } else {
+                    // 根据当前hash值确定高亮项
+                    const hash = window.location.hash;
+                    if (hash) {
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            if (link.getAttribute('href') === `index.html${hash}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                }
+            }
+        }
     })
     .catch(error => {
         console.log('Error loading navbar:', error);
@@ -105,10 +235,49 @@
 	$(function() {
 		$(document).on('click', 'a.page-scroll', function(event) {
 			var $anchor = $(this);
-			$('html, body').stop().animate({
-				scrollTop: $($anchor.attr('href')).offset().top
-			}, 600, 'easeInOutExpo');
-			event.preventDefault();
+			var href = $anchor.attr('href');
+			
+			// 处理外部链接，直接跳转不使用平滑滚动
+			if (href.startsWith('http')) {
+				return; // 让浏览器处理外部链接
+			}
+			
+			// 处理主页锚点链接的特殊滚动行为
+			if (href.startsWith('index.html#')) {
+				var targetId = href.split('#')[1];
+				var targetElement = $('#' + targetId);
+				
+				if (targetElement.length) {
+					$('html, body').stop().animate({
+						scrollTop: targetElement.offset().top
+					}, 600);
+					
+					// 更新URL的hash部分但不触发默认跳转
+					if (history.pushState) {
+						history.pushState(null, null, '#' + targetId);
+					} else {
+						window.location.hash = targetId;
+					}
+					
+					event.preventDefault();
+					return;
+				}
+			}
+			
+			// 处理普通锚点链接（如#info）
+			if (href.startsWith('#')) {
+				var targetElement = $(href);
+				if (targetElement.length) {
+					$('html, body').stop().animate({
+						scrollTop: targetElement.offset().top
+					}, 600);
+					event.preventDefault();
+					return;
+				}
+			}
+			
+			// 默认处理其他页面链接
+			// 注意：对于其他页面链接，我们不需要阻止默认行为，让浏览器正常跳转
 		});
 	});
 
@@ -120,17 +289,20 @@
 
 
     /* Rotating Text - Morphtext */
-	$("#js-rotating").Morphext({
-		// The [in] animation type. Refer to Animate.css for a list of available animations.
-		animation: "fadeIn",
-		// An array of phrases to rotate are created based on this separator. Change it if you wish to separate the phrases differently (e.g. So Simple | Very Doge | Much Wow | Such Cool).
-		separator: ",",
-		// The delay between the changing of each phrase in milliseconds.
-		speed: 2000,
-		complete: function () {
-			// Called after the entrance animation is executed.
-		}
-    });
+    // Check if Morphext is available before initializing
+    if ($.fn.Morphext) {
+        $("#js-rotating").Morphext({
+            // The [in] animation type. Refer to Animate.css for a list of available animations.
+            animation: "fadeIn",
+            // An array of phrases to rotate are created based on this separator. Change it if you wish to separate the phrases differently (e.g. So Simple | Very Doge | Much Wow | Such Cool).
+            separator: ",",
+            // The delay between the changing of each phrase in milliseconds.
+            speed: 2000,
+            complete: function () {
+                // Called after the entrance animation is executed.
+            }
+        });
+    }
     
 
     /* Card Slider - Swiper */
@@ -170,6 +342,13 @@
 		midClick: true,
 		removalDelay: 300,
 		mainClass: 'my-mfp-slide-bottom'
+    });
+    
+    // init Isotope
+    var $grid = $('.grid').isotope({
+        // options
+        itemSelector: '.element-item',
+        layoutMode: 'fitRows'
     });
     
     // filter items on button click
