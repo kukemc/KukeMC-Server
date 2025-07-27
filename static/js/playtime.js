@@ -157,7 +157,14 @@ $(document).ready(function () {
                         }).replace(/\//g, '-');
 
                         row.append($('<td>').attr('data-rank', rank).text('#' + rank));
-                        row.append($('<td>').text(player.username));
+                        let playerCell = $('<td>').addClass('player-cell');
+                        let avatar = $('<img>').attr('src', `https://crafthead.net/avatar/${player.username}/40.png`).addClass('player-avatar');
+                        // 添加错误处理，当头像加载失败时使用默认图片
+                        avatar.on('error', function() {
+                            $(this).attr('src', 'static/image/steve.png');
+                        });
+                        playerCell.append(avatar).append($('<span>').text(player.username));
+                        row.append(playerCell);
                         row.append($('<td>').text(playtimeStr));
                         row.append($('<td>').text((currentDays === 0 ? player.login_count : player.play_days) + (currentDays === 0 ? ' 次' : ' 天')));
                         row.append($('<td>').text(lastLoginStr));

@@ -45,11 +45,9 @@
 }
 
 .player-table td {
-    padding: 8px 15px;
     font-size: 14px;
     vertical-align: middle;
     text-align: left;
-    border-bottom: 1px solid #eee;
 }
 
 .player-table tr:hover {
@@ -198,6 +196,19 @@
 .pagination .page-link:focus,
 .pagination .page-link:active {
     text-decoration: none !important;
+}
+
+.player-cell {
+    display: flex;
+    align-items: center;
+}
+
+.player-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10%;
+    margin-right: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .loading {
