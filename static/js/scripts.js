@@ -244,6 +244,13 @@
 			
 			// 处理主页锚点链接的特殊滚动行为
 			if (href.startsWith('index.html#')) {
+				// 如果当前不在首页，则直接跳转到首页的相应锚点
+				if (window.location.pathname !== '/index.html' && window.location.pathname !== '/') {
+					// 直接跳转到首页锚点，不使用动画
+					window.location.href = href;
+					return;
+				}
+				
 				var targetId = href.split('#')[1];
 				var targetElement = $('#' + targetId);
 				
