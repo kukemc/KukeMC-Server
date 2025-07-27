@@ -22,41 +22,6 @@
         // 将导航栏内容插入到指定的 div 中
         document.getElementById('navbar').innerHTML = data;
 
-        // 获取当前页面的 URL 和文件名
-        const currentUrl = window.location.href;
-        const currentPage = currentUrl.split('/').pop().split('#')[0] || 'index.html'; // 默认主页为 index.html
-
-        // 获取所有导航链接
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        navLinks.forEach(link => {
-            // 获取链接的 href 属性
-            let href = link.getAttribute('href');
-            if (!href) return; // 添加空值检查
-
-            // 获取 href 中的页面路径部分，去除锚点
-            let hrefPage = href.split('#')[0];
-            
-            // 处理首页的特殊情况
-            if (currentPage === '' || currentPage === 'index.html') {
-                // 只有当href完全匹配时才高亮
-                if (href === '' || href === 'index.html' || href === '#') {
-                    link.classList.add('active');
-                }
-            } else if (currentPage === hrefPage && !href.includes('#')) {
-                // 对于非首页，只有当完全匹配且不包含锚点时才高亮
-                link.classList.add('active');
-            }
-            
-            // 如果是当前页面的锚点链接，修改href
-            if (currentPage === hrefPage || (currentPage === '' && hrefPage === 'index.html')) {
-                const hashPart = href.split('#')[1];
-                if (hashPart) {
-                    link.setAttribute('href', '#' + hashPart);
-                }
-            }
-        });
-        
         // 自动激活当前页面导航项
         const currentPath = window.location.pathname; // 获取当前路径，例如 /playtime 或 /playtime.html
         const linkBase = document.querySelector('base')?.href || window.location.origin;
