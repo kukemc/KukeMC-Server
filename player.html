@@ -45,6 +45,7 @@
             background-size: 100% auto; /* 调整背景图片宽度与网站宽度一致 */
             background-repeat: no-repeat; /* 防止背景图片重复 */
             background-position: top center; /* 背景图片居中显示 */
+            background-attachment: fixed; /* 固定背景图片 */
         }
 
         .text-container-2 {
@@ -57,9 +58,8 @@
             border: 1px solid rgba(255, 255, 255, 0.18);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             min-height: 300px;
-            max-height: 300px;
-            overflow: hidden; /* 隐藏溢出的内容 */
-            transition: max-height 0.5s ease; /* 使用max-height的动画 */
+            max-height: none; /* 移除最大高度限制 */
+            overflow: visible; /* 允许内容溢出 */
         }
 
         /* 玩家列表布局 */
@@ -83,6 +83,8 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s, box-shadow 0.3s;
             width: 180px;
+            word-wrap: break-word; /* 允许长单词换行 */
+            word-break: break-all; /* 强制换行 */
         }
 
         /* 鼠标悬停效果 */
@@ -114,6 +116,11 @@
             font-size: 1.2em;
             font-weight: bold;
             color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* 限制显示2行 */
+            -webkit-box-orient: vertical;
         }
 
         /* 服务器信息样式 */
@@ -125,6 +132,10 @@
             border-radius: 10px;
             padding: 5px;
             display: inline-block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -255,7 +266,6 @@
                                             playerDiv.appendChild(playerServer);
                                             playerListDiv.appendChild(playerDiv);
                                         });
-                                        textContainer.style.maxHeight = textContainer.scrollHeight + 'px';
                                     } else {
                                         playerCountDiv.textContent = '在线玩家数量：0';
                                         playerListDiv.textContent = '服务器里暂时没有人 ＞﹏＜';
