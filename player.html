@@ -67,7 +67,10 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            max-width: 1200px;
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         /* 玩家卡片样式 */
@@ -77,14 +80,17 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 20px;
-            margin: 15px;
-            text-align: center;
             border-radius: 15px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s, box-shadow 0.3s;
-            width: 180px;
+            min-width: 150px;
+            max-width: 220px;
+            width: fit-content;
             word-wrap: break-word; /* 允许长单词换行 */
             word-break: break-all; /* 强制换行 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* 鼠标悬停效果 */
@@ -92,6 +98,13 @@
             transform: translateY(-10px);
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
             background: rgba(255, 255, 255, 0.35);
+        }
+
+        /* 玩家头像容器样式 */
+        .player-avatar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
         }
 
         /* 玩家头像样式 */
@@ -112,7 +125,6 @@
 
         /* 玩家名称样式 */
         .player-name {
-            margin-top: 15px;
             font-size: 1.2em;
             font-weight: bold;
             color: #333;
@@ -121,11 +133,45 @@
             display: -webkit-box;
             -webkit-line-clamp: 2; /* 限制显示2行 */
             -webkit-box-orient: vertical;
+            text-align: center;
+        }
+
+        /* 玩家信息容器 */
+        .player-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            gap: 5px;
+            width: 100%;
+        }
+
+        /* 玩家延迟样式 */
+        .player-ping {
+            font-size: 0.9em;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .ping-good {
+            background-color: rgba(46, 204, 113, 0.3); /* 绿色 */
+            color: #27ae60;
+        }
+
+        .ping-medium {
+            background-color: rgba(241, 196, 15, 0.3); /* 黄色 */
+            color: #d35400;
+        }
+
+        .ping-bad {
+            background-color: rgba(231, 76, 60, 0.3); /* 红色 */
+            color: #c0392b;
         }
 
         /* 服务器信息样式 */
         .player-server {
-            margin-top: 10px;
             font-size: 0.9em;
             color: #ffffff;
             background: rgba(255, 255, 255, 0.3);
@@ -167,25 +213,9 @@
     </header> <!-- end of ex-header -->
     <!-- end of header -->
 
-
-    <!-- Breadcrumbs -->
-    <div class="ex-basic-1" style="background-color: #ffffff81; backdrop-filter: blur(5px);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumbs">
-                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;当前服务器在线玩家</span>
-                    </div> <!-- end of breadcrumbs -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of ex-basic-1 -->
-    <!-- end of breadcrumbs -->
-
-
     <!-- Terms Content -->
     <div class="ex-basic-2">
-        <div class="container">
+        <div class="container" style="max-width: 1340px !important;">
             <div class="row">
                 <div class="col-lg-12">
                     
@@ -263,7 +293,31 @@
                                             playerAvatar.appendChild(playerImage);
                                             playerDiv.appendChild(playerAvatar);
                                             playerDiv.appendChild(playerName);
-                                            playerDiv.appendChild(playerServer);
+                                            
+                                            // 添加信息容器
+                                            const playerInfo = document.createElement('div');
+                                            playerInfo.className = 'player-info';
+                                            
+                                            // 添加延迟显示
+                                            if (player.ping !== undefined) {
+                                                const playerPing = document.createElement('div');
+                                                playerPing.className = 'player-ping';
+                                                
+                                                // 根据延迟值设置不同的颜色类
+                                                if (player.ping <= 100) {
+                                                    playerPing.classList.add('ping-good');
+                                                } else if (player.ping <= 200) {
+                                                    playerPing.classList.add('ping-medium');
+                                                } else {
+                                                    playerPing.classList.add('ping-bad');
+                                                }
+                                                
+                                                playerPing.textContent = `${player.ping}ms`;
+                                                playerInfo.appendChild(playerPing);
+                                            }
+                                            
+                                            playerInfo.appendChild(playerServer);
+                                            playerDiv.appendChild(playerInfo);
                                             playerListDiv.appendChild(playerDiv);
                                         });
                                     } else {
