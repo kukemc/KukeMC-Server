@@ -206,7 +206,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>当前服务器在线玩家</h1>
+                    <h1>当前实时在线玩家</h1>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -332,6 +332,9 @@
 
                             // Fetch player list when the page loads
                             window.onload = fetchPlayerList;
+                            
+                            // 每10秒自动刷新一次数据
+                            setInterval(fetchPlayerList, 10000);
                         </script>
                     </div> <!-- end of text-container -->
                     
